@@ -2,6 +2,8 @@ table Tweet {
   text:string;
   user:string;
   date:string;
+  id:string;
+  committed:string;
 }
 
 table TweetBin {

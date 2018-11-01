@@ -17,6 +17,8 @@ struct TweetT : public flatbuffers::NativeTable {
   std::string text;
   std::string user;
   std::string date;
+  std::string id;
+  std::string committed;
   TweetT() {
   }
 };
@@ -26,7 +28,9 @@ struct Tweet FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_TEXT = 4,
     VT_USER = 6,
-    VT_DATE = 8
+    VT_DATE = 8,
+    VT_ID = 10,
+    VT_COMMITTED = 12
   };
   const flatbuffers::String *text() const {
     return GetPointer<const flatbuffers::String *>(VT_TEXT);
@@ -37,6 +41,12 @@ struct Tweet FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   const flatbuffers::String *date() const {
     return GetPointer<const flatbuffers::String *>(VT_DATE);
   }
+  const flatbuffers::String *id() const {
+    return GetPointer<const flatbuffers::String *>(VT_ID);
+  }
+  const flatbuffers::String *committed() const {
+    return GetPointer<const flatbuffers::String *>(VT_COMMITTED);
+  }
   bool Verify(flatbuffers::Verifier &verifier) const {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_TEXT) &&
@@ -45,6 +55,10 @@ struct Tweet FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
            verifier.VerifyString(user()) &&
            VerifyOffset(verifier, VT_DATE) &&
            verifier.VerifyString(date()) &&
+           VerifyOffset(verifier, VT_ID) &&
+           verifier.VerifyString(id()) &&
+           VerifyOffset(verifier, VT_COMMITTED) &&
+           verifier.VerifyString(committed()) &&
            verifier.EndTable();
   }
   TweetT *UnPack(const flatbuffers::resolver_function_t *_resolver = nullptr) const;
@@ -64,6 +78,12 @@ struct TweetBuilder {
   void add_date(flatbuffers::Offset<flatbuffers::String> date) {
     fbb_.AddOffset(Tweet::VT_DATE, date);
   }
+  void add_id(flatbuffers::Offset<flatbuffers::String> id) {
+    fbb_.AddOffset(Tweet::VT_ID, id);
+  }
+  void add_committed(flatbuffers::Offset<flatbuffers::String> committed) {
+    fbb_.AddOffset(Tweet::VT_COMMITTED, committed);
+  }
   explicit TweetBuilder(flatbuffers::FlatBufferBuilder &_fbb)
         : fbb_(_fbb) {
     start_ = fbb_.StartTable();
@@ -80,8 +100,12 @@ inline flatbuffers::Offset<Tweet> CreateTweet(
     flatbuffers::FlatBufferBuilder &_fbb,
     flatbuffers::Offset<flatbuffers::String> text = 0,
     flatbuffers::Offset<flatbuffers::String> user = 0,
-    flatbuffers::Offset<flatbuffers::String> date = 0) {
+    flatbuffers::Offset<flatbuffers::String> date = 0,
+    flatbuffers::Offset<flatbuffers::String> id = 0,
+    flatbuffers::Offset<flatbuffers::String> committed = 0) {
   TweetBuilder builder_(_fbb);
+  builder_.add_committed(committed);
+  builder_.add_id(id);
   builder_.add_date(date);
   builder_.add_user(user);
   builder_.add_text(text);
@@ -92,12 +116,16 @@ inline flatbuffers::Offset<Tweet> CreateTweetDirect(
     flatbuffers::FlatBufferBuilder &_fbb,
     const char *text = nullptr,
     const char *user = nullptr,
-    const char *date = nullptr) {
+    const char *date = nullptr,
+    const char *id = nullptr,
+    const char *committed = nullptr) {
   return CreateTweet(
       _fbb,
       text ? _fbb.CreateString(text) : 0,
       user ? _fbb.CreateString(user) : 0,
-      date ? _fbb.CreateString(date) : 0);
+      date ? _fbb.CreateString(date) : 0,
+      id ? _fbb.CreateString(id) : 0,
+      committed ? _fbb.CreateString(committed) : 0);
 }
 
 flatbuffers::Offset<Tweet> CreateTweet(flatbuffers::FlatBufferBuilder &_fbb, const TweetT *_o, const flatbuffers::rehasher_function_t *_rehasher = nullptr);
@@ -177,6 +205,8 @@ inline void Tweet::UnPackTo(TweetT *_o, const flatbuffers::resolver_function_t *
   { auto _e = text(); if (_e) _o->text = _e->str(); };
   { auto _e = user(); if (_e) _o->user = _e->str(); };
   { auto _e = date(); if (_e) _o->date = _e->str(); };
+  { auto _e = id(); if (_e) _o->id = _e->str(); };
+  { auto _e = committed(); if (_e) _o->committed = _e->str(); };
 }
 
 inline flatbuffers::Offset<Tweet> Tweet::Pack(flatbuffers::FlatBufferBuilder &_fbb, const TweetT* _o, const flatbuffers::rehasher_function_t *_rehasher) {
@@ -190,11 +220,15 @@ inline flatbuffers::Offset<Tweet> CreateTweet(flatbuffers::FlatBufferBuilder &_f
   auto _text = _o->text.empty() ? 0 : _fbb.CreateString(_o->text);
   auto _user = _o->user.empty() ? 0 : _fbb.CreateString(_o->user);
   auto _date = _o->date.empty() ? 0 : _fbb.CreateString(_o->date);
+  auto _id = _o->id.empty() ? 0 : _fbb.CreateString(_o->id);
+  auto _committed = _o->committed.empty() ? 0 : _fbb.CreateString(_o->committed);
   return CreateTweet(
       _fbb,
       _text,
       _user,
-      _date);
+      _date,
+      _id,
+      _committed);
 }
 
 inline TweetBinT *TweetBin::UnPack(const flatbuffers::resolver_function_t *_resolver) const {
