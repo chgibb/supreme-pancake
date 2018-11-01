@@ -1,0 +1,1 @@
+ninja -t graph | dot -Tpng -o graph.png

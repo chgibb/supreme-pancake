@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+
+src/vendor/protobuf/
+protoc
+
+node_modules
+
+.ninja_deps
+.ninja_log
+build.ninja
+graph.png
+*.cbp
+*.layout
+.vscode

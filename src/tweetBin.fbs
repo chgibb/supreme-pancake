@@ -1,0 +1,9 @@
+table Tweet {
+  text:string;
+  user:string;
+  date:string;
+}
+
+table TweetBin {
+  tweets:[Tweet];
+}
