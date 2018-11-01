@@ -1,5 +1,6 @@
 table Tweet {
   text:string;
+  textHash:string;
   user:string;
   date:string;
   id:string;

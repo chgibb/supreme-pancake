@@ -4,7 +4,7 @@
 #ifndef FLATBUFFERS_GENERATED_TWEETBIN_H_
 #define FLATBUFFERS_GENERATED_TWEETBIN_H_
 
-#include <flatbuffers/flatbuffers.h>
+#include "flatbuffers/flatbuffers.h"
 
 struct Tweet;
 struct TweetT;
@@ -15,6 +15,7 @@ struct TweetBinT;
 struct TweetT : public flatbuffers::NativeTable {
   typedef Tweet TableType;
   std::string text;
+  std::string textHash;
   std::string user;
   std::string date;
   std::string id;
@@ -27,13 +28,17 @@ struct Tweet FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
   typedef TweetT NativeTableType;
   enum FlatBuffersVTableOffset FLATBUFFERS_VTABLE_UNDERLYING_TYPE {
     VT_TEXT = 4,
-    VT_USER = 6,
-    VT_DATE = 8,
-    VT_ID = 10,
-    VT_COMMITTED = 12
+    VT_TEXTHASH = 6,
+    VT_USER = 8,
+    VT_DATE = 10,
+    VT_ID = 12,
+    VT_COMMITTED = 14
   };
   const flatbuffers::String *text() const {
     return GetPointer<const flatbuffers::String *>(VT_TEXT);
+  }
+  const flatbuffers::String *textHash() const {
+    return GetPointer<const flatbuffers::String *>(VT_TEXTHASH);
   }
   const flatbuffers::String *user() const {
     return GetPointer<const flatbuffers::String *>(VT_USER);
@@ -51,6 +56,8 @@ struct Tweet FLATBUFFERS_FINAL_CLASS : private flatbuffers::Table {
     return VerifyTableStart(verifier) &&
            VerifyOffset(verifier, VT_TEXT) &&
            verifier.VerifyString(text()) &&
+           VerifyOffset(verifier, VT_TEXTHASH) &&
+           verifier.VerifyString(textHash()) &&
            VerifyOffset(verifier, VT_USER) &&
            verifier.VerifyString(user()) &&
            VerifyOffset(verifier, VT_DATE) &&
@@ -71,6 +78,9 @@ struct TweetBuilder {
   flatbuffers::uoffset_t start_;
   void add_text(flatbuffers::Offset<flatbuffers::String> text) {
     fbb_.AddOffset(Tweet::VT_TEXT, text);
+  }
+  void add_textHash(flatbuffers::Offset<flatbuffers::String> textHash) {
+    fbb_.AddOffset(Tweet::VT_TEXTHASH, textHash);
   }
   void add_user(flatbuffers::Offset<flatbuffers::String> user) {
     fbb_.AddOffset(Tweet::VT_USER, user);
@@ -99,6 +109,7 @@ struct TweetBuilder {
 inline flatbuffers::Offset<Tweet> CreateTweet(
     flatbuffers::FlatBufferBuilder &_fbb,
     flatbuffers::Offset<flatbuffers::String> text = 0,
+    flatbuffers::Offset<flatbuffers::String> textHash = 0,
     flatbuffers::Offset<flatbuffers::String> user = 0,
     flatbuffers::Offset<flatbuffers::String> date = 0,
     flatbuffers::Offset<flatbuffers::String> id = 0,
@@ -108,6 +119,7 @@ inline flatbuffers::Offset<Tweet> CreateTweet(
   builder_.add_id(id);
   builder_.add_date(date);
   builder_.add_user(user);
+  builder_.add_textHash(textHash);
   builder_.add_text(text);
   return builder_.Finish();
 }
@@ -115,6 +127,7 @@ inline flatbuffers::Offset<Tweet> CreateTweet(
 inline flatbuffers::Offset<Tweet> CreateTweetDirect(
     flatbuffers::FlatBufferBuilder &_fbb,
     const char *text = nullptr,
+    const char *textHash = nullptr,
     const char *user = nullptr,
     const char *date = nullptr,
     const char *id = nullptr,
@@ -122,6 +135,7 @@ inline flatbuffers::Offset<Tweet> CreateTweetDirect(
   return CreateTweet(
       _fbb,
       text ? _fbb.CreateString(text) : 0,
+      textHash ? _fbb.CreateString(textHash) : 0,
       user ? _fbb.CreateString(user) : 0,
       date ? _fbb.CreateString(date) : 0,
       id ? _fbb.CreateString(id) : 0,
@@ -203,6 +217,7 @@ inline void Tweet::UnPackTo(TweetT *_o, const flatbuffers::resolver_function_t *
   (void)_o;
   (void)_resolver;
   { auto _e = text(); if (_e) _o->text = _e->str(); };
+  { auto _e = textHash(); if (_e) _o->textHash = _e->str(); };
   { auto _e = user(); if (_e) _o->user = _e->str(); };
   { auto _e = date(); if (_e) _o->date = _e->str(); };
   { auto _e = id(); if (_e) _o->id = _e->str(); };
@@ -218,6 +233,7 @@ inline flatbuffers::Offset<Tweet> CreateTweet(flatbuffers::FlatBufferBuilder &_f
   (void)_o;
   struct _VectorArgs { flatbuffers::FlatBufferBuilder *__fbb; const TweetT* __o; const flatbuffers::rehasher_function_t *__rehasher; } _va = { &_fbb, _o, _rehasher}; (void)_va;
   auto _text = _o->text.empty() ? 0 : _fbb.CreateString(_o->text);
+  auto _textHash = _o->textHash.empty() ? 0 : _fbb.CreateString(_o->textHash);
   auto _user = _o->user.empty() ? 0 : _fbb.CreateString(_o->user);
   auto _date = _o->date.empty() ? 0 : _fbb.CreateString(_o->date);
   auto _id = _o->id.empty() ? 0 : _fbb.CreateString(_o->id);
@@ -225,6 +241,7 @@ inline flatbuffers::Offset<Tweet> CreateTweet(flatbuffers::FlatBufferBuilder &_f
   return CreateTweet(
       _fbb,
       _text,
+      _textHash,
       _user,
       _date,
       _id,

@@ -1,3 +1,5 @@
+#include <picosha2.h>
+
 #include "searchScrapeTweet.hpp"
 #include "dateParser.hpp"
 
@@ -9,6 +11,7 @@ std::vector<::TweetT> PanCake::parseSearchScrapeTweetsFromJSON(rapidjson::Generi
     {
         ::TweetT tweet;
         tweet.text = (*it)["text"].GetString();
+        tweet.textHash = picosha2::hash256_hex_string(tweet.text.begin(),tweet.text.end());
         tweet.id = (*it)["id"].GetString();
         tweet.user = (*it)["user"].GetString();
         PanCake::TweetDate date = *PanCake::parseSearchScrapeDate((*it)["timestamp"].GetString());

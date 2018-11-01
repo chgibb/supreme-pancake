@@ -23,5 +23,6 @@ TEST_CASE("Parse search scrape tweets from JSON","[JSON")
     REQUIRE(res.at(0).date == "2008/02/07/23/59/59");
     REQUIRE(res.at(0).user == "newestdiscovery");
     REQUIRE(res.at(0).text == "www.newestdiscovery.com update: The Future of XML (How will you use XML in years to come? The wheels of progress turn slowly, but tu...)");
+    REQUIRE(res.at(0).textHash == "3b2858570a2acde5c14efd3c2158393a601e8c918c232fc3ed3a818add569123");
     REQUIRE(res.at(0).id == "688736272");
 }
