@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include <string_view>
 
 namespace PanCake
@@ -13,4 +14,6 @@ namespace PanCake
         std::string_view minute;
         std::string_view second;
     };
+
+    std::string tweetDateToTimePointPathString(PanCake::TweetDate&);
 }

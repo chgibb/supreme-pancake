@@ -4,7 +4,7 @@
 #ifndef FLATBUFFERS_GENERATED_TWEETBIN_H_
 #define FLATBUFFERS_GENERATED_TWEETBIN_H_
 
-#include "flatbuffers/flatbuffers.h"
+#include <flatbuffers/flatbuffers.h>
 
 struct Tweet;
 struct TweetT;

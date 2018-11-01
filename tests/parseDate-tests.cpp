@@ -13,6 +13,8 @@ TEST_CASE("Parse search scrape date", "[date]")
     REQUIRE(date->hour == "23");
     REQUIRE(date->minute == "59");
     REQUIRE(date->second == "59");
+
+    REQUIRE(PanCake::tweetDateToTimePointPathString(*date) == "2008/02/07/23/59/59");
 }
 
 TEST_CASE("Parse API search/get date components","[date]")
@@ -37,4 +39,6 @@ TEST_CASE("Parse API search/get date","[date]")
     REQUIRE(date->hour == "18");
     REQUIRE(date->minute == "11");
     REQUIRE(date->second == "01");
+
+    REQUIRE(PanCake::tweetDateToTimePointPathString(*date) == "2018/02/25/18/11/01");
 }
