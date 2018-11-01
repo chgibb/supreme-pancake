@@ -11,3 +11,6 @@
 	path = src/vendor/compile-time-regular-expressions
 	url = https://github.com/hanickadot/compile-time-regular-expressions
 
+[submodule "src/vendor/PicoSHA2"]
+	path = src/vendor/PicoSHA2
+	url = https://github.com/okdshin/PicoSHA2
