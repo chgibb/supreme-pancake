@@ -10,6 +10,7 @@ addons:
     packages:
       - g++-7
       - ninja-build
+      - graphviz
 
 install:
   - sudo ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
