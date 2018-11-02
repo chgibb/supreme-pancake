@@ -12,5 +12,6 @@ addons:
       - ninja-build
 
 install:
+  - g++ -v
   - npm install
   - npm test
