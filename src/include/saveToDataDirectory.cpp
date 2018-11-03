@@ -2,17 +2,13 @@
 #include <experimental/filesystem>
 
 #include "fileExists.hpp"
-#include "makePath.hpp"
 #include "saveToDataDirectory.hpp"
 
 bool PanCake::saveTweetToDataDirectory(const char*path,::TweetT&tweet)
 {
     bool exists = PanCake::fileExists(path);
 
-    if(!exists)
-    {
-        PanCake::makePath((char*)path,S_IRWXU);
-    }
+    
 
     return exists;
 }
