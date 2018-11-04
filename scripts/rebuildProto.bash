@@ -1,1 +1,0 @@
-cd src; ./../protoc/bin/protoc --cpp_out=include tweetBin.proto 

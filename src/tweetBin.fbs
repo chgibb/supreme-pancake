@@ -8,5 +8,20 @@ table Tweet {
 }
 
 table TweetBin {
-  tweets:[Tweet];
+  bucket0:[Tweet];
+  bucket1:[Tweet];
+  bucket2:[Tweet];
+  bucket3:[Tweet];
+  bucket4:[Tweet];
+  bucket5:[Tweet];
+  bucket6:[Tweet];
+  bucket7:[Tweet];
+  bucket8:[Tweet];
+  bucket9:[Tweet];
+  bucketA:[Tweet];
+  bucketB:[Tweet];
+  bucketC:[Tweet];
+  bucketD:[Tweet];
+  bucketE:[Tweet];
+  bucketF:[Tweet];
 }
