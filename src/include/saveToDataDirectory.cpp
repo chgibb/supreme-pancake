@@ -2,6 +2,7 @@
 #include <experimental/filesystem>
 
 #include "fileExists.hpp"
+#include "directoryExists.hpp"
 #include "saveToDataDirectory.hpp"
 
 bool PanCake::saveTweetToDataDirectory(const char*path,::TweetT&tweet)
@@ -24,5 +25,5 @@ bool PanCake::saveTweetsToDataDirectory(const char*path,std::vector<::TweetT>&tw
 
 std::string PanCake::makeTweetTimePointFBBinPath(const char*path,::TweetT&tweet)
 {
-    return std::string(path) + "/" + tweet.date + "/" + tweet.textHash[0] + ".fb";
+    return std::string(path) + "/" + tweet.date;
 }
