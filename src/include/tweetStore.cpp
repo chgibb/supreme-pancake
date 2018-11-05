@@ -3,7 +3,7 @@
 
 #include "fileExists.hpp"
 #include "directoryExists.hpp"
-#include "saveToDataDirectory.hpp"
+#include "tweetStore.hpp"
 
 bool PanCake::saveTweetToDataDirectory(const char*path,::TweetT&tweet)
 {
@@ -26,4 +26,27 @@ bool PanCake::saveTweetsToDataDirectory(const char*path,std::vector<::TweetT>&tw
 std::string PanCake::makeTweetTimePointFBBinPath(const char*path,::TweetT&tweet)
 {
     return std::string(path) + "/" + tweet.date;
+}
+
+PanCake::TweetStore::TweetStore(const char*path)
+{
+    this->dataDirectory = path;
+}
+
+PanCake::TweetStore::StoreStatus PanCake::TweetStore::add(::TweetT&tweet)
+{
+    PanCake::TweetStore::StoreStatus res;
+
+    if(this->timePointPath == "")
+    {
+        this->timePointPath = PanCake::makeTweetTimePointFBBinPath(this->dataDirectory,tweet);
+    }
+
+    if(this->timePointPath != PanCake::makeTweetTimePointFBBinPath(this->dataDirectory,tweet))
+    {
+        res.invalid = true;
+        return res;
+    }
+
+    return res;
 }
