@@ -5,7 +5,7 @@ const glob = require("glob");
 
 let ccFlags = `-pedantic -Wall -Wextra -Wcast-align -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wswitch-default -Werror -Wno-unused -std=c++17`;
 let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/flatbuffers/include -I src/vendor/PicoSHA2`;
-let ldFlags = ``;
+let ldFlags = `-lstdc++fs`;
 let debugFlags = `-g`;
 let objFiles = "";
 let objFileBuildSteps = "";
@@ -51,7 +51,7 @@ function trimExtension(file)
 
                 testBuildSteps += `build ${matches[i].split('.').slice(0, -1).join('.')}.out : link${trimExtension(matches[i])} ${makeObjectFilePath(matches[i])} | ${makeObjectFilePath(matches[i])} obj/${trimExtension(matches[i])+"-tests"}.o ${objFiles}${"\n"}`;
                 testLinkRules += `rule link${trimExtension(matches[i])}${"\n"}`;
-                testLinkRules += `  command = g++ ${ldFlags} obj/${trimExtension(matches[i])+"-tests"}.o ${objFiles} -o $out $in${"\n"}`;
+                testLinkRules += `  command = g++ obj/${trimExtension(matches[i])+"-tests"}.o ${objFiles} ${ldFlags} -o $out $in${"\n"}`;
             }
             return resolve();
         });
@@ -69,7 +69,7 @@ rule staticLib
     command = ar rcs $out $in
 
 rule link
-    command = g++ ${ldFlags} ${objFiles} -o $out $in${"\n"}
+    command = g++ ${objFiles} ${ldFlags} -o $out $in${"\n"}
 
 ${testLinkRules}
 
