@@ -1,5 +1,6 @@
 #pragma once
 
+#include <map>
 #include <vector>
 #include <string>
 
@@ -9,6 +10,7 @@ namespace PanCake
 {
     bool saveTweetsToDataDirectory(const char*,std::vector<::TweetT>&);
     bool saveTweetToDataDirectory(const char*,::TweetT&);
+    std::string makeTweetTimePointPath(const char*,::TweetT&);
     std::string makeTweetTimePointFBBinPath(const char*,::TweetT&);
 
     class TweetStore
@@ -27,5 +29,6 @@ namespace PanCake
         private:
             const char*dataDirectory;
             std::string timePointPath;
+            std::map<char,::TweetBinT> bins;
     };
 }
