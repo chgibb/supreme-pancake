@@ -43,3 +43,4 @@ graph.png
 *.cbp
 *.layout
 .vscode
+tests/rt/**/

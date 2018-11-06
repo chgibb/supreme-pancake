@@ -1,6 +1,8 @@
 Color_Off='\033[0m'   
 Yellow='\033[0;33m'
 
+rm -rf tests/rt
+
 echo -e "\n"
 for f in tests/*.out
 do
