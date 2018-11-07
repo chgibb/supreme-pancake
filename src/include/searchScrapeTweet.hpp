@@ -4,9 +4,9 @@
 
 #include <rapidjson/document.h>
 
-#include "../vendor/tweetBin_generated.h"
+#include "tweet.hpp"
 
 namespace PanCake
 {
-    std::vector<::TweetT> parseSearchScrapeTweetsFromJSON(rapidjson::GenericDocument<rapidjson::UTF8<>>&);
+    std::vector<PanCake::Tweet> parseSearchScrapeTweetsFromJSON(rapidjson::GenericDocument<rapidjson::UTF8<>>&);
 }
