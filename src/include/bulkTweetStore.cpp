@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <map>
 #include <string>
+#include <iostream>
 
 #include "bulkTweetStore.hpp"
 #include "tweetStore.hpp"

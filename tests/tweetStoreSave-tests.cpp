@@ -16,35 +16,35 @@ TEST_CASE("Save select tweets to JSON","[JSON]")
 
     auto tweets = PanCake::parseSearchScrapeTweetsFromJSON(json);
 
-    REQUIRE(PanCake::makeTweetTimePointPath("tests/rt/tweetStoreSave",tweets.at(0)) == "tests/rt/tweetStoreSave/2008/02/07/23/59/59");
+    REQUIRE(PanCake::makeTweetTimePointPath("tests/rt/tweetStoreSave",tweets.at(0)) == "tests/rt/tweetStoreSave/2010/01/02/23/59/59");
 
     PanCake::TweetStore store("tests/rt/tweetStoreSave");
 
-    REQUIRE(!PanCake::directoryExists("tests/rt/tweetStoreSave/2008/02/07/23/59/59"));
+    REQUIRE(!PanCake::directoryExists("tests/rt/tweetStoreSave/2010/01/02/23/59/59"));
 
     auto res = store.add(tweets.at(0));
 
-    REQUIRE(PanCake::directoryExists("tests/rt/tweetStoreSave/2008/02/07/23/59/59"));
+    REQUIRE(PanCake::directoryExists("tests/rt/tweetStoreSave/2010/01/02/23/59/59"));
     REQUIRE(res.duplicate == false);
     REQUIRE(res.invalid == false);    
     REQUIRE(res.success == true);
 
-    REQUIRE(store.bins['5'].bucket3.at(0).date == "2008/02/07/23/59/59");
-    REQUIRE(store.bins['5'].bucket3.at(0).user == "newestdiscovery");
-    REQUIRE(store.bins['5'].bucket3.at(0).text == "www.newestdiscovery.com update: The Future of XML (How will you use XML in years to come? The wheels of progress turn slowly, but tu...)");
-    REQUIRE(store.bins['5'].bucket3.at(0).textHash == "3b2858570a2acde5c14efd3c2158393a601e8c918c232fc3ed3a818add569123");
-    REQUIRE(store.bins['5'].bucket3.at(0).id == "688736272");
+    REQUIRE(store.bins['b'].bucket7.at(0).date == "2010/01/02/23/59/59");
+    REQUIRE(store.bins['b'].bucket7.at(0).user == "wAii2KoOl");
+    REQUIRE(store.bins['b'].bucket7.at(0).text == "RT @mia_b_mia: Boys gettin fresh cuts AND new units?? HOL IT NA! its on! Won't be in THA house toniiiiight #RogerDat <\u00ac LOL #BleaDat");
+    REQUIRE(store.bins['b'].bucket7.at(0).textHash == "75ff3feca8988c63ac04a06d6b9c857a2756dc05c923b9840b3ced591dc80a46");
+    REQUIRE(store.bins['b'].bucket7.at(0).id == "7314112637");
 
     REQUIRE(store.saveBins() == true);
     {
-        PanCake::TweetStore store2("tests/rt/tweetStoreSave","2008/02/07/23/59/59");
+        PanCake::TweetStore store2("tests/rt/tweetStoreSave","2010/01/02/23/59/59");
 
-        REQUIRE(store2.loadBin('5') == true);
-        REQUIRE(store2.bins['5'].bucket3.at(0).date == "2008/02/07/23/59/59");
-        REQUIRE(store2.bins['5'].bucket3.at(0).user == "newestdiscovery");
-        REQUIRE(store2.bins['5'].bucket3.at(0).text == "www.newestdiscovery.com update: The Future of XML (How will you use XML in years to come? The wheels of progress turn slowly, but tu...)");
-        REQUIRE(store2.bins['5'].bucket3.at(0).textHash == "3b2858570a2acde5c14efd3c2158393a601e8c918c232fc3ed3a818add569123");
-        REQUIRE(store2.bins['5'].bucket3.at(0).id == "688736272");
+        REQUIRE(store2.loadBin('b') == true);
+        REQUIRE(store2.bins['b'].bucket7.at(0).date == "2010/01/02/23/59/59");
+        REQUIRE(store2.bins['b'].bucket7.at(0).user == "wAii2KoOl");
+        REQUIRE(store2.bins['b'].bucket7.at(0).text == "RT @mia_b_mia: Boys gettin fresh cuts AND new units?? HOL IT NA! its on! Won't be in THA house toniiiiight #RogerDat <\u00ac LOL #BleaDat");
+        REQUIRE(store2.bins['b'].bucket7.at(0).textHash == "75ff3feca8988c63ac04a06d6b9c857a2756dc05c923b9840b3ced591dc80a46");
+        REQUIRE(store2.bins['b'].bucket7.at(0).id == "7314112637");
     }
 
     res = store.add(tweets.at(0));
@@ -54,7 +54,7 @@ TEST_CASE("Save select tweets to JSON","[JSON]")
     REQUIRE(res.duplicate == true);
 
     //make synthetic unique tweet
-    PanCake::Tweet uniqTweet = store.bins['5'].bucket3.at(0);
+    PanCake::Tweet uniqTweet = store.bins['b'].bucket7.at(0);
     uniqTweet.textHash = "3b";
 
     res = store.add(uniqTweet);

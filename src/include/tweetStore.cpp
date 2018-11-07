@@ -20,9 +20,9 @@ std::string PanCake::makeTweetTimePointPath(const char*path,PanCake::Tweet&tweet
     return std::string(path) + "/" + tweet.date;
 }
 
-std::string PanCake::makeTweetTimePointFBBinPath(const char*path,PanCake::Tweet&tweet)
+std::string PanCake::makeTweetTimePointBinPath(const char*path,PanCake::Tweet&tweet)
 {
-    return PanCake::makeTweetTimePointPath(path,tweet) + "/" + PanCake::getTweetUserHash(tweet)[0] + ".fb";
+    return PanCake::makeTweetTimePointPath(path,tweet) + "/" + PanCake::getTweetUserHash(tweet)[0] + ".json";
 }
 
 std::string PanCake::getTweetUserHash(PanCake::Tweet&tweet)
@@ -184,7 +184,7 @@ PanCake::TweetStore::StoreStatus PanCake::TweetStore::add(PanCake::Tweet&tweet)
     }
 
     //bin is not loaded but exists on disk
-    else if(PanCake::fileExists(PanCake::makeTweetTimePointFBBinPath(this->dataDirectory,tweet).c_str()))
+    else if(PanCake::fileExists(PanCake::makeTweetTimePointBinPath(this->dataDirectory,tweet).c_str()))
     {
         bool loaded = this->loadBin(userHashFirstChar);
         if(!loaded)
@@ -212,7 +212,7 @@ PanCake::TweetStore::StoreStatus PanCake::TweetStore::add(PanCake::Tweet&tweet)
 
     //first time adding a tweet with this user hash
     //Bin does not exist in memory or on disk
-    else if(!PanCake::fileExists(PanCake::makeTweetTimePointFBBinPath(this->dataDirectory,tweet).c_str()))
+    else if(!PanCake::fileExists(PanCake::makeTweetTimePointBinPath(this->dataDirectory,tweet).c_str()))
     {
         this->bins[userHashFirstChar] = PanCake::TweetBin();
         PanCake::getBinBucketByHash(
@@ -305,7 +305,7 @@ bool PanCake::TweetStore::saveBins()
 
         rapidjson::OStreamWrapper osw(file);
         rapidjson::PrettyWriter<rapidjson::OStreamWrapper> writer(osw);
-        return doc.Accept(writer);
+        doc.Accept(writer);
     }
     return true;
 }
