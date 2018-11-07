@@ -15,7 +15,7 @@ let testLinkRules = ``;
 
 function makeObjectFilePath(file)
 {
-    return `obj/${path.basename(file).split('.').slice(0, -1).join('.')}.o`;
+    return `obj/${file.split("/").join("-")}.o`.split(".cpp").join("");
 }
 
 function trimExtension(file)
@@ -49,9 +49,9 @@ function trimExtension(file)
                 if(/-tests/.test(matches[i]))
                     continue;
 
-                testBuildSteps += `build ${matches[i].split('.').slice(0, -1).join('.')}.out : link${trimExtension(matches[i])} ${makeObjectFilePath(matches[i])} | ${makeObjectFilePath(matches[i])} obj/${trimExtension(matches[i])+"-tests"}.o ${objFiles}${"\n"}`;
+                testBuildSteps += `build ${matches[i].split('.').slice(0, -1).join('.')}.out : link${trimExtension(matches[i])} ${makeObjectFilePath(matches[i])} | ${makeObjectFilePath(matches[i])} obj/tests-${trimExtension(matches[i])+"-tests"}.o ${objFiles}${"\n"}`;
                 testLinkRules += `rule link${trimExtension(matches[i])}${"\n"}`;
-                testLinkRules += `  command = g++ obj/${trimExtension(matches[i])+"-tests"}.o ${objFiles} ${ldFlags} -o $out $in${"\n"}`;
+                testLinkRules += `  command = g++ obj/tests-${trimExtension(matches[i])+"-tests"}.o ${objFiles} ${ldFlags} -o $out $in${"\n"}`;
             }
             return resolve();
         });
