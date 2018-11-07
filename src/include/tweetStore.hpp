@@ -13,6 +13,7 @@ namespace PanCake
     std::string getTweetUserHash(PanCake::Tweet&);
     std::vector<PanCake::Tweet>*getBinBucketByHash(PanCake::TweetBin&,PanCake::Tweet&) noexcept;
     void serializeBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
+    void deserializeBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
 
     class TweetStore
     {
@@ -38,5 +39,6 @@ namespace PanCake
         private:
             const char*dataDirectory;
             std::string timePointPath;
+            bool addTweetIfNotDup(std::vector<PanCake::Tweet>&,PanCake::Tweet&);
     };
 }

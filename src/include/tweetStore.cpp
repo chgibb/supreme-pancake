@@ -11,6 +11,7 @@
 
 #include "fileExists.hpp"
 #include "directoryExists.hpp"
+#include "loadJSONFromStream.hpp"
 #include "tweetStore.hpp"
 #include "tweet.hpp"
 
@@ -112,6 +113,22 @@ void PanCake::serializeBucket(rapidjson::Value&value,rapidjson::Document::Alloca
     });
 }
 
+void PanCake::deserializeBucket(rapidjson::Value&value,rapidjson::Document::AllocatorType&allocator,std::vector<PanCake::Tweet>&bucket)
+{
+    for(auto it = value.Begin(); it != value.End(); ++it)
+    {
+        PanCake::Tweet tweet;
+        tweet.text = (*it)["text"].GetString();
+        tweet.textHash = (*it)["textHash"].GetString();
+        tweet.user = (*it)["user"].GetString();
+        tweet.date = (*it)["date"].GetString();
+        tweet.id = (*it)["id"].GetString();
+        tweet.committed = (*it)["committed"].GetString();
+
+        bucket.push_back(tweet);
+    }
+}
+
 PanCake::TweetStore::TweetStore(const char*path)
 {
     this->dataDirectory = path;
@@ -126,6 +143,7 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
 PanCake::TweetStore::StoreStatus PanCake::TweetStore::add(PanCake::Tweet&tweet)
 {
     PanCake::TweetStore::StoreStatus res;
+    char userHashFirstChar = PanCake::getTweetUserHash(tweet)[0];
 
     if(this->timePointPath == "")
     {
@@ -143,20 +161,64 @@ PanCake::TweetStore::StoreStatus PanCake::TweetStore::add(PanCake::Tweet&tweet)
         std::experimental::filesystem::create_directories(this->timePointPath);
     }
 
-    //first time adding a tweet with this user hash
-    if(!PanCake::fileExists(PanCake::makeTweetTimePointFBBinPath(this->dataDirectory,tweet).c_str()))
+    bool isBinLoaded = false;
+
+    //bin is already loaded
+    if(this->bins.count(userHashFirstChar) != 0)
     {
-        this->bins[PanCake::getTweetUserHash(tweet)[0]] = PanCake::TweetBin();
-        PanCake::getBinBucketByHash(
-            this->bins[PanCake::getTweetUserHash(tweet)[0]],tweet
-        )->push_back(tweet);
-        res.success = true;
+        PanCake::TweetBin*bin = &this->bins[userHashFirstChar];
+        std::vector<PanCake::Tweet>*bucket = getBinBucketByHash(*bin,tweet);
+
+        bool added = this->addTweetIfNotDup(*bucket,tweet);
+        
+        if(added)
+        {
+            res.success = true;
+            return res;
+        }
+        else
+        {
+            res.duplicate = true;
+            return res;
+        }
     }
 
-    else
+    //bin is not loaded but exists on disk
+    else if(PanCake::fileExists(PanCake::makeTweetTimePointFBBinPath(this->dataDirectory,tweet).c_str()))
     {
+        bool loaded = this->loadBin(userHashFirstChar);
+        if(!loaded)
+        {
+            res.invalid = true;
+            return res;
+        }
+
+        PanCake::TweetBin*bin = &this->bins[userHashFirstChar];
+        std::vector<PanCake::Tweet>*bucket = getBinBucketByHash(*bin,tweet);
+
+        bool added = this->addTweetIfNotDup(*bucket,tweet);
         
-        
+        if(added)
+        {
+            res.success = true;
+            return res;
+        }
+        else
+        {
+            res.duplicate = true;
+            return res;
+        }
+    }
+
+    //first time adding a tweet with this user hash
+    //Bin does not exist in memory or on disk
+    else if(!PanCake::fileExists(PanCake::makeTweetTimePointFBBinPath(this->dataDirectory,tweet).c_str()))
+    {
+        this->bins[userHashFirstChar] = PanCake::TweetBin();
+        PanCake::getBinBucketByHash(
+            this->bins[userHashFirstChar],tweet
+        )->push_back(tweet);
+        res.success = true;
     }
 
     return res;
@@ -250,46 +312,39 @@ bool PanCake::TweetStore::saveBins()
 
 bool PanCake::TweetStore::loadBin(char binHash)
 {
-    std::cout<<this->timePointPath+std::string("/")+binHash+std::string(".json")<<std::endl;
     std::ifstream file(this->timePointPath+std::string("/")+binHash+std::string(".json"));
     
     if(file.fail())
         return false;
-/*
-    file.seekg(0,std::ios::end);
-    int length = file.tellg();
-    file.seekg(0,std::ios::beg);
-    std::unique_ptr<char> data(new char[length]);
-    file.read(data.get(),length);
-    file.close();
+    
+    rapidjson::GenericDocument<rapidjson::UTF8<>> doc = loadJSONFromStream(file);
+    rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
 
-    this->bins[binHash] = ::UnPackTweetBin(data.get());
+    PanCake::TweetBin*bin = &this->bins[binHash];
 
-    //auto binPtr = ::GetTweetBin(data.get());
+    PanCake::deserializeBucket(doc["bucket0"],allocator,bin->bucket0);
+    PanCake::deserializeBucket(doc["bucket1"],allocator,bin->bucket1);
+    PanCake::deserializeBucket(doc["bucket2"],allocator,bin->bucket2);
+    PanCake::deserializeBucket(doc["bucket3"],allocator,bin->bucket3);
+    PanCake::deserializeBucket(doc["bucket4"],allocator,bin->bucket4);
+    PanCake::deserializeBucket(doc["bucket5"],allocator,bin->bucket5);
+    PanCake::deserializeBucket(doc["bucket6"],allocator,bin->bucket6);
+    PanCake::deserializeBucket(doc["bucket7"],allocator,bin->bucket7);
+    PanCake::deserializeBucket(doc["bucket8"],allocator,bin->bucket8);
+    PanCake::deserializeBucket(doc["bucket9"],allocator,bin->bucket9);
+    PanCake::deserializeBucket(doc["bucketa"],allocator,bin->bucketa);
+    PanCake::deserializeBucket(doc["bucketb"],allocator,bin->bucketb);
+    PanCake::deserializeBucket(doc["bucketc"],allocator,bin->bucketc);
+    PanCake::deserializeBucket(doc["bucketd"],allocator,bin->bucketd);
+    PanCake::deserializeBucket(doc["buckete"],allocator,bin->buckete);
+    PanCake::deserializeBucket(doc["bucketf"],allocator,bin->bucketf);
 
-  //  this->bins[binHash] = std::make_unique<PanCake::TweetBin>(new TweetBinT());
-   // this->bins[binHash] = std::move(binPtr);
-
-    flatbuffers::FlatBufferBuilder fbb;
-    ::TweetBinBuilder tbb(fbb);
-    std::cout<<"made fbb and tbb"<<std::endl;
-
-    auto fbBin = tbb.Finish();
-    std::cout<<"finished tbb"<<std::endl;
-
-    fbb.PushFlatBuffer((const uint8_t*)data.get(),length);
-    std::cout<<"pushed buffer"<<std::endl;
-
-    fbb.Finish(fbBin);
-    std::cout<<"finshed fbb"<<std::endl;        
-        
-    auto bin = ::CreateTweetBinDirect(fbb);   
-    std::cout<<"created bin"<<std::endl;*/
     return true;
 }
 
 void PanCake::TweetStore::printBins(std::ostream&stream)
 {
+    stream<<this->timePointPath<<std::endl;
     auto end = this->bins.end();
     for(auto it = this->bins.begin(); it != end; ++it)
     {
@@ -339,4 +394,18 @@ void PanCake::TweetStore::printBucket(std::ostream&stream,std::vector<PanCake::T
             stream<<"        "<<it->textHash<<std::endl;
         }
     }
+}
+
+bool PanCake::TweetStore::addTweetIfNotDup(std::vector<PanCake::Tweet>&bucket,PanCake::Tweet&tweet)
+{
+    auto end = bucket.end();
+    for(auto it = bucket.begin(); it != end; ++it)
+    {
+        if(it->textHash == tweet.textHash)
+        {
+            return false;
+        }
+    }
+    bucket.push_back(tweet);
+    return true;
 }
