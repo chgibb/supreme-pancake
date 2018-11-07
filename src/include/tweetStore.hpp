@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 
+#include <rapidjson/document.h>
+
 #include "tweet.hpp"
 
 namespace PanCake

@@ -304,7 +304,7 @@ bool PanCake::TweetStore::saveBins()
             return false;
 
         rapidjson::OStreamWrapper osw(file);
-        rapidjson::Writer<rapidjson::OStreamWrapper> writer(osw);
+        rapidjson::PrettyWriter<rapidjson::OStreamWrapper> writer(osw);
         return doc.Accept(writer);
     }
     return true;
@@ -391,7 +391,7 @@ void PanCake::TweetStore::printBucket(std::ostream&stream,std::vector<PanCake::T
         auto end = bucket.end();
         for(auto it = bucket.begin(); it != end; ++it)
         {
-            stream<<"        "<<it->textHash<<std::endl;
+            stream<<"        Tweet Hash: "<<it->textHash<<std::endl;
         }
     }
 }
