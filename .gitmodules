@@ -14,3 +14,6 @@
 [submodule "src/vendor/PicoSHA2"]
 	path = src/vendor/PicoSHA2
 	url = https://github.com/okdshin/PicoSHA2
+[submodule "src/vendor/cxxopts"]
+	path = src/vendor/cxxopts
+	url = https://github.com/jarro2783/cxxopts
