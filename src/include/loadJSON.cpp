@@ -1,6 +1,6 @@
 #include "loadJSON.hpp"
 
-rapidjson::GenericDocument<rapidjson::UTF8<>> PanCake::loadJSONFromStream(std::istream&stream)
+[[nodiscard]] rapidjson::GenericDocument<rapidjson::UTF8<>> PanCake::loadJSONFromStream(std::istream&stream)
 {
     rapidjson::GenericDocument<rapidjson::UTF8<>> document;
     rapidjson::IStreamWrapper jsonStream(stream);
@@ -8,7 +8,7 @@ rapidjson::GenericDocument<rapidjson::UTF8<>> PanCake::loadJSONFromStream(std::i
     return document;
 }
 
-rapidjson::GenericDocument<rapidjson::UTF8<>> PanCake::loadJSONFromString(std::string&str)
+[[nodiscard]] rapidjson::GenericDocument<rapidjson::UTF8<>> PanCake::loadJSONFromString(std::string&str)
 {
     rapidjson::GenericDocument<rapidjson::UTF8<>> document;
     document.Parse(str.c_str());

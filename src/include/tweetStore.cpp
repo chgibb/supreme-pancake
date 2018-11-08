@@ -15,22 +15,22 @@
 #include "tweetStore.hpp"
 #include "tweet.hpp"
 
-std::string PanCake::makeTweetTimePointPath(const char*path,PanCake::Tweet&tweet)
+[[nodiscard]] std::string PanCake::makeTweetTimePointPath(const char*path,PanCake::Tweet&tweet)
 {
     return std::string(path) + "/" + tweet.date;
 }
 
-std::string PanCake::makeTweetTimePointBinPath(const char*path,PanCake::Tweet&tweet)
+[[nodiscard]] std::string PanCake::makeTweetTimePointBinPath(const char*path,PanCake::Tweet&tweet)
 {
     return PanCake::makeTweetTimePointPath(path,tweet) + "/" + PanCake::getTweetUserHash(tweet)[0] + ".json";
 }
 
-std::string PanCake::getTweetUserHash(PanCake::Tweet&tweet)
+[[nodiscard]] std::string PanCake::getTweetUserHash(PanCake::Tweet&tweet)
 {
     return picosha2::hash256_hex_string(tweet.user.begin(),tweet.user.end());
 }
 
-std::vector<PanCake::Tweet>*PanCake::getBinBucketByHash(PanCake::TweetBin&bin,PanCake::Tweet&tweet) noexcept
+[[nodiscard]] std::vector<PanCake::Tweet>*PanCake::getBinBucketByHash(PanCake::TweetBin&bin,PanCake::Tweet&tweet) noexcept
 {
     if(tweet.textHash[0] == '0')
         return &bin.bucket0;
@@ -140,7 +140,7 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
     this->timePointPath = this->dataDirectory+std::string("/")+timePointPath;
 }
 
-PanCake::TweetStore::StoreStatus PanCake::TweetStore::add(PanCake::Tweet&tweet)
+[[nodiscard]] PanCake::TweetStore::StoreStatus PanCake::TweetStore::add(PanCake::Tweet&tweet)
 {
     PanCake::TweetStore::StoreStatus res;
     char userHashFirstChar = PanCake::getTweetUserHash(tweet)[0];
@@ -224,7 +224,7 @@ PanCake::TweetStore::StoreStatus PanCake::TweetStore::add(PanCake::Tweet&tweet)
     return res;
 }
 
-bool PanCake::TweetStore::saveBins()
+[[nodiscard]] bool PanCake::TweetStore::saveBins()
 {
     auto end = this->bins.end();
     for(auto it = this->bins.begin(); it != end; ++it)
@@ -310,7 +310,7 @@ bool PanCake::TweetStore::saveBins()
     return true;
 }
 
-bool PanCake::TweetStore::loadBin(char binHash)
+[[nodiscard]] bool PanCake::TweetStore::loadBin(char binHash)
 {
     std::ifstream file(this->timePointPath+std::string("/")+binHash+std::string(".json"));
     
@@ -396,7 +396,7 @@ void PanCake::TweetStore::printBucket(std::ostream&stream,std::vector<PanCake::T
     }
 }
 
-bool PanCake::TweetStore::addTweetIfNotDup(std::vector<PanCake::Tweet>&bucket,PanCake::Tweet&tweet)
+[[nodiscard]] bool PanCake::TweetStore::addTweetIfNotDup(std::vector<PanCake::Tweet>&bucket,PanCake::Tweet&tweet)
 {
     auto end = bucket.end();
     for(auto it = bucket.begin(); it != end; ++it)

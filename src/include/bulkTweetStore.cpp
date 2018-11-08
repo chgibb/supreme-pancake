@@ -40,7 +40,11 @@ PanCake::BulkStoreStatus PanCake::bulkStoreTweets(const char*dataDir,std::vector
     auto mapEnd = stores.end();
     for(auto it = stores.begin(); it != mapEnd; ++it)
     {
-        it->second.saveBins();
+        if(!it->second.saveBins())
+        {
+            res.success = false;
+            return res;
+        }
     }
 
     res.success = true;

@@ -8,5 +8,5 @@
 
 namespace PanCake
 {
-    std::vector<PanCake::Tweet> parseSearchScrapeTweetsFromJSON(rapidjson::GenericDocument<rapidjson::UTF8<>>&);
+    [[nodiscard]] std::vector<PanCake::Tweet> parseSearchScrapeTweetsFromJSON(rapidjson::GenericDocument<rapidjson::UTF8<>>&);
 }

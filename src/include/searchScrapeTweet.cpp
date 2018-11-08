@@ -3,7 +3,7 @@
 #include "searchScrapeTweet.hpp"
 #include "dateParser.hpp"
 
-std::vector<PanCake::Tweet> PanCake::parseSearchScrapeTweetsFromJSON(rapidjson::GenericDocument<rapidjson::UTF8<>>&document)
+[[nodiscard]] std::vector<PanCake::Tweet> PanCake::parseSearchScrapeTweetsFromJSON(rapidjson::GenericDocument<rapidjson::UTF8<>>&document)
 {
     std::vector<PanCake::Tweet> res;
 

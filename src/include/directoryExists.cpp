@@ -3,7 +3,7 @@
 
 #include "directoryExists.hpp"
 
-bool PanCake::directoryExists(const char*path)
+[[nodiscard]] bool PanCake::directoryExists(const char*path)
 {
     struct stat info;
 

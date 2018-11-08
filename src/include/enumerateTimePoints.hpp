@@ -7,7 +7,7 @@
 
 namespace PanCake
 {
-    std::vector<std::string> enumerateTimePointPathString(PanCake::TweetDate);
+    [[nodiscard]] std::vector<std::string> enumerateTimePointPathString(PanCake::TweetDate);
     namespace EnumerateTimePoints
     {
         class Hour
@@ -16,8 +16,8 @@ namespace PanCake
                 Hour() = default;
                 Hour(int newHour) : numHour(newHour){}
                 void increment();
-                bool hasOverFlowed();
-                std::string get();
+                [[nodiscard]] bool hasOverFlowed();
+                [[nodiscard]] std::string get();
             private:
                 int numHour = 0;
                 bool overFlowed = false;
@@ -29,8 +29,8 @@ namespace PanCake
                 Minute() = default;
                 Minute(int newMinute) : numMinute(newMinute){}
                 void increment();
-                bool hasOverFlowed();
-                std::string get();
+                [[nodiscard]] bool hasOverFlowed();
+                [[nodiscard]] std::string get();
             private:
                 int numMinute = 0;
                 bool overFlowed = false;

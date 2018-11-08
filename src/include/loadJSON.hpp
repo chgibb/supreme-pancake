@@ -10,6 +10,6 @@
 
 namespace PanCake
 {
-    rapidjson::GenericDocument<rapidjson::UTF8<>> loadJSONFromStream(std::istream&);
-    rapidjson::GenericDocument<rapidjson::UTF8<>> loadJSONFromString(std::string&);
+    [[nodiscard]] rapidjson::GenericDocument<rapidjson::UTF8<>> loadJSONFromStream(std::istream&);
+    [[nodiscard]] rapidjson::GenericDocument<rapidjson::UTF8<>> loadJSONFromString(std::string&);
 }

@@ -10,10 +10,10 @@
 
 namespace PanCake
 {
-    std::string makeTweetTimePointPath(const char*,PanCake::Tweet&);
-    std::string makeTweetTimePointBinPath(const char*,PanCake::Tweet&);
-    std::string getTweetUserHash(PanCake::Tweet&);
-    std::vector<PanCake::Tweet>*getBinBucketByHash(PanCake::TweetBin&,PanCake::Tweet&) noexcept;
+    [[nodiscard]] std::string makeTweetTimePointPath(const char*,PanCake::Tweet&);
+    [[nodiscard]] std::string makeTweetTimePointBinPath(const char*,PanCake::Tweet&);
+    [[nodiscard]] std::string getTweetUserHash(PanCake::Tweet&);
+    [[nodiscard]] std::vector<PanCake::Tweet>*getBinBucketByHash(PanCake::TweetBin&,PanCake::Tweet&) noexcept;
     void serializeBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
     void deserializeBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
 
@@ -34,13 +34,13 @@ namespace PanCake
             };
 
             StoreStatus add(PanCake::Tweet&);
-            bool saveBins();
-            bool loadBin(const char);
+            [[nodiscard]] bool saveBins();
+            [[nodiscard]] bool loadBin(const char);
             void printBins(std::ostream&);
             void printBucket(std::ostream&,std::vector<PanCake::Tweet>&);
         private:
             const char*dataDirectory;
             std::string timePointPath;
-            bool addTweetIfNotDup(std::vector<PanCake::Tweet>&,PanCake::Tweet&);
+            [[nodiscard]] bool addTweetIfNotDup(std::vector<PanCake::Tweet>&,PanCake::Tweet&);
     };
 }

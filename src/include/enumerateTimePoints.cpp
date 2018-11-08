@@ -1,6 +1,6 @@
 #include "enumerateTimePoints.hpp"
 
-std::vector<std::string> PanCake::enumerateTimePointPathString(PanCake::TweetDate date)
+[[nodiscard]] std::vector<std::string> PanCake::enumerateTimePointPathString(PanCake::TweetDate date)
 {
     std::vector<std::string> res;
     
@@ -42,7 +42,7 @@ void PanCake::EnumerateTimePoints::Hour::increment()
     }
 }
 
-bool PanCake::EnumerateTimePoints::Hour::hasOverFlowed()
+[[nodiscard]] bool PanCake::EnumerateTimePoints::Hour::hasOverFlowed()
 {
     if(this->overFlowed)
     {
@@ -52,7 +52,7 @@ bool PanCake::EnumerateTimePoints::Hour::hasOverFlowed()
     return false;
 }
 
-std::string PanCake::EnumerateTimePoints::Hour::get()
+[[nodiscard]] std::string PanCake::EnumerateTimePoints::Hour::get()
 {
     std::string res = std::to_string(this->numHour);
     if(res.length() == 1)
@@ -70,7 +70,7 @@ void PanCake::EnumerateTimePoints::Minute::increment()
     }
 }
 
-bool PanCake::EnumerateTimePoints::Minute::hasOverFlowed()
+[[nodiscard]] bool PanCake::EnumerateTimePoints::Minute::hasOverFlowed()
 {
     if(this->overFlowed)
     {
@@ -80,7 +80,7 @@ bool PanCake::EnumerateTimePoints::Minute::hasOverFlowed()
     return false;
 }
 
-std::string PanCake::EnumerateTimePoints::Minute::get()
+[[nodiscard]] std::string PanCake::EnumerateTimePoints::Minute::get()
 {
     std::string res = std::to_string(this->numMinute);
     if(res.length() == 1)

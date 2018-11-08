@@ -2,7 +2,7 @@
 
 #include "fileExists.hpp"
 
-bool PanCake::fileExists(const char*path)
+[[nodiscard]] bool PanCake::fileExists(const char*path)
 {
     struct ::stat buffer;
     return (::stat(path,&buffer) == 0);

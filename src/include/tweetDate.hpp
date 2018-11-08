@@ -15,5 +15,5 @@ namespace PanCake
         std::string_view second;
     };
 
-    std::string tweetDateToTimePointPathString(PanCake::TweetDate&);
+    [[nodiscard]] std::string tweetDateToTimePointPathString(PanCake::TweetDate&);
 }

@@ -2,5 +2,5 @@
 
 namespace PanCake
 {
-    bool fileExists(const char*);
+    [[nodiscard]] bool fileExists(const char*);
 }
