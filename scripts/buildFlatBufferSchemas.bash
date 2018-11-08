@@ -1,1 +1,0 @@
-./src/vendor/flatbuffers/flatc --cpp --gen-object-api --gen-onefile  -o src/vendor src/tweetBin.fbs

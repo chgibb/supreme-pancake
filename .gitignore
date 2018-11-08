@@ -44,3 +44,4 @@ graph.png
 *.layout
 .vscode
 tests/rt/**/
+out/*

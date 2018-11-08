@@ -11,7 +11,7 @@
 
 #include "fileExists.hpp"
 #include "directoryExists.hpp"
-#include "loadJSONFromStream.hpp"
+#include "loadJSON.hpp"
 #include "tweetStore.hpp"
 #include "tweet.hpp"
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <istream>
+#include <string>
 
 #include <rapidjson/document.h>
 #include <rapidjson/istreamwrapper.h>
@@ -10,4 +11,5 @@
 namespace PanCake
 {
     rapidjson::GenericDocument<rapidjson::UTF8<>> loadJSONFromStream(std::istream&);
+    rapidjson::GenericDocument<rapidjson::UTF8<>> loadJSONFromString(std::string&);
 }

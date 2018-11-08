@@ -2,7 +2,7 @@
 
 #include <catch2/catch.hpp>
 
-#include "../src/include/loadJSONFromStream.hpp"
+#include "../src/include/loadJSON.hpp"
 #include "../src/include/searchScrapeTweet.hpp"
 #include "../src/include/bulkTweetStore.hpp"
 

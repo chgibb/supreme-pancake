@@ -4,18 +4,24 @@ const path = require("path");
 const glob = require("glob");
 
 let ccFlags = `-pedantic -Wall -Wextra -Wcast-align -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls -Wsign-promo -Wstrict-null-sentinel -Wstrict-overflow=5 -Wswitch-default -Werror -Wno-unused -std=c++17`;
-let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/flatbuffers/include -I src/vendor/PicoSHA2`;
+let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/PicoSHA2`;
 let ldFlags = `-lstdc++fs`;
 let debugFlags = `-g`;
 let objFiles = "";
 let objFileBuildSteps = "";
 let testBuildSteps = "";
+let executableBuildSteps ="";
 
 let testLinkRules = ``;
 
 function makeObjectFilePath(file)
 {
     return `obj/${file.split("/").join("-")}.o`.split(".cpp").join("");
+}
+
+function makeExecutableFilePath(file)
+{
+    return `out/${trimExtension(file)}`;
 }
 
 function trimExtension(file)
@@ -57,6 +63,19 @@ function trimExtension(file)
         });
     });
 
+    await new Promise((resolve,reject) => {
+        glob("src/*.cpp",{},function(err,matches){
+            if(err)
+                reject(err);
+            for(let i = 0; i != matches.length; ++i)
+            {
+                executableBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]}${"\n"}`;
+                executableBuildSteps += `build ${makeExecutableFilePath(matches[i])} : link ${makeObjectFilePath(matches[i])} | ${objFiles}${"\n"}`;
+            }
+            return resolve();
+        });
+    });
+
 
 let ninja =
 `
@@ -76,6 +95,8 @@ ${testLinkRules}
 ${objFileBuildSteps}
 
 ${testBuildSteps}
+
+${executableBuildSteps}
 `;
 
     fs.writeFileSync("build.ninja",ninja);
