@@ -13,5 +13,5 @@ namespace PanCake
         bool success = false;
     };
 
-    BulkStoreStatus bulkStoreTweets(const char*,std::vector<PanCake::Tweet>&);
+    [[nodiscard]] BulkStoreStatus bulkStoreTweets(const char*,std::vector<PanCake::Tweet>&);
 }

@@ -6,7 +6,7 @@
 #include "bulkTweetStore.hpp"
 #include "tweetStore.hpp"
 
-PanCake::BulkStoreStatus PanCake::bulkStoreTweets(const char*dataDir,std::vector<PanCake::Tweet>&tweets)
+[[nodiscard]] PanCake::BulkStoreStatus PanCake::bulkStoreTweets(const char*dataDir,std::vector<PanCake::Tweet>&tweets)
 {
     PanCake::BulkStoreStatus res;
 
