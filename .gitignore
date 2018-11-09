@@ -42,6 +42,8 @@ build.ninja
 graph.png
 *.cbp
 *.layout
+tests/*.js
+src/include/*.js
 .vscode
 tests/rt/**/
 out/*

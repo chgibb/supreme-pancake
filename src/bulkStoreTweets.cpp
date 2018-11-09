@@ -10,7 +10,7 @@
 
 int main(int argc,char*argv[])
 {
-    cxxopts::Options options("mergeTweetStream", "Merge an array of JSON tweets into a storage directory");
+    cxxopts::Options options("bulkStoreTweets", "Merge an array of JSON tweets into a storage directory");
 
     options.add_options()("t,type","JSON source type",cxxopts::value<std::string>())("d,dir","Storage directory path",cxxopts::value<std::string>());
 
@@ -34,6 +34,7 @@ int main(int argc,char*argv[])
     PanCake::BulkStoreStatus res = PanCake::bulkStoreTweets(storageDir.c_str(),tweets);
 
     std::cout<<"{\"added\":"<<res.added<<",\"duplicates\":"<<res.duplicates<<",\"success\":"<<res.success<<"}";
+    std::cout.flush();
 
     return 0;
 }
