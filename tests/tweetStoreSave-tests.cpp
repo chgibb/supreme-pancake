@@ -16,35 +16,47 @@ TEST_CASE("Save select tweets to JSON","[JSON]")
 
     auto tweets = PanCake::parseSearchScrapeTweetsFromJSON(json);
 
-    REQUIRE(PanCake::makeTweetTimePointPath("tests/rt/tweetStoreSave",tweets.at(0)) == "tests/rt/tweetStoreSave/2010/01/02/23/59/59");
+    REQUIRE(PanCake::makeTweetTimePointPath("tests/rt/tweetStoreSave",tweets.at(0)) == "tests/rt/tweetStoreSave/2018/11/09/21/19/28");
 
     PanCake::TweetStore store("tests/rt/tweetStoreSave");
 
-    REQUIRE(!PanCake::directoryExists("tests/rt/tweetStoreSave/2010/01/02/23/59/59"));
+    REQUIRE(!PanCake::directoryExists("tests/rt/tweetStoreSave/2018/11/09/21/19/28"));
 
     auto res = store.add(tweets.at(0));
 
-    REQUIRE(PanCake::directoryExists("tests/rt/tweetStoreSave/2010/01/02/23/59/59"));
+    REQUIRE(PanCake::directoryExists("tests/rt/tweetStoreSave/2018/11/09/21/19/28"));
     REQUIRE(res.duplicate == false);
     REQUIRE(res.invalid == false);    
     REQUIRE(res.success == true);
 
-    REQUIRE(store.bins['b'].bucket7.at(0).date == "2010/01/02/23/59/59");
-    REQUIRE(store.bins['b'].bucket7.at(0).user == "wAii2KoOl");
-    REQUIRE(store.bins['b'].bucket7.at(0).text == "RT @mia_b_mia: Boys gettin fresh cuts AND new units?? HOL IT NA! its on! Won't be in THA house toniiiiight #RogerDat <\u00ac LOL #BleaDat");
-    REQUIRE(store.bins['b'].bucket7.at(0).textHash == "75ff3feca8988c63ac04a06d6b9c857a2756dc05c923b9840b3ced591dc80a46");
-    REQUIRE(store.bins['b'].bucket7.at(0).id == "7314112637");
+    REQUIRE(store.bins['1'].bucketa.at(0).date == "2018/11/09/21/19/28");
+    REQUIRE(store.bins['1'].bucketa.at(0).user == "scotty8692");
+    REQUIRE(store.bins['1'].bucketa.at(0).text == "Same as Linfield fans at the Showgrounds when they weren't doing so well last season-poorest Blues crowd I've saw in my 15 years of going to games at the Showgrounds. The fairweather fans will always turn up and subsequently not turn up, for all teams.");
+    REQUIRE(store.bins['1'].bucketa.at(0).textHash == "a229b09b6ef6791968ac3e2fa2636a74c925e3e44b5077b95cee56ef66d014af");
+    REQUIRE(store.bins['1'].bucketa.at(0).id == "1061005372813647873");
+    REQUIRE(store.bins['1'].bucketa.at(0).isRetweet == false);
+    REQUIRE(store.bins['1'].bucketa.at(0).isPinned == false);
+    REQUIRE(store.bins['1'].bucketa.at(0).isReplyTo == true);
+    REQUIRE(store.bins['1'].bucketa.at(0).replyCount == 0);
+    REQUIRE(store.bins['1'].bucketa.at(0).reTweetCount == 0);
+    REQUIRE(store.bins['1'].bucketa.at(0).favouriteCount == 0);
 
     REQUIRE(store.saveBins() == true);
     {
-        PanCake::TweetStore store2("tests/rt/tweetStoreSave","2010/01/02/23/59/59");
+        PanCake::TweetStore store2("tests/rt/tweetStoreSave","2018/11/09/21/19/28");
+        REQUIRE(store2.loadBin('1') == true);
 
-        REQUIRE(store2.loadBin('b') == true);
-        REQUIRE(store2.bins['b'].bucket7.at(0).date == "2010/01/02/23/59/59");
-        REQUIRE(store2.bins['b'].bucket7.at(0).user == "wAii2KoOl");
-        REQUIRE(store2.bins['b'].bucket7.at(0).text == "RT @mia_b_mia: Boys gettin fresh cuts AND new units?? HOL IT NA! its on! Won't be in THA house toniiiiight #RogerDat <\u00ac LOL #BleaDat");
-        REQUIRE(store2.bins['b'].bucket7.at(0).textHash == "75ff3feca8988c63ac04a06d6b9c857a2756dc05c923b9840b3ced591dc80a46");
-        REQUIRE(store2.bins['b'].bucket7.at(0).id == "7314112637");
+        REQUIRE(store2.bins['1'].bucketa.at(0).date == "2018/11/09/21/19/28");
+        REQUIRE(store2.bins['1'].bucketa.at(0).user == "scotty8692");
+        REQUIRE(store2.bins['1'].bucketa.at(0).text == "Same as Linfield fans at the Showgrounds when they weren't doing so well last season-poorest Blues crowd I've saw in my 15 years of going to games at the Showgrounds. The fairweather fans will always turn up and subsequently not turn up, for all teams.");
+        REQUIRE(store2.bins['1'].bucketa.at(0).textHash == "a229b09b6ef6791968ac3e2fa2636a74c925e3e44b5077b95cee56ef66d014af");
+        REQUIRE(store2.bins['1'].bucketa.at(0).id == "1061005372813647873");
+        REQUIRE(store2.bins['1'].bucketa.at(0).isRetweet == false);
+        REQUIRE(store2.bins['1'].bucketa.at(0).isPinned == false);
+        REQUIRE(store2.bins['1'].bucketa.at(0).isReplyTo == true);
+        REQUIRE(store2.bins['1'].bucketa.at(0).replyCount == 0);
+        REQUIRE(store2.bins['1'].bucketa.at(0).reTweetCount == 0);
+        REQUIRE(store2.bins['1'].bucketa.at(0).favouriteCount == 0);
     }
 
     res = store.add(tweets.at(0));
@@ -54,7 +66,7 @@ TEST_CASE("Save select tweets to JSON","[JSON]")
     REQUIRE(res.duplicate == true);
 
     //make synthetic unique tweet
-    PanCake::Tweet uniqTweet = store.bins['b'].bucket7.at(0);
+    PanCake::Tweet uniqTweet = store.bins['1'].bucketa.at(0);
     uniqTweet.textHash = "3b";
 
     res = store.add(uniqTweet);

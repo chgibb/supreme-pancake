@@ -14,5 +14,5 @@ TEST_CASE("Save select tweets to flat buffers","[JSON]")
 
     auto tweets = PanCake::parseSearchScrapeTweetsFromJSON(json);
 
-    REQUIRE(PanCake::makeTweetTimePointPath("saveFromJSONStream",tweets.at(0)) == "saveFromJSONStream/2010/01/02/23/59/59");    
+    REQUIRE(PanCake::makeTweetTimePointPath("saveFromJSONStream",tweets.at(0)) == "saveFromJSONStream/2018/11/09/21/19/28");    
 }

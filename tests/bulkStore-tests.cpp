@@ -17,12 +17,12 @@ TEST_CASE("Parse bulk search scrape tweets with duplicates from JSON and save","
     PanCake::BulkStoreStatus status = PanCake::bulkStoreTweets("tests/rt/bulkStore",tweets);
 
     REQUIRE(status.success == true);
-    REQUIRE(status.added == 1082);
-    REQUIRE(status.duplicates == 3318);
+    REQUIRE(status.added == 5039);
+    REQUIRE(status.duplicates == 501);
 
     status = PanCake::bulkStoreTweets("tests/rt/bulkStore",tweets);
 
     REQUIRE(status.success == true);
     REQUIRE(status.added == 0);
-    REQUIRE(status.duplicates == 4400);
+    REQUIRE(status.duplicates == 5540);
 }

@@ -21,33 +21,33 @@ TEST_CASE("Parse search scrape tweets from JSON and save","[JSON")
 
     auto res = PanCake::parseSearchScrapeTweetsFromJSON(json);
     
-    REQUIRE(res.at(0).date == "2010/01/02/23/59/59");
-    REQUIRE(res.at(0).user == "wAii2KoOl");
-    REQUIRE(res.at(0).text == "RT @mia_b_mia: Boys gettin fresh cuts AND new units?? HOL IT NA! its on! Won't be in THA house toniiiiight #RogerDat <¬ LOL #BleaDat");
-    REQUIRE(res.at(0).textHash == "75ff3feca8988c63ac04a06d6b9c857a2756dc05c923b9840b3ced591dc80a46");
-    REQUIRE(res.at(0).id == "7314112637");
+    REQUIRE(res.at(0).date == "2018/11/09/21/19/28");
+    REQUIRE(res.at(0).user == "scotty8692");
+    REQUIRE(res.at(0).text == "Same as Linfield fans at the Showgrounds when they weren't doing so well last season-poorest Blues crowd I've saw in my 15 years of going to games at the Showgrounds. The fairweather fans will always turn up and subsequently not turn up, for all teams.");
+    REQUIRE(res.at(0).textHash == "a229b09b6ef6791968ac3e2fa2636a74c925e3e44b5077b95cee56ef66d014af");
+    REQUIRE(res.at(0).id == "1061005372813647873");
 
     PanCake::BulkStoreStatus status = PanCake::bulkStoreTweets("tests/rt/fromJSONStream",res);
     REQUIRE(status.success);
     REQUIRE(status.duplicates == 0);
     REQUIRE(status.added == 10);
 
-    PanCake::TweetStore sample("tests/rt/fromJSONStream","2010/01/02/23/59/59");
+    PanCake::TweetStore sample("tests/rt/fromJSONStream","2018/11/09/21/19/28");
 
-    REQUIRE(sample.loadBin('0') == true);
+    REQUIRE(sample.loadBin('0') == false);
     REQUIRE(sample.loadBin('1') == true);
     REQUIRE(sample.loadBin('2') == true);
     REQUIRE(sample.loadBin('3') == true);
     REQUIRE(sample.loadBin('4') == true);
     REQUIRE(sample.loadBin('5') == false);
-    REQUIRE(sample.loadBin('6') == false);
+    REQUIRE(sample.loadBin('6') == true);
     REQUIRE(sample.loadBin('7') == false);
     REQUIRE(sample.loadBin('8') == false);
-    REQUIRE(sample.loadBin('9') == true);
-    REQUIRE(sample.loadBin('a') == false);
-    REQUIRE(sample.loadBin('b') == true);
-    REQUIRE(sample.loadBin('c') == false);
-    REQUIRE(sample.loadBin('d') == false);
+    REQUIRE(sample.loadBin('9') == false);
+    REQUIRE(sample.loadBin('a') == true);
+    REQUIRE(sample.loadBin('b') == false);
+    REQUIRE(sample.loadBin('c') == true);
+    REQUIRE(sample.loadBin('d') == true);
     REQUIRE(sample.loadBin('e') == false);
     REQUIRE(sample.loadBin('f') == true);
 
@@ -61,12 +61,12 @@ TEST_CASE("Parse search scrape tweets from JSON and save","[JSON")
     REQUIRE(sample.bins['1'].bucket7.size() == 0);
     REQUIRE(sample.bins['1'].bucket8.size() == 0);
     REQUIRE(sample.bins['1'].bucket9.size() == 0);
-    REQUIRE(sample.bins['1'].bucketa.size() == 0);
+    REQUIRE(sample.bins['1'].bucketa.size() == 1);
     REQUIRE(sample.bins['1'].bucketb.size() == 0);
     REQUIRE(sample.bins['1'].bucketc.size() == 0);
     REQUIRE(sample.bins['1'].bucketd.size() == 0);
     REQUIRE(sample.bins['1'].buckete.size() == 0);
-    REQUIRE(sample.bins['1'].bucketf.size() == 1);
+    REQUIRE(sample.bins['1'].bucketf.size() == 0);
 }
 
 

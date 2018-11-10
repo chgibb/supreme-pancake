@@ -67,8 +67,10 @@ namespace PanCake
             day,
             hour,
             minute,
-            second
-            ] = "([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})"_ctre.match(str); whole){
+            second,
+            tzDigit,
+            tz
+            ] = "([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2}):([0-9]{2})\\.([0-9]{3})([A-Z]{1})"_ctre.match(str); whole){
             return PanCake::TweetDate{
                 year.to_view(),
                 month.to_view(),

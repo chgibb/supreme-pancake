@@ -93,6 +93,12 @@ void PanCake::serializeBucket(rapidjson::Value&value,rapidjson::Document::Alloca
         );
 
         entry.AddMember(
+            rapidjson::StringRef("userHash"),
+            rapidjson::StringRef(tweet.userHash.c_str()),
+            allocator
+        );
+
+        entry.AddMember(
             rapidjson::StringRef("date"),
             rapidjson::StringRef(tweet.date.c_str()),
             allocator
@@ -109,6 +115,43 @@ void PanCake::serializeBucket(rapidjson::Value&value,rapidjson::Document::Alloca
             rapidjson::StringRef(tweet.committed.c_str()),
             allocator
         );
+
+        entry.AddMember(
+            rapidjson::StringRef("isRetweet"),
+            rapidjson::Value(tweet.isRetweet),
+            allocator
+        );
+
+        entry.AddMember(
+            rapidjson::StringRef("isPinned"),
+            rapidjson::Value(tweet.isPinned),
+            allocator
+        );
+
+        entry.AddMember(
+            rapidjson::StringRef("isReplyTo"),
+            rapidjson::Value(tweet.isReplyTo),
+            allocator
+        );
+
+        entry.AddMember(
+            rapidjson::StringRef("replyCount"),
+            rapidjson::Value(tweet.replyCount),
+            allocator
+        );
+
+        entry.AddMember(
+            rapidjson::StringRef("reTweetCount"),
+            rapidjson::Value(tweet.reTweetCount),
+            allocator
+        );
+
+        entry.AddMember(
+            rapidjson::StringRef("favouriteCount"),
+            rapidjson::Value(tweet.favouriteCount),
+            allocator
+        );
+
         value.PushBack(entry,allocator);
     });
 }
@@ -121,9 +164,16 @@ void PanCake::deserializeBucket(rapidjson::Value&value,rapidjson::Document::Allo
         tweet.text = (*it)["text"].GetString();
         tweet.textHash = (*it)["textHash"].GetString();
         tweet.user = (*it)["user"].GetString();
+        tweet.userHash = (*it)["userHash"].GetString();
         tweet.date = (*it)["date"].GetString();
         tweet.id = (*it)["id"].GetString();
         tweet.committed = (*it)["committed"].GetString();
+        tweet.isRetweet = (*it)["isRetweet"].GetBool();
+        tweet.isPinned = (*it)["isPinned"].GetBool();
+        tweet.isReplyTo = (*it)["isReplyTo"].GetBool();
+        tweet.replyCount = (*it)["replyCount"].GetInt();
+        tweet.reTweetCount = (*it)["reTweetCount"].GetInt();
+        tweet.favouriteCount = (*it)["favouriteCount"].GetInt();
 
         bucket.push_back(tweet);
     }

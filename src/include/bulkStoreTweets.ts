@@ -40,7 +40,7 @@ export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath
                 
             });
 
-            bulkStoreJob.stdin.write(tweetStr);
+            bulkStoreJob.stdin.write(JSON.stringify(JSON.parse(tweetStr),undefined,0));
             bulkStoreJob.stdin.end();
         }
         catch(err)

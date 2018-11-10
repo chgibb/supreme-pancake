@@ -4,7 +4,7 @@
 
 TEST_CASE("Parse search scrape date", "[date]")
 {
-    auto firstDate = "2008-02-07T23:59:59";
+    auto firstDate = "2008-02-07T23:59:59.000Z";
     std::optional<PanCake::TweetDate> date = PanCake::parseSearchScrapeDate(firstDate);
     REQUIRE(date.has_value());
     REQUIRE(date->year == "2008");
