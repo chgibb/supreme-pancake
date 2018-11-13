@@ -33,7 +33,7 @@ int main(int argc,char*argv[])
     
     PanCake::BulkStoreStatus res = PanCake::bulkStoreTweets(storageDir.c_str(),tweets);
 
-    std::cout<<"{\"added\":"<<res.added<<",\"duplicates\":"<<res.duplicates<<",\"success\":"<<res.success<<"}";
+    std::cout<<"{\"added\":"<<res.added<<",\"duplicates\":"<<res.duplicates<<",\"success\":"<<res.success<<",\"metaUpdates\":"<<res.metaUpdates<<"}";
     std::cout.flush();
 
     return 0;

@@ -10,6 +10,7 @@ namespace PanCake
     {
         int added = 0;
         int duplicates = 0;
+        int metaUpdates = 0;
         bool success = false;
     };
 

@@ -5,6 +5,7 @@ export interface BulkStoreStatus
     added : number;
     duplicates : number;
     success : number;
+    metaUpdates : number;
 }
 
 export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath = "") : Promise<BulkStoreStatus>

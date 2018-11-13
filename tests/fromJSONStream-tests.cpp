@@ -26,6 +26,11 @@ TEST_CASE("Parse search scrape tweets from JSON and save","[JSON")
     REQUIRE(res.at(0).text == "Same as Linfield fans at the Showgrounds when they weren't doing so well last season-poorest Blues crowd I've saw in my 15 years of going to games at the Showgrounds. The fairweather fans will always turn up and subsequently not turn up, for all teams.");
     REQUIRE(res.at(0).textHash == "a229b09b6ef6791968ac3e2fa2636a74c925e3e44b5077b95cee56ef66d014af");
     REQUIRE(res.at(0).id == "1061005372813647873");
+    REQUIRE(res.at(0).replyCount == 0);
+    REQUIRE(res.at(0).reTweetCount == 0);
+    REQUIRE(res.at(0).favouriteCount == 0);
+    REQUIRE(res.at(0).sentimentScore == 0);
+    REQUIRE(res.at(0).comparativeSentimentScore == 0);
 
     PanCake::BulkStoreStatus status = PanCake::bulkStoreTweets("tests/rt/fromJSONStream",res);
     REQUIRE(status.success);

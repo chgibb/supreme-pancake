@@ -12,10 +12,9 @@ namespace PanCake
 {
     [[nodiscard]] std::string makeTweetTimePointPath(const char*,PanCake::Tweet&);
     [[nodiscard]] std::string makeTweetTimePointBinPath(const char*,PanCake::Tweet&);
-    [[nodiscard]] std::string getTweetUserHash(PanCake::Tweet&);
     [[nodiscard]] std::vector<PanCake::Tweet>*getBinBucketByHash(PanCake::TweetBin&,PanCake::Tweet&) noexcept;
-    void serializeBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
-    void deserializeBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
+    void serializeTweetBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
+    void deserializeTweetBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
 
     class TweetStore
     {
@@ -31,6 +30,13 @@ namespace PanCake
                 bool invalid = false;
                 bool duplicate = false;
                 bool success = false;
+                bool updatedMeta = false;
+            };
+
+            struct AddOrUpdateStatus
+            {
+                bool updatedMeta = false;
+                bool added = false;
             };
 
             StoreStatus add(PanCake::Tweet&);
@@ -41,6 +47,6 @@ namespace PanCake
         private:
             const char*dataDirectory;
             std::string timePointPath;
-            [[nodiscard]] bool addTweetIfNotDup(std::vector<PanCake::Tweet>&,PanCake::Tweet&);
+            [[nodiscard]] PanCake::TweetStore::AddOrUpdateStatus addOrUpdateTweet(std::vector<PanCake::Tweet>&,PanCake::Tweet&);
     };
 }

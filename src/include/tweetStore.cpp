@@ -22,12 +22,7 @@
 
 [[nodiscard]] std::string PanCake::makeTweetTimePointBinPath(const char*path,PanCake::Tweet&tweet)
 {
-    return PanCake::makeTweetTimePointPath(path,tweet) + "/" + PanCake::getTweetUserHash(tweet)[0] + ".json";
-}
-
-[[nodiscard]] std::string PanCake::getTweetUserHash(PanCake::Tweet&tweet)
-{
-    return picosha2::hash256_hex_string(tweet.user.begin(),tweet.user.end());
+    return PanCake::makeTweetTimePointPath(path,tweet) + "/" + tweet.userHash[0] + ".json";
 }
 
 [[nodiscard]] std::vector<PanCake::Tweet>*PanCake::getBinBucketByHash(PanCake::TweetBin&bin,PanCake::Tweet&tweet) noexcept
@@ -67,7 +62,7 @@
     return nullptr;
 }
 
-void PanCake::serializeBucket(rapidjson::Value&value,rapidjson::Document::AllocatorType&allocator,std::vector<PanCake::Tweet>&bucket)
+void PanCake::serializeTweetBucket(rapidjson::Value&value,rapidjson::Document::AllocatorType&allocator,std::vector<PanCake::Tweet>&bucket)
 {
     std::for_each(bucket.begin(),bucket.end(),[&](const PanCake::Tweet&tweet){
         rapidjson::Value entry;
@@ -152,11 +147,23 @@ void PanCake::serializeBucket(rapidjson::Value&value,rapidjson::Document::Alloca
             allocator
         );
 
+        entry.AddMember(
+            rapidjson::StringRef("sentimentScore"),
+            rapidjson::Value(tweet.sentimentScore),
+            allocator
+        );
+
+        entry.AddMember(
+            rapidjson::StringRef("comparativeSentimentScore"),
+            rapidjson::Value(tweet.comparativeSentimentScore),
+            allocator
+        );
+
         value.PushBack(entry,allocator);
     });
 }
 
-void PanCake::deserializeBucket(rapidjson::Value&value,rapidjson::Document::AllocatorType&allocator,std::vector<PanCake::Tweet>&bucket)
+void PanCake::deserializeTweetBucket(rapidjson::Value&value,rapidjson::Document::AllocatorType&allocator,std::vector<PanCake::Tweet>&bucket)
 {
     for(auto it = value.Begin(); it != value.End(); ++it)
     {
@@ -174,6 +181,8 @@ void PanCake::deserializeBucket(rapidjson::Value&value,rapidjson::Document::Allo
         tweet.replyCount = (*it)["replyCount"].GetInt();
         tweet.reTweetCount = (*it)["reTweetCount"].GetInt();
         tweet.favouriteCount = (*it)["favouriteCount"].GetInt();
+        tweet.sentimentScore = (*it)["sentimentScore"].GetInt();
+        tweet.comparativeSentimentScore = (*it)["comparativeSentimentScore"].GetFloat();
 
         bucket.push_back(tweet);
     }
@@ -193,7 +202,7 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
 [[nodiscard]] PanCake::TweetStore::StoreStatus PanCake::TweetStore::add(PanCake::Tweet&tweet)
 {
     PanCake::TweetStore::StoreStatus res;
-    char userHashFirstChar = PanCake::getTweetUserHash(tweet)[0];
+    char userHashFirstChar = tweet.userHash[0];
 
     if(this->timePointPath == "")
     {
@@ -219,16 +228,21 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
         PanCake::TweetBin*bin = &this->bins[userHashFirstChar];
         std::vector<PanCake::Tweet>*bucket = getBinBucketByHash(*bin,tweet);
 
-        bool added = this->addTweetIfNotDup(*bucket,tweet);
+        PanCake::TweetStore::AddOrUpdateStatus addStatus = this->addOrUpdateTweet(*bucket,tweet);
         
-        if(added)
+        if(addStatus.added)
         {
             res.success = true;
             return res;
         }
-        else
+        else if(!addStatus.added && !addStatus.updatedMeta)
         {
             res.duplicate = true;
+            return res;
+        }
+        else if(!addStatus.added && addStatus.updatedMeta)
+        {
+            res.updatedMeta = true;
             return res;
         }
     }
@@ -246,16 +260,21 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
         PanCake::TweetBin*bin = &this->bins[userHashFirstChar];
         std::vector<PanCake::Tweet>*bucket = getBinBucketByHash(*bin,tweet);
 
-        bool added = this->addTweetIfNotDup(*bucket,tweet);
+        PanCake::TweetStore::AddOrUpdateStatus addStatus = this->addOrUpdateTweet(*bucket,tweet);
         
-        if(added)
+        if(addStatus.added)
         {
             res.success = true;
             return res;
         }
-        else
+        else if(!addStatus.added && !addStatus.updatedMeta)
         {
             res.duplicate = true;
+            return res;
+        }
+        else if(!addStatus.added && addStatus.updatedMeta)
+        {
+            res.updatedMeta = true;
             return res;
         }
     }
@@ -284,67 +303,67 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
         rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
         
         rapidjson::Value bucket0(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucket0,allocator,it->second.bucket0);
+        PanCake::serializeTweetBucket(bucket0,allocator,it->second.bucket0);
         doc.AddMember("bucket0",bucket0,allocator);
 
         rapidjson::Value bucket1(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucket1,allocator,it->second.bucket1);
+        PanCake::serializeTweetBucket(bucket1,allocator,it->second.bucket1);
         doc.AddMember("bucket1",bucket1,allocator);
 
         rapidjson::Value bucket2(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucket2,allocator,it->second.bucket2);
+        PanCake::serializeTweetBucket(bucket2,allocator,it->second.bucket2);
         doc.AddMember("bucket2",bucket2,allocator);
 
         rapidjson::Value bucket3(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucket3,allocator,it->second.bucket3);
+        PanCake::serializeTweetBucket(bucket3,allocator,it->second.bucket3);
         doc.AddMember("bucket3",bucket3,allocator);
 
         rapidjson::Value bucket4(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucket4,allocator,it->second.bucket4);
+        PanCake::serializeTweetBucket(bucket4,allocator,it->second.bucket4);
         doc.AddMember("bucket4",bucket4,allocator);
 
         rapidjson::Value bucket5(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucket5,allocator,it->second.bucket5);
+        PanCake::serializeTweetBucket(bucket5,allocator,it->second.bucket5);
         doc.AddMember("bucket5",bucket5,allocator);
 
         rapidjson::Value bucket6(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucket6,allocator,it->second.bucket6);
+        PanCake::serializeTweetBucket(bucket6,allocator,it->second.bucket6);
         doc.AddMember("bucket6",bucket6,allocator);
 
         rapidjson::Value bucket7(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucket7,allocator,it->second.bucket7);
+        PanCake::serializeTweetBucket(bucket7,allocator,it->second.bucket7);
         doc.AddMember("bucket7",bucket7,allocator);
 
         rapidjson::Value bucket8(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucket8,allocator,it->second.bucket8);
+        PanCake::serializeTweetBucket(bucket8,allocator,it->second.bucket8);
         doc.AddMember("bucket8",bucket8,allocator);
 
         rapidjson::Value bucket9(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucket9,allocator,it->second.bucket9);
+        PanCake::serializeTweetBucket(bucket9,allocator,it->second.bucket9);
         doc.AddMember("bucket9",bucket9,allocator);
 
         rapidjson::Value bucketa(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucketa,allocator,it->second.bucketa);
+        PanCake::serializeTweetBucket(bucketa,allocator,it->second.bucketa);
         doc.AddMember("bucketa",bucketa,allocator);
 
         rapidjson::Value bucketb(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucketb,allocator,it->second.bucketb);
+        PanCake::serializeTweetBucket(bucketb,allocator,it->second.bucketb);
         doc.AddMember("bucketb",bucketb,allocator);
 
         rapidjson::Value bucketc(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucketc,allocator,it->second.bucketc);
+        PanCake::serializeTweetBucket(bucketc,allocator,it->second.bucketc);
         doc.AddMember("bucketc",bucketc,allocator);
 
         rapidjson::Value bucketd(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucketd,allocator,it->second.bucketd);
+        PanCake::serializeTweetBucket(bucketd,allocator,it->second.bucketd);
         doc.AddMember("bucketd",bucketd,allocator);
 
         rapidjson::Value buckete(rapidjson::kArrayType);
-        PanCake::serializeBucket(buckete,allocator,it->second.buckete);
+        PanCake::serializeTweetBucket(buckete,allocator,it->second.buckete);
         doc.AddMember("buckete",buckete,allocator);
 
         rapidjson::Value bucketf(rapidjson::kArrayType);
-        PanCake::serializeBucket(bucketf,allocator,it->second.bucketf);
+        PanCake::serializeTweetBucket(bucketf,allocator,it->second.bucketf);
         doc.AddMember("bucketf",bucketf,allocator);
 
 
@@ -355,7 +374,8 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
 
         rapidjson::OStreamWrapper osw(file);
         rapidjson::PrettyWriter<rapidjson::OStreamWrapper> writer(osw);
-        doc.Accept(writer);
+        if(!doc.Accept(writer))
+            return false;
     }
     return true;
 }
@@ -372,22 +392,22 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
 
     PanCake::TweetBin*bin = &this->bins[binHash];
 
-    PanCake::deserializeBucket(doc["bucket0"],allocator,bin->bucket0);
-    PanCake::deserializeBucket(doc["bucket1"],allocator,bin->bucket1);
-    PanCake::deserializeBucket(doc["bucket2"],allocator,bin->bucket2);
-    PanCake::deserializeBucket(doc["bucket3"],allocator,bin->bucket3);
-    PanCake::deserializeBucket(doc["bucket4"],allocator,bin->bucket4);
-    PanCake::deserializeBucket(doc["bucket5"],allocator,bin->bucket5);
-    PanCake::deserializeBucket(doc["bucket6"],allocator,bin->bucket6);
-    PanCake::deserializeBucket(doc["bucket7"],allocator,bin->bucket7);
-    PanCake::deserializeBucket(doc["bucket8"],allocator,bin->bucket8);
-    PanCake::deserializeBucket(doc["bucket9"],allocator,bin->bucket9);
-    PanCake::deserializeBucket(doc["bucketa"],allocator,bin->bucketa);
-    PanCake::deserializeBucket(doc["bucketb"],allocator,bin->bucketb);
-    PanCake::deserializeBucket(doc["bucketc"],allocator,bin->bucketc);
-    PanCake::deserializeBucket(doc["bucketd"],allocator,bin->bucketd);
-    PanCake::deserializeBucket(doc["buckete"],allocator,bin->buckete);
-    PanCake::deserializeBucket(doc["bucketf"],allocator,bin->bucketf);
+    PanCake::deserializeTweetBucket(doc["bucket0"],allocator,bin->bucket0);
+    PanCake::deserializeTweetBucket(doc["bucket1"],allocator,bin->bucket1);
+    PanCake::deserializeTweetBucket(doc["bucket2"],allocator,bin->bucket2);
+    PanCake::deserializeTweetBucket(doc["bucket3"],allocator,bin->bucket3);
+    PanCake::deserializeTweetBucket(doc["bucket4"],allocator,bin->bucket4);
+    PanCake::deserializeTweetBucket(doc["bucket5"],allocator,bin->bucket5);
+    PanCake::deserializeTweetBucket(doc["bucket6"],allocator,bin->bucket6);
+    PanCake::deserializeTweetBucket(doc["bucket7"],allocator,bin->bucket7);
+    PanCake::deserializeTweetBucket(doc["bucket8"],allocator,bin->bucket8);
+    PanCake::deserializeTweetBucket(doc["bucket9"],allocator,bin->bucket9);
+    PanCake::deserializeTweetBucket(doc["bucketa"],allocator,bin->bucketa);
+    PanCake::deserializeTweetBucket(doc["bucketb"],allocator,bin->bucketb);
+    PanCake::deserializeTweetBucket(doc["bucketc"],allocator,bin->bucketc);
+    PanCake::deserializeTweetBucket(doc["bucketd"],allocator,bin->bucketd);
+    PanCake::deserializeTweetBucket(doc["buckete"],allocator,bin->buckete);
+    PanCake::deserializeTweetBucket(doc["bucketf"],allocator,bin->bucketf);
 
     return true;
 }
@@ -446,16 +466,35 @@ void PanCake::TweetStore::printBucket(std::ostream&stream,std::vector<PanCake::T
     }
 }
 
-[[nodiscard]] bool PanCake::TweetStore::addTweetIfNotDup(std::vector<PanCake::Tweet>&bucket,PanCake::Tweet&tweet)
+[[nodiscard]] PanCake::TweetStore::AddOrUpdateStatus PanCake::TweetStore::addOrUpdateTweet(std::vector<PanCake::Tweet>&bucket,PanCake::Tweet&tweet)
 {
+    PanCake::TweetStore::AddOrUpdateStatus res;
     auto end = bucket.end();
     for(auto it = bucket.begin(); it != end; ++it)
     {
-        if(it->textHash == tweet.textHash)
-        {
-            return false;
+        if(
+            it->textHash == tweet.textHash &&
+            it->userHash == tweet.userHash
+        ) {
+            if(
+                it->isPinned != tweet.isPinned ||
+                it->replyCount != tweet.replyCount ||
+                it->reTweetCount != tweet.reTweetCount ||
+                it->favouriteCount != tweet.favouriteCount 
+            ) {
+                *it = tweet;
+                res.updatedMeta = true;
+                return res;
+            }
+            
+            else
+            {
+                res.added = false;
+                return res;
+            }
         }
     }
     bucket.push_back(tweet);
-    return true;
+    res.added = true;
+    return res;
 }

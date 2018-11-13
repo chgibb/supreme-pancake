@@ -23,6 +23,8 @@
         tweet.replyCount = (*it)["replyCount"].GetInt();
         tweet.reTweetCount = (*it)["retweetCount"].GetInt();
         tweet.favouriteCount = (*it)["favoriteCount"].GetInt();
+        tweet.sentimentScore = (*it)["sentimentScore"].GetInt();
+        tweet.comparativeSentimentScore = (*it)["comparativeSentimentScore"].GetFloat();
         res.push_back(tweet);
     }
 

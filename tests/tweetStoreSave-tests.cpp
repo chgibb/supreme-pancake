@@ -28,6 +28,13 @@ TEST_CASE("Save select tweets to JSON","[JSON]")
     REQUIRE(res.duplicate == false);
     REQUIRE(res.invalid == false);    
     REQUIRE(res.success == true);
+    REQUIRE(res.updatedMeta == false);
+
+    res = store.add(tweets.at(1));
+    REQUIRE(res.duplicate == false);
+    REQUIRE(res.invalid == false);    
+    REQUIRE(res.success == true);
+    REQUIRE(res.updatedMeta == false);
 
     REQUIRE(store.bins['1'].bucketa.at(0).date == "2018/11/09/21/19/28");
     REQUIRE(store.bins['1'].bucketa.at(0).user == "scotty8692");
@@ -40,11 +47,14 @@ TEST_CASE("Save select tweets to JSON","[JSON]")
     REQUIRE(store.bins['1'].bucketa.at(0).replyCount == 0);
     REQUIRE(store.bins['1'].bucketa.at(0).reTweetCount == 0);
     REQUIRE(store.bins['1'].bucketa.at(0).favouriteCount == 0);
+    REQUIRE(store.bins['1'].bucketa.at(0).sentimentScore == 0);
+    REQUIRE(store.bins['1'].bucketa.at(0).comparativeSentimentScore == 0);
 
     REQUIRE(store.saveBins() == true);
     {
         PanCake::TweetStore store2("tests/rt/tweetStoreSave","2018/11/09/21/19/28");
         REQUIRE(store2.loadBin('1') == true);
+        REQUIRE(store2.loadBin('d') == true);
 
         REQUIRE(store2.bins['1'].bucketa.at(0).date == "2018/11/09/21/19/28");
         REQUIRE(store2.bins['1'].bucketa.at(0).user == "scotty8692");
@@ -57,6 +67,11 @@ TEST_CASE("Save select tweets to JSON","[JSON]")
         REQUIRE(store2.bins['1'].bucketa.at(0).replyCount == 0);
         REQUIRE(store2.bins['1'].bucketa.at(0).reTweetCount == 0);
         REQUIRE(store2.bins['1'].bucketa.at(0).favouriteCount == 0);
+        REQUIRE(store2.bins['1'].bucketa.at(0).sentimentScore == 0);
+        REQUIRE(store2.bins['1'].bucketa.at(0).comparativeSentimentScore == 0);
+
+        REQUIRE(store2.bins['d'].bucket7.at(0).sentimentScore == -6);
+        REQUIRE(store2.bins['d'].bucket7.at(0).comparativeSentimentScore == -0.15789473056793214);
     }
 
     res = store.add(tweets.at(0));
@@ -64,6 +79,7 @@ TEST_CASE("Save select tweets to JSON","[JSON]")
     REQUIRE(res.invalid == false);
     REQUIRE(res.success == false);
     REQUIRE(res.duplicate == true);
+    REQUIRE(res.updatedMeta == false);
 
     //make synthetic unique tweet
     PanCake::Tweet uniqTweet = store.bins['1'].bucketa.at(0);
@@ -73,6 +89,36 @@ TEST_CASE("Save select tweets to JSON","[JSON]")
     REQUIRE(res.invalid == false);
     REQUIRE(res.success == true);
     REQUIRE(res.duplicate == false);
+    REQUIRE(res.updatedMeta == false);
+
+    PanCake::Tweet updatedTweet = store.bins['1'].bucketa.at(0);
+    updatedTweet.isPinned = true;
+    res = store.add(updatedTweet);
+    REQUIRE(res.invalid == false);
+    REQUIRE(res.success == false);
+    REQUIRE(res.duplicate == false);
+    REQUIRE(res.updatedMeta == true);
+
+    updatedTweet.replyCount++;
+    res = store.add(updatedTweet);
+    REQUIRE(res.invalid == false);
+    REQUIRE(res.success == false);
+    REQUIRE(res.duplicate == false);
+    REQUIRE(res.updatedMeta == true);
+
+    updatedTweet.reTweetCount++;
+    res = store.add(updatedTweet);
+    REQUIRE(res.invalid == false);
+    REQUIRE(res.success == false);
+    REQUIRE(res.duplicate == false);
+    REQUIRE(res.updatedMeta == true);
+
+    updatedTweet.favouriteCount++;
+    res = store.add(updatedTweet);
+    REQUIRE(res.invalid == false);
+    REQUIRE(res.success == false);
+    REQUIRE(res.duplicate == false);
+    REQUIRE(res.updatedMeta == true);
 
     REQUIRE(store.saveBins() == true);
 }

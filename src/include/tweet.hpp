@@ -21,6 +21,8 @@ namespace PanCake
             int replyCount;
             int reTweetCount;
             int favouriteCount;
+            int sentimentScore;
+            float comparativeSentimentScore;
     };
 
     class TweetBin

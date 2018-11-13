@@ -35,6 +35,8 @@
             res.added++;
         else if(storeRes.duplicate)
             res.duplicates++;
+        else if(storeRes.updatedMeta)
+            res.metaUpdates++;
     }
 
     auto mapEnd = stores.end();
