@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 
+#define CATCH_CONFIG_FAST_COMPILE
 #include <catch2/catch.hpp>
 
 #include "../src/include/directoryExists.hpp"
