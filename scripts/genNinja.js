@@ -58,6 +58,7 @@ function trimExtension(file)
                 testBuildSteps += `build ${matches[i].split('.').slice(0, -1).join('.')}.out : link${trimExtension(matches[i])} ${makeObjectFilePath(matches[i])} | ${makeObjectFilePath(matches[i])} obj/tests-${trimExtension(matches[i])+"-tests"}.o ${objFiles}${"\n"}`;
                 testLinkRules += `rule link${trimExtension(matches[i])}${"\n"}`;
                 testLinkRules += `  command = g++ obj/tests-${trimExtension(matches[i])+"-tests"}.o ${objFiles} ${ldFlags} -o $out $in${"\n"}`;
+                testLinkRules += `  description = Linking $out${"\n"}`;
             }
             return resolve();
         });
@@ -71,6 +72,7 @@ function trimExtension(file)
             {
                 executableBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]}${"\n"}`;
                 executableBuildSteps += `build ${makeExecutableFilePath(matches[i])} : link ${makeObjectFilePath(matches[i])} | ${objFiles}${"\n"}`;
+                executableBuildSteps += `  description = Linking $out${"\n"}`;
             }
             return resolve();
         });
@@ -83,12 +85,14 @@ rule cc
     deps = gcc
     depfile = $out.d
     command = g++ -MMD -MF $out.d ${ccFlags} ${includeFlags} ${debugFlags} -c $in -o $out
+    description = Compiling $in
 
 rule staticLib
     command = ar rcs $out $in
 
 rule link
-    command = g++ ${objFiles} ${ldFlags} -o $out $in${"\n"}
+    command = g++ ${objFiles} ${ldFlags} -o $out $in
+    description = Linking $out
 
 ${testLinkRules}
 
