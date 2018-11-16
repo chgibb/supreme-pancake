@@ -7,8 +7,11 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "npm run build && bash scripts/test.bash",
-    "build": "node scripts/genNinja && ninja -v && bash scripts/makeDepGraph.bash"
+    "test": "npm run build && rm -rf tests/rt && npm run testcpp && npm run testjs",
+    "testcpp": "bash scripts/testcpp.bash",
+    "testjs": "bash scripts/testjs.bash",
+    "build": "node scripts/genNinja && ninja -v && bash scripts/makeDepGraph.bash",
+    "buildAndTestcpp": "npm run build && rm -rf tests/rt && npm run testcpp"
   },
   "repository": {
     "type": "git",
