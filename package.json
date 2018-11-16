@@ -7,11 +7,13 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "npm run build && rm -rf tests/rt && npm run testcpp && npm run testjs",
+    "test": "npm run build && rm -rf tests/rt && npm run grindcpp && npm run testjs",
     "testcpp": "bash scripts/testcpp.bash",
     "testjs": "bash scripts/testjs.bash",
+    "grindcpp": "bash scripts/grindcpp.bash",
     "build": "node scripts/genNinja && ninja && bash scripts/makeDepGraph.bash",
-    "buildAndTestcpp": "npm run build && rm -rf tests/rt && npm run testcpp"
+    "buildAndTestcpp": "npm run build && rm -rf tests/rt && npm run testcpp",
+    "buildAndGrindcpp": "npm run build && rm -rf tests/rt && npm run grindcpp"
   },
   "repository": {
     "type": "git",
