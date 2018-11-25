@@ -9,7 +9,7 @@ do
 	echo -e "$Yellow$f$Color_Off"
 	valgrind --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=definite,possible --error-exitcode=1 $f
     echo -e "$Green===============================================================================$Color_Off"
-    echo -e "$Green$f Ground successfully$Color_Off"
+    echo -e "$Green$f Successfully Memchecked$Color_Off"
     echo -e ""
 	if [ $? != 0 ]; then
 		exit 1
