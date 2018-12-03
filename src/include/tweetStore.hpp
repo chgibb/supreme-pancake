@@ -7,6 +7,7 @@
 #include <rapidjson/document.h>
 
 #include "tweet.hpp"
+#include "tweetBin.hpp"
 
 namespace PanCake
 {
@@ -19,8 +20,6 @@ namespace PanCake
     class TweetStore
     {
         public:
-            std::map<char,PanCake::TweetBin> bins;
-
             TweetStore(const char*);
             TweetStore(const char*,const char*);
             ~TweetStore() = default;
@@ -39,14 +38,18 @@ namespace PanCake
                 bool added = false;
             };
 
+            std::map<char,PanCake::TweetBin> bins;
+
             StoreStatus add(PanCake::Tweet&);
             [[nodiscard]] bool saveBins();
             [[nodiscard]] bool loadBin(const char);
             void printBins(std::ostream&);
             void printBucket(std::ostream&,std::vector<PanCake::Tweet>&);
+            
         private:
             const char*dataDirectory;
             std::string timePointPath;
+
             [[nodiscard]] PanCake::TweetStore::AddOrUpdateStatus addOrUpdateTweet(std::vector<PanCake::Tweet>&,PanCake::Tweet&);
     };
 }

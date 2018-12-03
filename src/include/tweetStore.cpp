@@ -387,7 +387,7 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
     if(file.fail())
         return false;
     
-    rapidjson::GenericDocument<rapidjson::UTF8<>> doc = loadJSONFromStream(file);
+    rapidjson::GenericDocument<rapidjson::UTF8<>> doc = PanCake::loadJSONFromStream(file);
     rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
 
     PanCake::TweetBin*bin = &this->bins[binHash];

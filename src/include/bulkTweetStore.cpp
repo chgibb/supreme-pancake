@@ -21,7 +21,10 @@
     {
         if(stores.count(it->date) == 0)
         {
-            stores.insert(std::pair<std::string,PanCake::TweetStore>(it->date,PanCake::TweetStore(dataDir)));
+            stores.insert(std::pair<std::string,PanCake::TweetStore>(
+                it->date,
+                PanCake::TweetStore(dataDir)
+            ));
         }
 
         PanCake::TweetStore::StoreStatus storeRes = stores.at(it->date).add(*it);
