@@ -20,3 +20,37 @@ TEST_CASE("Should make paths","")
 
     
 }
+
+TEST_CASE("Should load and save bins","")
+{
+    PanCake::NERTagBin bin("tests/rt/nerTagStoreSave",PanCake::makeNERStorageBinPath("tests/rt/nerTagStoreSave","#homecoming"));
+    
+    REQUIRE(bin.loadBin() == false);
+
+    REQUIRE(bin.tagExists("#homecoming") == false);
+    REQUIRE(bin.getTagType("#homecoming") == "");
+    bin.addTag("#homecoming","hashtag");
+    REQUIRE(bin.saveBin() == true);
+    REQUIRE(bin.tagExists("#homecoming") == true);
+    REQUIRE(bin.getTagType("#homecoming") == "hashtag");
+
+    PanCake::NERTagBin bin2("tests/rt/nerTagStoreSave",PanCake::makeNERStorageBinPath("tests/rt/nerTagStoreSave","#homecoming"));
+
+    REQUIRE(bin2.loadBin() == true);
+    REQUIRE(bin2.tagExists("#homecoming") == true);
+    REQUIRE(bin2.getTagType("#homecoming") == "hashtag");
+    REQUIRE(bin2.tagExists("#hometime") == false);
+    REQUIRE(bin2.getTagType("#hometime") == "");
+    bin2.addTag("#hometime","hashtag");
+    REQUIRE(bin2.tagExists("#hometime") == true);
+    REQUIRE(bin2.getTagType("#hometime") == "hashtag");
+
+    REQUIRE(bin2.saveBin() == true);
+
+    PanCake::NERTagBin bin3("tests/rt/nerTagStoreSave",PanCake::makeNERStorageBinPath("tests/rt/nerTagStoreSave","#homecoming"));
+
+    REQUIRE(bin2.tagExists("#hometime") == true);
+    REQUIRE(bin2.getTagType("#hometime") == "hashtag");
+    REQUIRE(bin.tagExists("#homecoming") == true);
+    REQUIRE(bin.getTagType("#homecoming") == "hashtag");
+}
