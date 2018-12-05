@@ -17,3 +17,6 @@
 [submodule "src/vendor/cxxopts"]
 	path = src/vendor/cxxopts
 	url = https://github.com/jarro2783/cxxopts
+[submodule "src/vendor/curlpp"]
+	path = src/vendor/curlpp
+	url = https://github.com/jpbarrette/curlpp
