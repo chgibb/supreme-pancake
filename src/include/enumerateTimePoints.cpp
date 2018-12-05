@@ -11,9 +11,9 @@
     else if(date.day == "")
         return res;
     
-    PanCake::EnumerateTimePoints::Hour hour;
-    PanCake::EnumerateTimePoints::Minute minute;
-    PanCake::EnumerateTimePoints::Minute second;
+    PanCake::Internal::Hour hour;
+    PanCake::Internal::Minute minute;
+    PanCake::Internal::Minute second;
 
     res.reserve(86400);
 
@@ -32,7 +32,7 @@
     return res;
 }
 
-void PanCake::EnumerateTimePoints::Hour::increment()
+void PanCake::Internal::Hour::increment()
 {
     this->numHour++;
     if(this->numHour >= 24)
@@ -42,7 +42,7 @@ void PanCake::EnumerateTimePoints::Hour::increment()
     }
 }
 
-[[nodiscard]] bool PanCake::EnumerateTimePoints::Hour::hasOverFlowed()
+[[nodiscard]] bool PanCake::Internal::Hour::hasOverFlowed()
 {
     if(this->overFlowed)
     {
@@ -52,7 +52,7 @@ void PanCake::EnumerateTimePoints::Hour::increment()
     return false;
 }
 
-[[nodiscard]] std::string PanCake::EnumerateTimePoints::Hour::get()
+[[nodiscard]] std::string PanCake::Internal::Hour::get()
 {
     std::string res = std::to_string(this->numHour);
     if(res.length() == 1)
@@ -60,7 +60,7 @@ void PanCake::EnumerateTimePoints::Hour::increment()
     return res;
 }
 
-void PanCake::EnumerateTimePoints::Minute::increment()
+void PanCake::Internal::Minute::increment()
 {
     this->numMinute++;
     if(this->numMinute >= 60)
@@ -70,7 +70,7 @@ void PanCake::EnumerateTimePoints::Minute::increment()
     }
 }
 
-[[nodiscard]] bool PanCake::EnumerateTimePoints::Minute::hasOverFlowed()
+[[nodiscard]] bool PanCake::Internal::Minute::hasOverFlowed()
 {
     if(this->overFlowed)
     {
@@ -80,7 +80,7 @@ void PanCake::EnumerateTimePoints::Minute::increment()
     return false;
 }
 
-[[nodiscard]] std::string PanCake::EnumerateTimePoints::Minute::get()
+[[nodiscard]] std::string PanCake::Internal::Minute::get()
 {
     std::string res = std::to_string(this->numMinute);
     if(res.length() == 1)

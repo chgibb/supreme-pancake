@@ -8,7 +8,7 @@
 namespace PanCake
 {
     [[nodiscard]] std::vector<std::string> enumerateTimePointPathString(PanCake::TweetDate);
-    namespace EnumerateTimePoints
+    namespace Internal
     {
         class Hour
         {
