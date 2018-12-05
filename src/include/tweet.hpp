@@ -23,5 +23,6 @@ namespace PanCake
             int favouriteCount;
             int sentimentScore;
             float comparativeSentimentScore;
+            std::vector<std::string> images;
     };
 }

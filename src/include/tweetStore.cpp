@@ -64,7 +64,7 @@
 
 void PanCake::serializeTweetBucket(rapidjson::Value&value,rapidjson::Document::AllocatorType&allocator,std::vector<PanCake::Tweet>&bucket)
 {
-    std::for_each(bucket.begin(),bucket.end(),[&](const PanCake::Tweet&tweet){
+    std::for_each(bucket.begin(),bucket.end(),[&](const PanCake::Tweet&tweet) -> void {
         rapidjson::Value entry;
 
         entry.SetObject();
@@ -159,6 +159,21 @@ void PanCake::serializeTweetBucket(rapidjson::Value&value,rapidjson::Document::A
             allocator
         );
 
+        rapidjson::Value images(rapidjson::kArrayType);
+        
+        std::for_each(
+            tweet.images.begin(),
+            tweet.images.end(),
+            [&images,&allocator](const std::string&url) -> void {
+            images.PushBack(rapidjson::StringRef(url.c_str()),allocator);
+        });
+
+        entry.AddMember(
+            rapidjson::StringRef("images"),
+            images,
+            allocator
+        );
+
         value.PushBack(entry,allocator);
     });
 }
@@ -183,6 +198,11 @@ void PanCake::deserializeTweetBucket(rapidjson::Value&value,rapidjson::Document:
         tweet.favouriteCount = (*it)["favouriteCount"].GetInt();
         tweet.sentimentScore = (*it)["sentimentScore"].GetInt();
         tweet.comparativeSentimentScore = (*it)["comparativeSentimentScore"].GetFloat();
+
+        for(auto&url : (*it)["images"].GetArray())
+        {
+            tweet.images.push_back(url.GetString());
+        }
 
         bucket.push_back(tweet);
     }

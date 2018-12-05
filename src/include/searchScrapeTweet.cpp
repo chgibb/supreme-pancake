@@ -25,6 +25,12 @@
         tweet.favouriteCount = (*it)["favoriteCount"].GetInt();
         tweet.sentimentScore = (*it)["sentimentScore"].GetInt();
         tweet.comparativeSentimentScore = (*it)["comparativeSentimentScore"].GetFloat();
+
+        for(auto&url : (*it)["images"].GetArray())
+        {
+            tweet.images.push_back(url.GetString());
+        }
+
         res.push_back(tweet);
     }
 
