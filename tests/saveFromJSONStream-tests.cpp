@@ -4,6 +4,7 @@
 #include <catch2/catch.hpp>
 
 #include "../src/include/loadJSON.hpp"
+#include "../src/include/makeTweetTimePointPaths.hpp"
 #include "../src/include/searchScrapeTweet.hpp"
 #include "../src/include/tweetStore.hpp"
 

@@ -11,8 +11,6 @@
 
 namespace PanCake
 {
-    [[nodiscard]] std::string makeTweetTimePointPath(const char*,PanCake::Tweet&);
-    [[nodiscard]] std::string makeTweetTimePointBinPath(const char*,PanCake::Tweet&);
     [[nodiscard]] std::vector<PanCake::Tweet>*getBinBucketByHash(PanCake::TweetBin&,PanCake::Tweet&) noexcept;
     void serializeTweetBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
     void deserializeTweetBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
