@@ -6,6 +6,7 @@ export interface BulkStoreStatus
     duplicates : number;
     success : number;
     metaUpdates : number;
+    binsWithNewTweets : Array<string>;
 }
 
 export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath = "") : Promise<BulkStoreStatus>
@@ -35,6 +36,7 @@ export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath
                 else
                 {
                     setTimeout(function(){
+                        //console.log(stdoutBuffer);
                         return resolve(JSON.parse(stdoutBuffer));
                     },10);
                 }

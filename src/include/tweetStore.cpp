@@ -304,9 +304,14 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
     else if(!PanCake::fileExists(PanCake::makeTweetTimePointBinPath(this->dataDirectory,tweet).c_str()))
     {
         this->bins[userHashFirstChar] = PanCake::TweetBin();
+
         PanCake::getBinBucketByHash(
             this->bins[userHashFirstChar],tweet
         )->push_back(tweet);
+
+        std::string bucketPath = PanCake::makeTweetTimePointBinPath(this->dataDirectory,tweet);
+        this->binsWithNewTweets[bucketPath] = true;
+
         res.success = true;
     }
 
@@ -515,6 +520,26 @@ void PanCake::TweetStore::printBucket(std::ostream&stream,std::vector<PanCake::T
         }
     }
     bucket.push_back(tweet);
+    
+    std::string bucketPath = PanCake::makeTweetTimePointBinPath(this->dataDirectory,tweet);
+    //if(!this->binsWithNewTweets.count(bucketPath))
+    //{
+        this->binsWithNewTweets[bucketPath] = true;
+    //}
+    /*int numImages = 1;
+    std::for_each(
+        tweet.images.begin(),
+        tweet.images.end(),
+        [this,&tweet,&numImages](const std::string&url) -> void {
+            if(!PanCake::directoryExists(std::string(this->timePointPath+std::string("/img")).c_str()))
+            {
+                std::experimental::filesystem::create_directories(this->timePointPath+std::string("/img"));
+            }
+
+            std::string filePath = this->timePointPath+std::string("/img/")+std::string(tweet.id)+std::string("_")+std::to_string(numImages)+std::string(".jpg");
+            PanCake::downloadImage(url,filePath);
+        });*/
+
     res.added = true;
     return res;
 }

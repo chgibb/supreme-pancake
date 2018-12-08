@@ -21,6 +21,7 @@ TEST_CASE("Parse bulk search scrape tweets with duplicates from JSON and save","
     REQUIRE(status.added == 5040);
     REQUIRE(status.duplicates == 500);
     REQUIRE(status.metaUpdates == 0);
+    REQUIRE(status.binsWithNewTweets.size() == 996);
 
     status = PanCake::bulkStoreTweets("tests/rt/bulkStore",tweets);
 
@@ -28,6 +29,7 @@ TEST_CASE("Parse bulk search scrape tweets with duplicates from JSON and save","
     REQUIRE(status.added == 0);
     REQUIRE(status.duplicates == 5540);
     REQUIRE(status.metaUpdates == 0);
+    REQUIRE(status.binsWithNewTweets.size() == 0);
 }
 
 TEST_CASE("Image URLs should have been saved","")
@@ -44,6 +46,5 @@ TEST_CASE("Image URLs should have been saved","")
     REQUIRE(tweet.images.at(1) == "https://pbs.twimg.com/media/DlPwdMAUYAA8b_H.jpg");
     REQUIRE(tweet.images.at(2) == "https://pbs.twimg.com/media/DlPymmBUYAI-xjx.jpg");
     REQUIRE(tweet.images.at(3) == "https://pbs.twimg.com/media/DlP6sSaU8AA6GM9.jpg");
-
 
 }

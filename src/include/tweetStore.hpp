@@ -39,6 +39,7 @@ namespace PanCake
             };
 
             std::map<char,PanCake::TweetBin> bins;
+            std::map<std::string,bool> binsWithNewTweets;
 
             StoreStatus add(PanCake::Tweet&);
             [[nodiscard]] bool saveBins();

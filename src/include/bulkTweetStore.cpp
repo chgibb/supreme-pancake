@@ -50,6 +50,16 @@
             res.success = false;
             return res;
         }
+
+        std::for_each(
+            it->second.binsWithNewTweets.begin(),
+            it->second.binsWithNewTweets.end(),
+            [&res](const std::pair<std::string,bool>&binModStatus) -> void {
+                if(binModStatus.second)
+                    res.binsWithNewTweets.push_back(binModStatus.first);
+            }
+        );
+        
     }
 
     res.success = true;
