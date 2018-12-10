@@ -11,7 +11,7 @@ export interface BulkStoreStatus
 
 export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath = "") : Promise<BulkStoreStatus>
 {
-    return new Promise<BulkStoreStatus>((resolve : (value : BulkStoreStatus) => void,reject : (reason : string) => void) => {
+    return new Promise<BulkStoreStatus>((resolve : (value : BulkStoreStatus) => void,reject : (reason : string) => void) : void => {
         try
         {
             let stdoutBuffer : string = "";
@@ -36,7 +36,6 @@ export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath
                 else
                 {
                     setTimeout(function(){
-                        //console.log(stdoutBuffer);
                         return resolve(JSON.parse(stdoutBuffer));
                     },10);
                 }
