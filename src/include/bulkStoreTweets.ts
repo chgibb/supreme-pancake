@@ -19,15 +19,15 @@ export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath
 
             let bulkStoreJob = cp.spawn(`${exeSearchPath}bulkStoreTweets`,[`--type=searchScrape`,`--dir=${dataDir}`]);
 
-            bulkStoreJob.stdout.on("data",(data : string) => {
+            bulkStoreJob.stdout.on("data",(data : string) : void => {
                 stdoutBuffer += data;
             });
 
-            bulkStoreJob.stderr.on("data",(data : string) => {
+            bulkStoreJob.stderr.on("data",(data : string) : void => {
                 stdcerrBuffer += data;
             });
 
-            bulkStoreJob.on("exit",(code : number,signal : string) => {
+            bulkStoreJob.on("exit",(code : number,signal : string) : void => {
                 if(code != 0)
                 {
                     reject(`${exeSearchPath}bulkStoreTweets exited with ${signal}${"\n"}${stdcerrBuffer}`);

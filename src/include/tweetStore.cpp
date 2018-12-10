@@ -9,11 +9,12 @@
 #include <rapidjson/ostreamwrapper.h>
 #include <rapidjson/prettywriter.h>
 
+#include "tweetStore.hpp"
 #include "fileExists.hpp"
 #include "directoryExists.hpp"
 #include "makeTweetTimePointPaths.hpp"
 #include "loadJSON.hpp"
-#include "tweetStore.hpp"
+#include "loadTweetBin.hpp"
 #include "tweet.hpp"
 
 [[nodiscard]] std::vector<PanCake::Tweet>*PanCake::getBinBucketByHash(PanCake::TweetBin&bin,PanCake::Tweet&tweet) noexcept
@@ -167,36 +168,6 @@ void PanCake::serializeTweetBucket(rapidjson::Value&value,rapidjson::Document::A
 
         value.PushBack(entry,allocator);
     });
-}
-
-void PanCake::deserializeTweetBucket(rapidjson::Value&value,rapidjson::Document::AllocatorType&allocator,std::vector<PanCake::Tweet>&bucket)
-{
-    for(auto it = value.Begin(); it != value.End(); ++it)
-    {
-        PanCake::Tweet tweet;
-        tweet.text = (*it)["text"].GetString();
-        tweet.textHash = (*it)["textHash"].GetString();
-        tweet.user = (*it)["user"].GetString();
-        tweet.userHash = (*it)["userHash"].GetString();
-        tweet.date = (*it)["date"].GetString();
-        tweet.id = (*it)["id"].GetString();
-        tweet.committed = (*it)["committed"].GetString();
-        tweet.isRetweet = (*it)["isRetweet"].GetBool();
-        tweet.isPinned = (*it)["isPinned"].GetBool();
-        tweet.isReplyTo = (*it)["isReplyTo"].GetBool();
-        tweet.replyCount = (*it)["replyCount"].GetInt();
-        tweet.reTweetCount = (*it)["reTweetCount"].GetInt();
-        tweet.favouriteCount = (*it)["favouriteCount"].GetInt();
-        tweet.sentimentScore = (*it)["sentimentScore"].GetInt();
-        tweet.comparativeSentimentScore = (*it)["comparativeSentimentScore"].GetFloat();
-
-        for(auto&url : (*it)["images"].GetArray())
-        {
-            tweet.images.push_back(url.GetString());
-        }
-
-        bucket.push_back(tweet);
-    }
 }
 
 PanCake::TweetStore::TweetStore(const char*path)
@@ -398,34 +369,17 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
 
 [[nodiscard]] bool PanCake::TweetStore::loadBin(char binHash)
 {
-    std::ifstream file(this->timePointPath+std::string("/")+binHash+std::string(".json"));
-    
-    if(file.fail())
-        return false;
-    
-    rapidjson::GenericDocument<rapidjson::UTF8<>> doc = PanCake::loadJSONFromStream(file);
-    rapidjson::Document::AllocatorType& allocator = doc.GetAllocator();
+    PanCake::TweetBin*bin = PanCake::loadTweetBin(this->timePointPath+std::string("/")+binHash+std::string(".json"));
 
-    PanCake::TweetBin*bin = &this->bins[binHash];
+    if(bin != nullptr)
+    {
+        this->bins[binHash] = *bin;
+        delete bin;
+        return true;
+    }
 
-    PanCake::deserializeTweetBucket(doc["bucket0"],allocator,bin->bucket0);
-    PanCake::deserializeTweetBucket(doc["bucket1"],allocator,bin->bucket1);
-    PanCake::deserializeTweetBucket(doc["bucket2"],allocator,bin->bucket2);
-    PanCake::deserializeTweetBucket(doc["bucket3"],allocator,bin->bucket3);
-    PanCake::deserializeTweetBucket(doc["bucket4"],allocator,bin->bucket4);
-    PanCake::deserializeTweetBucket(doc["bucket5"],allocator,bin->bucket5);
-    PanCake::deserializeTweetBucket(doc["bucket6"],allocator,bin->bucket6);
-    PanCake::deserializeTweetBucket(doc["bucket7"],allocator,bin->bucket7);
-    PanCake::deserializeTweetBucket(doc["bucket8"],allocator,bin->bucket8);
-    PanCake::deserializeTweetBucket(doc["bucket9"],allocator,bin->bucket9);
-    PanCake::deserializeTweetBucket(doc["bucketa"],allocator,bin->bucketa);
-    PanCake::deserializeTweetBucket(doc["bucketb"],allocator,bin->bucketb);
-    PanCake::deserializeTweetBucket(doc["bucketc"],allocator,bin->bucketc);
-    PanCake::deserializeTweetBucket(doc["bucketd"],allocator,bin->bucketd);
-    PanCake::deserializeTweetBucket(doc["buckete"],allocator,bin->buckete);
-    PanCake::deserializeTweetBucket(doc["bucketf"],allocator,bin->bucketf);
-
-    return true;
+    delete bin;
+    return false;
 }
 
 void PanCake::TweetStore::printBins(std::ostream&stream)
