@@ -5,8 +5,8 @@ const glob = require("glob");
 
 let ccFlags = `-pedantic -Wall -Wextra -Wcast-align -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls -Wsign-promo -Wstrict-null-sentinel -Wswitch-default -Werror -Wno-unused -std=c++17`;
 let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/PicoSHA2`;
-let ldFlags = `-lstdc++fs`;
-let debugFlags = `-g -O1`;
+let ldFlags = `-lstdc++fs -lcurl`;
+let optFlags = `-g -O1`;
 let objFiles = "";
 let objFileBuildSteps = "";
 let testBuildSteps = "";
@@ -84,8 +84,14 @@ let ninja =
 rule cc
     deps = gcc
     depfile = $out.d
-    command = g++ -MMD -MF $out.d ${ccFlags} ${includeFlags} ${debugFlags} -c $in -o $out
+    command = g++ -MMD -MF $out.d ${ccFlags} ${includeFlags} ${optFlags} -c $in -o $out
     description = Compiling $in
+
+rule pch
+    deps = gcc
+    depfile = $out.d
+    command = g++ -MMD -MF ${ccFlags.replace(`-Werror`,``)} ${optFlags} $in
+    description = Precompiling $in
 
 rule staticLib
     command = ar rcs $out $in
@@ -94,7 +100,10 @@ rule link
     command = g++ ${objFiles} ${ldFlags} -o $out $in
     description = Linking $out
 
+
 ${testLinkRules}
+
+build src/vendor/Catch2/single_include/catch2/catch.hpp.gch : pch src/vendor/Catch2/single_include/catch2/catch.hpp
 
 ${objFileBuildSteps}
 
