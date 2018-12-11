@@ -26,4 +26,25 @@ namespace PanCake
             std::vector<Tweet> buckete;
             std::vector<Tweet> bucketf;
     };
+
+    template<class F>
+    void forEachBucket(TweetBin&bin,F f)
+    {
+        f(bin.bucket0);
+        f(bin.bucket1);
+        f(bin.bucket2);
+        f(bin.bucket3);
+        f(bin.bucket4);
+        f(bin.bucket5);
+        f(bin.bucket6);
+        f(bin.bucket7);
+        f(bin.bucket8);
+        f(bin.bucket9);
+        f(bin.bucketa);
+        f(bin.bucketb);
+        f(bin.bucketc);
+        f(bin.bucketd);
+        f(bin.buckete);
+        f(bin.bucketf);
+    }
 }

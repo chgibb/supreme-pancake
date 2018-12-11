@@ -13,7 +13,6 @@ namespace PanCake
 {
     [[nodiscard]] std::vector<PanCake::Tweet>*getBinBucketByHash(PanCake::TweetBin&,PanCake::Tweet&) noexcept;
     void serializeTweetBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
-    void deserializeTweetBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
 
     class TweetStore
     {
