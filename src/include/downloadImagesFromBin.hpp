@@ -3,6 +3,9 @@
 #include <vector>
 #include <string>
 
+#include <tesseract/baseapi.h>
+
+#include "tweet.hpp"
 #include "tweetBin.hpp"
 
 namespace PanCake
@@ -15,7 +18,13 @@ namespace PanCake
     };
 
     [[nodiscard]] PanCake::BulkImageDownloadStatus downloadImagesFromBin(
-        const char*,PanCake::TweetBin&,void(*)(std::vector<PanCake::Tweet>&,const std::string&)
-    );
-    
+        const char*,
+        PanCake::TweetBin&,
+        void(*const&)(
+            std::vector<PanCake::Tweet>&,
+            const PanCake::Tweet&,
+            const int,
+            const std::string&
+        ) = nullptr
+    );    
 }

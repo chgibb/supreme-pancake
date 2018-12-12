@@ -30,7 +30,7 @@
     std::for_each(
         tweet.images.begin(),
         tweet.images.end(),
-        [&tweet,&path,&res,&i](const std::string&url) -> void {
+        [&tweet,&path,&res,&i](const PanCake::TweetImage&img) -> void {
             res.push_back(PanCake::makeTweetImageFilePath(path,tweet,i));
             i++;
         }

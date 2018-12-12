@@ -156,8 +156,23 @@ void PanCake::serializeTweetBucket(rapidjson::Value&value,rapidjson::Document::A
         std::for_each(
             tweet.images.begin(),
             tweet.images.end(),
-            [&images,&allocator](const std::string&url) -> void {
-            images.PushBack(rapidjson::StringRef(url.c_str()),allocator);
+            [&images,&allocator](const PanCake::TweetImage&img) -> void {
+                rapidjson::Value image;
+                image.SetObject();
+
+                image.AddMember(
+                    rapidjson::StringRef("url"),
+                    rapidjson::StringRef(img.url.c_str()),
+                    allocator
+                );
+
+                image.AddMember(
+                    rapidjson::StringRef("OCRText"),
+                    rapidjson::StringRef(img.OCRText.c_str()),
+                    allocator
+                );
+
+                images.PushBack(image,allocator);
         });
 
         entry.AddMember(

@@ -5,6 +5,15 @@
 
 namespace PanCake
 {
+    class TweetImage
+    {
+        public:
+            std::string url;
+            std::string OCRText;
+            TweetImage(std::string _url,std::string _OCRText) : url(_url),OCRText(_OCRText) {}
+            ~TweetImage() = default;
+    };
+
     class Tweet
     {
         public:
@@ -23,6 +32,6 @@ namespace PanCake
             int favouriteCount;
             int sentimentScore;
             float comparativeSentimentScore;
-            std::vector<std::string> images;
+            std::vector<PanCake::TweetImage> images;
     };
 }

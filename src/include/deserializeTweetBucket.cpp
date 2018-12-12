@@ -21,9 +21,12 @@ void PanCake::deserializeTweetBucket(rapidjson::Value&value,rapidjson::Document:
         tweet.sentimentScore = (*it)["sentimentScore"].GetInt();
         tweet.comparativeSentimentScore = (*it)["comparativeSentimentScore"].GetFloat();
 
-        for(auto&url : (*it)["images"].GetArray())
+        for(auto imgIt = (*it)["images"].Begin(); imgIt != (*it)["images"].End(); ++imgIt)
         {
-            tweet.images.push_back(url.GetString());
+            tweet.images.push_back(PanCake::TweetImage(
+                (*imgIt)["url"].GetString(),
+                (*imgIt)["OCRText"].GetString()
+            ));
         }
 
         bucket.push_back(tweet);

@@ -42,9 +42,9 @@ TEST_CASE("Image URLs should have been saved","")
     PanCake::Tweet tweet = sample.bins['e'].bucket5.at(0);
 
     REQUIRE(tweet.images.size() == 4);
-    REQUIRE(tweet.images.at(0) == "https://pbs.twimg.com/media/DlPum_HV4AA_jlk.png");
-    REQUIRE(tweet.images.at(1) == "https://pbs.twimg.com/media/DlPwdMAUYAA8b_H.jpg");
-    REQUIRE(tweet.images.at(2) == "https://pbs.twimg.com/media/DlPymmBUYAI-xjx.jpg");
-    REQUIRE(tweet.images.at(3) == "https://pbs.twimg.com/media/DlP6sSaU8AA6GM9.jpg");
+    REQUIRE(tweet.images.at(0).url == "https://pbs.twimg.com/media/DlPum_HV4AA_jlk.png");
+    REQUIRE(tweet.images.at(1).url == "https://pbs.twimg.com/media/DlPwdMAUYAA8b_H.jpg");
+    REQUIRE(tweet.images.at(2).url == "https://pbs.twimg.com/media/DlPymmBUYAI-xjx.jpg");
+    REQUIRE(tweet.images.at(3).url == "https://pbs.twimg.com/media/DlP6sSaU8AA6GM9.jpg");
 
 }

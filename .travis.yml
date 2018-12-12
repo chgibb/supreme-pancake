@@ -11,11 +11,13 @@ addons:
       - g++-7
       - ninja-build
       - graphviz
+      - tesseract-ocr
+      - libtesseract-dev
+      - libleptonica-dev
 
 install:
   - sudo ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
   - sudo ln -s /usr/bin/g++-7 /usr/local/bin/g++
   - g++ -v
   - npm install
-  - node scripts/genNinja
-  - ninja -v
+  - npm run build

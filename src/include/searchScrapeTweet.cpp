@@ -1,5 +1,7 @@
 #include <picosha2.h>
 
+#include <iostream>
+
 #include "searchScrapeTweet.hpp"
 #include "dateParser.hpp"
 
@@ -28,7 +30,10 @@
 
         for(auto&url : (*it)["images"].GetArray())
         {
-            tweet.images.push_back(url.GetString());
+            if(url.IsString())
+            {
+                tweet.images.push_back(PanCake::TweetImage(url.GetString(),""));
+            }
         }
 
         res.push_back(tweet);

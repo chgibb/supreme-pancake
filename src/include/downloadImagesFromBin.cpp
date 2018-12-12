@@ -13,12 +13,17 @@
 [[nodiscard]] PanCake::BulkImageDownloadStatus PanCake::downloadImagesFromBin(
     const char*dataDir,
     PanCake::TweetBin&bin,
-    void(*afterDownload)(std::vector<PanCake::Tweet>&,const std::string&) = nullptr
-    ) {
+    void(*const&afterDownload)(
+        std::vector<PanCake::Tweet>&,
+        const PanCake::Tweet&,
+        const int,
+        const std::string&
+    )
+) {
     PanCake::BulkImageDownloadStatus res;
 
-    PanCake::forEachBucket(bin,[&dataDir,&res](std::vector<PanCake::Tweet>&bucket) -> void {
-        std::for_each(bucket.begin(),bucket.end(),[&dataDir,&res](PanCake::Tweet&tweet) -> void {
+    PanCake::forEachBucket(bin,[&dataDir,&res,&afterDownload](std::vector<PanCake::Tweet>&bucket) -> void {
+        std::for_each(bucket.begin(),bucket.end(),[&dataDir,&res,&afterDownload,&bucket](PanCake::Tweet&tweet) -> void {
             std::string folderPath = PanCake::makeTweetImagePath(dataDir,tweet);
 
             if(!PanCake::directoryExists(folderPath.c_str()))
@@ -31,17 +36,22 @@
                 if(PanCake::fileExists(imgPaths.at(i).c_str()))
                     continue;
                     
-                bool downloadResult = PanCake::downloadImage(tweet.images.at(i),imgPaths.at(i));
+                bool downloadResult = PanCake::downloadImage(tweet.images.at(i).url,imgPaths.at(i));
 
                 res.attempted++;
 
                 if(downloadResult)
+                {
+                    if(afterDownload)
+                    {
+                        afterDownload(bucket,tweet,i,imgPaths.at(i));
+                    }
                     res.succeeded++;
+                }
                 else
                     res.failed++;
             }
         });
     });
-
     return res;
 }

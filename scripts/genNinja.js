@@ -5,7 +5,7 @@ const glob = require("glob");
 
 let ccFlags = `-pedantic -Wall -Wextra -Wcast-align -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls -Wsign-promo -Wstrict-null-sentinel -Wswitch-default -Werror -Wno-unused -std=c++17`;
 let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/PicoSHA2`;
-let ldFlags = `-lstdc++fs -lcurl`;
+let ldFlags = `-lstdc++fs -lcurl -llept -ltesseract`;
 let optFlags = `-g -O1`;
 let objFiles = "";
 let objFileBuildSteps = "";
