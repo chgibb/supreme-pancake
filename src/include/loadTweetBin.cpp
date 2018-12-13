@@ -1,3 +1,8 @@
+#include <fstream>
+
+#include <rapidjson/document.h>
+#include <rapidjson/istreamwrapper.h>
+
 #include "loadTweetBin.hpp"
 #include "deserializeTweetBucket.hpp"
 

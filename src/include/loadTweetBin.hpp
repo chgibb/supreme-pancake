@@ -1,10 +1,6 @@
 #pragma once
 
-#include <fstream>
 #include <string>
-
-#include <rapidjson/document.h>
-#include <rapidjson/istreamwrapper.h>
 
 #include "loadJSON.hpp"
 #include "tweetBin.hpp"
