@@ -5,10 +5,18 @@
 
 #include "OCRImage.hpp"
 
+namespace
+{
+    tesseract::TessBaseAPI*api = nullptr;
+}
+
 void PanCake::OCRImage(std::vector<PanCake::Tweet>&bucket,const PanCake::Tweet&tweet,const int index,const std::string&imgPath)
 {
-    tesseract::TessBaseAPI*api = new tesseract::TessBaseAPI();
-    api->Init(NULL,"eng");
+    if(!api)
+    {
+        api = new tesseract::TessBaseAPI();
+        api->Init(NULL,"eng");
+    }
 
     ::Pix*image = ::pixRead(imgPath.c_str());
     api->SetImage(image);
@@ -19,9 +27,9 @@ void PanCake::OCRImage(std::vector<PanCake::Tweet>&bucket,const PanCake::Tweet&t
         if(it->id == tweet.id)
         {
             it->images.at(index).OCRText = api->GetUTF8Text();
+            break;
         }
     }
 
-    api->End();
     ::pixDestroy(&image);
 }
