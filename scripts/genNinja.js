@@ -52,12 +52,12 @@ function trimExtension(file)
             {       
                 testBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]}${"\n"}`;
 
-                if(/-tests/.test(matches[i]))
+                if(/\.test/.test(matches[i]))
                     continue;
 
-                testBuildSteps += `build ${matches[i].split('.').slice(0, -1).join('.')}.out : link${trimExtension(matches[i])} ${makeObjectFilePath(matches[i])} | ${makeObjectFilePath(matches[i])} obj/tests-${trimExtension(matches[i])+"-tests"}.o ${objFiles}${"\n"}`;
+                testBuildSteps += `build ${matches[i].split('.').slice(0, -1).join('.')}.out : link${trimExtension(matches[i])} ${makeObjectFilePath(matches[i])} | ${makeObjectFilePath(matches[i])} obj/tests-${trimExtension(matches[i])+`.test`}.o ${objFiles}${"\n"}`;
                 testLinkRules += `rule link${trimExtension(matches[i])}${"\n"}`;
-                testLinkRules += `  command = g++ obj/tests-${trimExtension(matches[i])+"-tests"}.o ${objFiles} ${ldFlags} -o $out $in${"\n"}`;
+                testLinkRules += `  command = g++ obj/tests-${trimExtension(matches[i])+`.test`}.o ${objFiles} ${ldFlags} -o $out $in${"\n"}`;
                 testLinkRules += `  description = Linking $out${"\n"}`;
             }
             return resolve();
