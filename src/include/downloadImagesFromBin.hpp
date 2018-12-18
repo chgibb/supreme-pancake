@@ -7,16 +7,10 @@
 
 #include "tweet.hpp"
 #include "tweetBin.hpp"
+#include "bulkImageDownloadStatus.hpp"
 
 namespace PanCake
 {
-    struct BulkImageDownloadStatus
-    {
-        int succeeded = 0;
-        int failed = 0;
-        int attempted = 0;
-    };
-
     [[nodiscard]] PanCake::BulkImageDownloadStatus downloadImagesFromBin(
         const char*,
         PanCake::TweetBin&,

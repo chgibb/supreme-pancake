@@ -1,13 +1,6 @@
 import * as cp from "child_process";
 
-export interface BulkStoreStatus
-{
-    added : number;
-    duplicates : number;
-    success : number;
-    metaUpdates : number;
-    binsWithNewTweets : Array<string>;
-}
+import {BulkStoreStatus} from "./bulkStoreStatus";
 
 export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath = "") : Promise<BulkStoreStatus>
 {

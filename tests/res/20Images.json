@@ -1,0 +1,2379 @@
+[
+    {
+        "screenName": "toad_spotted",
+        "id": "1060975229911085056",
+        "time": "2018-11-09T19:19:41.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "or was he just like, \"hey dad, i'm on your head, look at that sky\"",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.13333333333333333,
+        "sentimentWords": [
+            "like"
+        ],
+        "positiveWords": [
+            "like"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "AscendedBastard",
+        "id": "1060364690847682561",
+        "time": "2018-11-08T02:53:37.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "All it will take is one good-looking celebrity to endorse cannibalism and this whole thing will come tumbling down.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 6,
+        "retweetCount": 32,
+        "favoriteCount": 135,
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.10526315789473684,
+        "sentimentWords": [
+            "endorse"
+        ],
+        "positiveWords": [
+            "endorse"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060960374353223680",
+        "time": "2018-11-09T18:20:39.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "Why the best surgeons might look like butchers.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/DrlJu-wV4AA5Yd7.jpg"
+        ],
+        "urls": [],
+        "replyCount": 8,
+        "retweetCount": 19,
+        "favoriteCount": 113,
+        "sentimentScore": 5,
+        "comparativeSentimentScore": 0.625,
+        "sentimentWords": [
+            "like",
+            "best"
+        ],
+        "positiveWords": [
+            "like",
+            "best"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060949614277390338",
+        "time": "2018-11-09T17:37:54.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Everyone seems to be making the mistake of ergodicity:\nThe rich of 2015 are NOT necessarily those of 2000.  In the U.S. 85% of the rich were not so in earlier periods. These static analyses by economists and psychologists are BS.\n\nI noted that only pple w #Skininthegame get it.",
+        "userMentions": [],
+        "hashtags": [
+            {
+                "hashtag": "Skininthegame",
+                "indices": [
+                    256,
+                    270
+                ]
+            }
+        ],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://twitter.com/theJeremyVine/status/1058853678512259074",
+                "indices": [
+                    278,
+                    338
+                ]
+            }
+        ],
+        "replyCount": 51,
+        "retweetCount": 229,
+        "favoriteCount": 627,
+        "quote": {
+            "screenName": "theJeremyVine",
+            "id": "1058853678512259074",
+            "text": "This graphic is insane. I keep staring at it and thinking there must be something wrong. The gap between people in the poorest parts of Britain, and the richest. \n(via @INorBY2020) pic.twitter.com/IkSKHTJ7GW"
+        },
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.038461538461538464,
+        "sentimentWords": [
+            "rich",
+            "rich",
+            "mistake"
+        ],
+        "positiveWords": [
+            "rich",
+            "rich"
+        ],
+        "negativeWords": [
+            "mistake"
+        ]
+    },
+    {
+        "screenName": "mmcgrana",
+        "id": "1054752483543678977",
+        "time": "2018-10-23T15:12:43.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Really enjoyed \"Millikan's School\" (via @patrickc): https://www.amazon.com/dp/0393329984 \n\nMuch of the story is recruiting; the lessons still apply a century later. E.g. the best leaders obsess about recruiting and many great candidates take _years_ of recruitment.",
+        "userMentions": [
+            {
+                "screenName": "patrickc",
+                "indices": [
+                    40,
+                    49
+                ]
+            }
+        ],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://www.amazon.com/dp/0393329984",
+                "indices": [
+                    52,
+                    88
+                ]
+            }
+        ],
+        "replyCount": 1,
+        "retweetCount": 1,
+        "favoriteCount": 3,
+        "sentimentScore": 8,
+        "comparativeSentimentScore": 0.2222222222222222,
+        "sentimentWords": [
+            "great",
+            "best",
+            "enjoyed"
+        ],
+        "positiveWords": [
+            "great",
+            "best",
+            "enjoyed"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060933551041011712",
+        "time": "2018-11-09T16:34:04.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Used to be seductive & thrilling for thinkers to counter the then repressive Church dogma, w/the appeal of forbidden fruit.\n\nIt's starting to be more seductive to counter the currently repressive PC dogma than conform.\n\nUniversity monokultchurists are too stupid to realize it.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 34,
+        "retweetCount": 208,
+        "favoriteCount": 829,
+        "sentimentScore": -4,
+        "comparativeSentimentScore": -0.08888888888888889,
+        "sentimentWords": [
+            "stupid",
+            "forbidden"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "stupid",
+            "forbidden"
+        ]
+    },
+    {
+        "screenName": "afoolswisdom",
+        "id": "1060930713090805761",
+        "time": "2018-11-09T16:22:47.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Beauty is in the eye of the coevolver.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 2,
+        "favoriteCount": 3,
+        "sentimentScore": 3,
+        "comparativeSentimentScore": 0.375,
+        "sentimentWords": [
+            "beauty"
+        ],
+        "positiveWords": [
+            "beauty"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "afoolswisdom",
+        "id": "1060927802319368192",
+        "time": "2018-11-09T16:11:13.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Make illegal states unthinkable.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 1,
+        "sentimentScore": -3,
+        "comparativeSentimentScore": -0.75,
+        "sentimentWords": [
+            "illegal"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "illegal"
+        ]
+    },
+    {
+        "screenName": "toad_spotted",
+        "id": "1060927620223827970",
+        "time": "2018-11-09T16:10:30.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "Why did the one on the top climb up onto the one on the bottom's head and what was he trying to reach or see",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 1,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": 3,
+        "comparativeSentimentScore": 0.12,
+        "sentimentWords": [
+            "reach",
+            "top"
+        ],
+        "positiveWords": [
+            "reach",
+            "top"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "thesublemon",
+        "id": "1060920520030461952",
+        "time": "2018-11-09T15:42:17.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "what if the most thematic way for the story to end would actually be for it to never be finished. because history is never finished (!!!)",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 1,
+        "retweetCount": 0,
+        "favoriteCount": 5,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "thesublemon",
+        "id": "1060919663801090048",
+        "time": "2018-11-09T15:38:53.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "so the moment it buys into its own mythos and narrative, it loses sight of its actual themes. but how do you communicate theme to an audience without getting too pattern-matchy or symmetrical?",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 1,
+        "retweetCount": 0,
+        "favoriteCount": 4,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "thesublemon",
+        "id": "1060919325723373568",
+        "time": "2018-11-09T15:37:32.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "GoT is in a funny artistic position bc when it tries to be artistically coherent, it stops working. the whole point of it is that it's got all these mythic aesthetics, stuff that primes you to think of \"how stories go\" & then it turns out it's dispassionate medieval history",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 2,
+        "retweetCount": 0,
+        "favoriteCount": 5,
+        "sentimentScore": 3,
+        "comparativeSentimentScore": 0.06,
+        "sentimentWords": [
+            "stops",
+            "funny"
+        ],
+        "positiveWords": [
+            "funny"
+        ],
+        "negativeWords": [
+            "stops"
+        ]
+    },
+    {
+        "screenName": "thesublemon",
+        "id": "1060914550369849345",
+        "time": "2018-11-09T15:18:34.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "but that's the whole point. in any good zombie movie, it's always the infighting and human flaws that really kill people.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 2,
+        "sentimentScore": -2,
+        "comparativeSentimentScore": -0.09523809523809523,
+        "sentimentWords": [
+            "kill",
+            "flaws",
+            "good"
+        ],
+        "positiveWords": [
+            "good"
+        ],
+        "negativeWords": [
+            "kill",
+            "flaws"
+        ]
+    },
+    {
+        "screenName": "thesublemon",
+        "id": "1060914035359657989",
+        "time": "2018-11-09T15:16:31.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "season 1 of game of thrones feels like it shares principles with zombie movies, just...diffusely so. instead of being trapped in a bunker or a mall, the characters are trapped inside the whole world. they've forgotten they're in a zombie movie.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 1,
+        "retweetCount": 0,
+        "favoriteCount": 7,
+        "sentimentScore": -2,
+        "comparativeSentimentScore": -0.04878048780487805,
+        "sentimentWords": [
+            "forgotten",
+            "trapped",
+            "trapped",
+            "shares",
+            "like"
+        ],
+        "positiveWords": [
+            "shares",
+            "like"
+        ],
+        "negativeWords": [
+            "forgotten",
+            "trapped",
+            "trapped"
+        ]
+    },
+    {
+        "screenName": "toad_spotted",
+        "id": "1060910206341836806",
+        "time": "2018-11-09T15:01:18.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "We shouldn't be shocked when supposedly counterintegrative political projects in practice tend towards same purpose of turning more of the world more rapidly into paperclips,or at least  2-day Prime shipped packages\n\nlike flies to wanton boys,are we to the gods, like the man said",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 1,
+        "retweetCount": 0,
+        "favoriteCount": 9,
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.043478260869565216,
+        "sentimentWords": [
+            "like",
+            "like",
+            "shocked"
+        ],
+        "positiveWords": [
+            "like",
+            "like"
+        ],
+        "negativeWords": [
+            "shocked"
+        ]
+    },
+    {
+        "screenName": "worrydream",
+        "id": "1060908879360520193",
+        "time": "2018-11-09T14:56:02.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "\"Doctor Wily and the Von Neumann Bottleneck\"",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/Drka9FbU0AAVIMD.jpg"
+        ],
+        "urls": [],
+        "replyCount": 1,
+        "retweetCount": 8,
+        "favoriteCount": 23,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "toad_spotted",
+        "id": "1060907467390025729",
+        "time": "2018-11-09T14:50:25.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "How your works and days fit into an imagined future&past have great moment for you, whether your life feels sane or insane. \n\nBut accept that world system is integrated towards purpose of maximizing aggregate material throughput,&ideology&human life are a means not an end for it.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 2,
+        "retweetCount": 0,
+        "favoriteCount": 11,
+        "sentimentScore": 3,
+        "comparativeSentimentScore": 0.06382978723404255,
+        "sentimentWords": [
+            "accept",
+            "insane",
+            "great",
+            "fit"
+        ],
+        "positiveWords": [
+            "accept",
+            "great",
+            "fit"
+        ],
+        "negativeWords": [
+            "insane"
+        ]
+    },
+    {
+        "screenName": "feeonline",
+        "id": "1060835736017125376",
+        "time": "2018-11-09T10:05:23.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Today is the anniversary of the fall of the Berlin wall (1989). For decades, the Berlin Wall imprisoned a people — then something amazing happened.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://at.fee.org/2yMeoEt",
+                "indices": [
+                    147,
+                    173
+                ]
+            }
+        ],
+        "replyCount": 6,
+        "retweetCount": 46,
+        "favoriteCount": 74,
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.08,
+        "sentimentWords": [
+            "amazing",
+            "imprisoned"
+        ],
+        "positiveWords": [
+            "amazing"
+        ],
+        "negativeWords": [
+            "imprisoned"
+        ]
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060892108066832385",
+        "time": "2018-11-09T13:49:23.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "My first technical foray into genetics. Encountered the 4-population test, deriving the \"estimation error\".",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/DrkLoqFVYAA127C.jpg",
+            "https://pbs.twimg.com/media/DrkLpE9UUAAI2UW.jpg"
+        ],
+        "urls": [],
+        "replyCount": 6,
+        "retweetCount": 16,
+        "favoriteCount": 118,
+        "sentimentScore": -2,
+        "comparativeSentimentScore": -0.14285714285714285,
+        "sentimentWords": [
+            "error"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "error"
+        ]
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060874460293677056",
+        "time": "2018-11-09T12:39:16.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "The camera adds 12.6 pounds.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 45,
+        "retweetCount": 20,
+        "favoriteCount": 349,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060873322878193665",
+        "time": "2018-11-09T12:34:44.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Nassim Nicholas Taleb: \"Skin in the Game\" | Talks at Google https://youtu.be/uv6KLbkvua8  via @YouTube",
+        "userMentions": [
+            {
+                "screenName": "YouTube",
+                "indices": [
+                    94,
+                    102
+                ]
+            }
+        ],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://youtu.be/uv6KLbkvua8",
+                "indices": [
+                    60,
+                    88
+                ]
+            }
+        ],
+        "replyCount": 23,
+        "retweetCount": 179,
+        "favoriteCount": 813,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "ruigomeseu",
+        "id": "1060661835765035008",
+        "time": "2018-11-08T22:34:22.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Many years ago, back when I was in high school, I got banned from PayPal. Lost access to all my funds, and stopped the work I was doing as a self-taught freelance developer.\n\nIt was a huge setback back then, and it took me a lot of time and energy to get back on track",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/Drg2f0uWsAIDCGo.jpg"
+        ],
+        "urls": [],
+        "replyCount": 8,
+        "retweetCount": 32,
+        "favoriteCount": 100,
+        "sentimentScore": -5,
+        "comparativeSentimentScore": -0.08928571428571429,
+        "sentimentWords": [
+            "huge",
+            "stopped",
+            "lost",
+            "banned"
+        ],
+        "positiveWords": [
+            "huge"
+        ],
+        "negativeWords": [
+            "stopped",
+            "lost",
+            "banned"
+        ]
+    },
+    {
+        "screenName": "BoredElonMusk",
+        "id": "759067563540099072",
+        "time": "2016-07-29T16:46:24.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Free (or nearly free) education already exists. Debt comes from wanting a piece of paper that implies you're smart.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 95,
+        "retweetCount": 1943,
+        "favoriteCount": 3228,
+        "sentimentScore": 1,
+        "comparativeSentimentScore": 0.05263157894736842,
+        "sentimentWords": [
+            "smart",
+            "debt",
+            "free",
+            "free"
+        ],
+        "positiveWords": [
+            "smart",
+            "free",
+            "free"
+        ],
+        "negativeWords": [
+            "debt"
+        ]
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060850324133445633",
+        "time": "2018-11-09T11:03:21.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "Heard Uranus has a magnetosphere that opens and closes daily due to its nightmare geometry",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 2,
+        "retweetCount": 0,
+        "favoriteCount": 7,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060845628803047424",
+        "time": "2018-11-09T10:44:42.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "How many impossibly complicated things are actually simple but we just get unlucky and only encounter weird twisted examples?",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 2,
+        "retweetCount": 1,
+        "favoriteCount": 11,
+        "sentimentScore": -2,
+        "comparativeSentimentScore": -0.10526315789473684,
+        "sentimentWords": [
+            "weird"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "weird"
+        ]
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060845302117163012",
+        "time": "2018-11-09T10:43:24.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "I'm trying to understand geology and I keep imagining squirrel scientists trying to understand trees based on this shit",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/DrjhKrnUUAA-178.jpg"
+        ],
+        "urls": [],
+        "replyCount": 2,
+        "retweetCount": 2,
+        "favoriteCount": 23,
+        "sentimentScore": -4,
+        "comparativeSentimentScore": -0.21052631578947367,
+        "sentimentWords": [
+            "shit"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "shit"
+        ]
+    },
+    {
+        "screenName": "NickSzabo4",
+        "id": "1060819731710726144",
+        "time": "2018-11-09T09:01:47.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "My thanks to the folks at @BlockchainBP for hosting a great conference and helping me reconnect to my Hungarian roots!",
+        "userMentions": [
+            {
+                "screenName": "BlockchainBP",
+                "indices": [
+                    26,
+                    39
+                ]
+            }
+        ],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 4,
+        "retweetCount": 3,
+        "favoriteCount": 71,
+        "sentimentScore": 7,
+        "comparativeSentimentScore": 0.35,
+        "sentimentWords": [
+            "helping",
+            "great",
+            "thanks"
+        ],
+        "positiveWords": [
+            "helping",
+            "great",
+            "thanks"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "ChaincodeLabs",
+        "id": "1060598609979342848",
+        "time": "2018-11-08T18:23:08.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "All of the tutorials from our recent Lightning residency are now online, along with slides. Thanks again to our speakers @alexbosworth @Chris_Stewart_5 @Snyke @eiaine @JackMallers @juscamarena @LightningK0ala.\n\nhttps://lightningresidency.com/#videos \n\nResident demos will be uploaded soon.",
+        "userMentions": [
+            {
+                "screenName": "alexbosworth",
+                "indices": [
+                    121,
+                    134
+                ]
+            },
+            {
+                "screenName": "Chris_Stewart_5",
+                "indices": [
+                    135,
+                    151
+                ]
+            },
+            {
+                "screenName": "Snyke",
+                "indices": [
+                    152,
+                    158
+                ]
+            },
+            {
+                "screenName": "eiaine",
+                "indices": [
+                    159,
+                    166
+                ]
+            },
+            {
+                "screenName": "JackMallers",
+                "indices": [
+                    167,
+                    179
+                ]
+            },
+            {
+                "screenName": "juscamarena",
+                "indices": [
+                    180,
+                    192
+                ]
+            },
+            {
+                "screenName": "LightningK0ala",
+                "indices": [
+                    193,
+                    208
+                ]
+            }
+        ],
+        "hashtags": [
+            {
+                "hashtag": "videos",
+                "indices": [
+                    242,
+                    249
+                ]
+            }
+        ],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://lightningresidency.com/#videos",
+                "indices": [
+                    211,
+                    249
+                ]
+            }
+        ],
+        "replyCount": 6,
+        "retweetCount": 98,
+        "favoriteCount": 207,
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.05555555555555555,
+        "sentimentWords": [
+            "thanks"
+        ],
+        "positiveWords": [
+            "thanks"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "mahler_till",
+        "id": "1060808849484144640",
+        "time": "2018-11-09T08:18:33.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "'98 | Nick Szabo (@NickSzabo4) comes up with his groundbreaking idea for a decentralized digital currency #BitGold, which is also quoted by #SatoshiNakamoto for being an essential inspiration for #bitcoin.",
+        "userMentions": [
+            {
+                "screenName": "NickSzabo4",
+                "indices": [
+                    18,
+                    29
+                ]
+            }
+        ],
+        "hashtags": [
+            {
+                "hashtag": "BitGold",
+                "indices": [
+                    106,
+                    114
+                ]
+            },
+            {
+                "hashtag": "SatoshiNakamoto",
+                "indices": [
+                    140,
+                    156
+                ]
+            },
+            {
+                "hashtag": "bitcoin",
+                "indices": [
+                    196,
+                    204
+                ]
+            }
+        ],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://medium.com/blockwhat/98-make-it-rain-bit-gold-dc1bd896827b",
+                "indices": [
+                    205,
+                    271
+                ]
+            }
+        ],
+        "replyCount": 5,
+        "retweetCount": 12,
+        "favoriteCount": 44,
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.06666666666666667,
+        "sentimentWords": [
+            "inspiration"
+        ],
+        "positiveWords": [
+            "inspiration"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "BuckSexton",
+        "id": "1060586499153035264",
+        "time": "2018-11-08T17:35:00.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Having your White House pass (temporarily) pulled for unruly behavior is not actually a threat to free speech-\n\nBut having a mob show up at your home and threaten your wife and children because you are a prominent conservative in media- that is a threat. \n\nTo all of us.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 887,
+        "retweetCount": 19563,
+        "favoriteCount": 52552,
+        "sentimentScore": -3,
+        "comparativeSentimentScore": -0.057692307692307696,
+        "sentimentWords": [
+            "threat",
+            "prominent",
+            "threaten",
+            "free",
+            "threat"
+        ],
+        "positiveWords": [
+            "prominent",
+            "free"
+        ],
+        "negativeWords": [
+            "threat",
+            "threaten",
+            "threat"
+        ]
+    },
+    {
+        "screenName": "MilHistNow",
+        "id": "1060800455729668097",
+        "time": "2018-11-09T07:45:12.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "On this day in 1989, the Berlin Wall comes down. The infamous barrier between East and West stood for exactly 10,315 days.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/Dri4ZIwXcAAjfKd.jpg"
+        ],
+        "urls": [],
+        "replyCount": 17,
+        "retweetCount": 705,
+        "favoriteCount": 1011,
+        "sentimentScore": -2,
+        "comparativeSentimentScore": -0.09090909090909091,
+        "sentimentWords": [
+            "barrier"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "barrier"
+        ]
+    },
+    {
+        "screenName": "saifedean",
+        "id": "985587428378529793",
+        "time": "2018-04-15T18:35:28.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "If you're short on money or time, Yorick has pretty much summarized my entire book for you in this thread.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://twitter.com/ydemombynes/status/985560599248756736",
+                "indices": [
+                    106,
+                    163
+                ]
+            }
+        ],
+        "replyCount": 76,
+        "retweetCount": 414,
+        "favoriteCount": 1011,
+        "quote": {
+            "screenName": "ydemombynes",
+            "id": "985560599248756736",
+            "text": "Here are my favorite quotes from this amazing book. #THREAD pic.twitter.com/sLEtWGhVZM"
+        },
+        "sentimentScore": 1,
+        "comparativeSentimentScore": 0.05,
+        "sentimentWords": [
+            "pretty"
+        ],
+        "positiveWords": [
+            "pretty"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "CoinBiased",
+        "id": "1060694686774505472",
+        "time": "2018-11-09T00:44:54.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Trusted third parties are security risks. -@NickSzabo4 \n\nIf this is what they do to a *country*s gold, what does that say about your funds as soon as the wind changes?",
+        "userMentions": [
+            {
+                "screenName": "NickSzabo4",
+                "indices": [
+                    43,
+                    54
+                ]
+            }
+        ],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://www.zerohedge.com/news/2018-11-08/bank-england-refuses-release-venezuelas-gold",
+                "indices": [
+                    167,
+                    253
+                ]
+            }
+        ],
+        "replyCount": 4,
+        "retweetCount": 62,
+        "favoriteCount": 129,
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.0625,
+        "sentimentWords": [
+            "gold",
+            "risks",
+            "trusted"
+        ],
+        "positiveWords": [
+            "gold",
+            "trusted"
+        ],
+        "negativeWords": [
+            "risks"
+        ]
+    },
+    {
+        "screenName": "sulpuroxide",
+        "id": "1060772421081325568",
+        "time": "2018-11-09T05:53:48.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "I had no idea my resting heart rate was 60bpm.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": -1,
+        "comparativeSentimentScore": -0.1,
+        "sentimentWords": [
+            "no"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "no"
+        ]
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060734568527884289",
+        "time": "2018-11-09T03:23:23.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Death of Jack Slade (from Roughing It)",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/Drh8dupUwAALL6V.jpg",
+            "https://pbs.twimg.com/media/Drh8dupVYAAsaTu.jpg"
+        ],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 1,
+        "sentimentScore": -2,
+        "comparativeSentimentScore": -0.2857142857142857,
+        "sentimentWords": [
+            "death"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "death"
+        ]
+    },
+    {
+        "screenName": "mnicoletos",
+        "id": "1057917855252037633",
+        "time": "2018-11-01T08:50:46.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Wold GDP by Country",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 245,
+        "retweetCount": 4553,
+        "favoriteCount": 9206,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "isomorphisms",
+        "id": "1060677801999822849",
+        "time": "2018-11-08T23:37:49.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "learning to rap in Sierra Leone circa 1989",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/DrhI09bU0AAYo_K.jpg"
+        ],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 2,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "FarLeftWatch",
+        "id": "1060536816372072449",
+        "time": "2018-11-08T14:17:35.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Meet Mike Isaacson, an organizer for the violent Antifa cell that threatened @TedCruz and his family in Sept. and @TuckerCarlson and his family last night.\n\nHe's a former @JohnJayCollege Prof. with a history of advocating for the murder of conservatives. http://bit.ly/AntifaProfessor ",
+        "userMentions": [
+            {
+                "screenName": "TedCruz",
+                "indices": [
+                    77,
+                    85
+                ]
+            },
+            {
+                "screenName": "TuckerCarlson",
+                "indices": [
+                    114,
+                    128
+                ]
+            },
+            {
+                "screenName": "JohnJayCollege",
+                "indices": [
+                    171,
+                    186
+                ]
+            }
+        ],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/DrfG1vVWoAcRagG.jpg"
+        ],
+        "urls": [
+            {
+                "url": "http://bit.ly/AntifaProfessor",
+                "indices": [
+                    255,
+                    284
+                ]
+            }
+        ],
+        "replyCount": 34,
+        "retweetCount": 249,
+        "favoriteCount": 323,
+        "sentimentScore": -7,
+        "comparativeSentimentScore": -0.16666666666666666,
+        "sentimentWords": [
+            "murder",
+            "threatened",
+            "violent"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "murder",
+            "threatened",
+            "violent"
+        ]
+    },
+    {
+        "screenName": "ProbFact",
+        "id": "1060641917996855296",
+        "time": "2018-11-08T21:15:13.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Inferring where data came from based on tail probabilities https://www.johndcook.com/blog/2018/07/17/attribution/ …",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://www.johndcook.com/blog/2018/07/17/attribution/",
+                "indices": [
+                    59,
+                    113
+                ]
+            }
+        ],
+        "replyCount": 1,
+        "retweetCount": 28,
+        "favoriteCount": 89,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "isomorphisms",
+        "id": "1060638161452306433",
+        "time": "2018-11-08T21:00:18.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "“I just want information to flow.” —a 24-year-old leader who did not invent entropy-worship\n\nvia @katelosse",
+        "userMentions": [
+            {
+                "screenName": "katelossepic",
+                "indices": [
+                    97,
+                    110
+                ]
+            }
+        ],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/DrgkyOmU0AAgL6P.jpg"
+        ],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": 1,
+        "comparativeSentimentScore": 0.058823529411764705,
+        "sentimentWords": [
+            "want"
+        ],
+        "positiveWords": [
+            "want"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "isomorphisms",
+        "id": "1060628921098665984",
+        "time": "2018-11-08T20:23:34.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "is Harvard the breeding ground of American power—the slick slide to instant six figure jobs and eventual political appointment? Or a place where a skinny guy who reads stacks of books and writes about them, practises … reading and writing.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/DrgcYR6VAAASgxN.jpg"
+        ],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 3,
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.05,
+        "sentimentWords": [
+            "slick"
+        ],
+        "positiveWords": [
+            "slick"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "suspendedreason",
+        "id": "1060606945525202944",
+        "time": "2018-11-08T18:56:15.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Newly turned-up evidence of @literalbanana assaulting a melon w an anonymous conspirator. RT to #LockHerUp — Keep scrolling if you don’t care about melon rights.",
+        "userMentions": [
+            {
+                "screenName": "literalbanana",
+                "indices": [
+                    28,
+                    42
+                ]
+            }
+        ],
+        "hashtags": [
+            {
+                "hashtag": "LockHerUp",
+                "indices": [
+                    96,
+                    106
+                ]
+            }
+        ],
+        "images": [
+            "https://pbs.twimg.com/media/DrgIYzjWoAAhSLU.jpg"
+        ],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 2,
+        "favoriteCount": 10,
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.08,
+        "sentimentWords": [
+            "care"
+        ],
+        "positiveWords": [
+            "care"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060607334169235457",
+        "time": "2018-11-08T18:57:48.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "-no studies on whether it’s safe to drive after eating it\n-blissed-out people might cause car accidents\n-puritans hate it",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 2,
+        "retweetCount": 0,
+        "favoriteCount": 13,
+        "sentimentScore": -4,
+        "comparativeSentimentScore": -0.2,
+        "sentimentWords": [
+            "hate",
+            "accidents",
+            "safe"
+        ],
+        "positiveWords": [
+            "safe"
+        ],
+        "negativeWords": [
+            "hate",
+            "accidents"
+        ]
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060607122721845249",
+        "time": "2018-11-08T18:56:57.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Has anybody campaigned to make capsaicin illegal?\n-it relieves pain\n-people get high on it\n-effects similar to opiates",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 5,
+        "retweetCount": 1,
+        "favoriteCount": 26,
+        "sentimentScore": -1,
+        "comparativeSentimentScore": -0.05263157894736842,
+        "sentimentWords": [
+            "pain",
+            "relieves"
+        ],
+        "positiveWords": [
+            "relieves"
+        ],
+        "negativeWords": [
+            "pain"
+        ]
+    },
+    {
+        "screenName": "isomorphisms",
+        "id": "1060597078664060928",
+        "time": "2018-11-08T18:17:03.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "«hey, where should we store video memory?»\n«keep it simple and save space. just store it as the next thing, after they’re done with their part.»\n\nhttp://aosabook.org/en/500L/dbdb-dog-bed-database.html …",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/Drf_aA7VYAAjK6u.jpg"
+        ],
+        "urls": [
+            {
+                "url": "http://aosabook.org/en/500L/dbdb-dog-bed-database.html",
+                "indices": [
+                    146,
+                    200
+                ]
+            }
+        ],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.07142857142857142,
+        "sentimentWords": [
+            "save"
+        ],
+        "positiveWords": [
+            "save"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "paulsperry_",
+        "id": "1060267480206184448",
+        "time": "2018-11-07T20:27:20.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "BREAKING: Docs filed in federal court in NY reveal the FBI agent working the Cesar Sayoc case cannot describe the so-called \"energetic material\" the FBI director claimed was inside Sayoc's 13 IEDs,meaning there is still no evidence any of the \"bombs\" actually contained explosives",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 297,
+        "retweetCount": 4553,
+        "favoriteCount": 7374,
+        "sentimentScore": 1,
+        "comparativeSentimentScore": 0.022727272727272728,
+        "sentimentWords": [
+            "no",
+            "energetic"
+        ],
+        "positiveWords": [
+            "energetic"
+        ],
+        "negativeWords": [
+            "no"
+        ]
+    },
+    {
+        "screenName": "hasufl",
+        "id": "1060554675357913090",
+        "time": "2018-11-08T15:28:33.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "The value proposition of decentralization is almost always legal arbitrage. Many projects will see their \"decentralization\" exposed as charade by law enforcement. Especially when founders are not anon. Investors and users have to be aware of this.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://twitter.com/coindesk/status/1060551309613547522",
+                "indices": [
+                    247,
+                    302
+                ]
+            }
+        ],
+        "replyCount": 10,
+        "retweetCount": 50,
+        "favoriteCount": 171,
+        "quote": {
+            "screenName": "coindesk",
+            "id": "1060551309613547522",
+            "text": "JUST IN: SEC charges EtherDelta founder with operating an unregistered exchange -- its the agency's \"first enforcement action based on findings that such a platform operated as an unregistered national securities exchange.\" Story to come"
+        },
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [
+            "exposed",
+            "legal"
+        ],
+        "positiveWords": [
+            "legal"
+        ],
+        "negativeWords": [
+            "exposed"
+        ]
+    },
+    {
+        "screenName": "toad_spotted",
+        "id": "1060551564727861249",
+        "time": "2018-11-08T15:16:11.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Society moving ever more in the direction of assessing human worth by sexual desirability even as people become on average ever less desirable (we have an aging, more overweight, less healthy less libidinous population) isn't really a contradiction when you come to think about it",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 2,
+        "retweetCount": 19,
+        "favoriteCount": 82,
+        "sentimentScore": 5,
+        "comparativeSentimentScore": 0.1111111111111111,
+        "sentimentWords": [
+            "healthy",
+            "overweight",
+            "desirable",
+            "worth"
+        ],
+        "positiveWords": [
+            "healthy",
+            "desirable",
+            "worth"
+        ],
+        "negativeWords": [
+            "overweight"
+        ]
+    },
+    {
+        "screenName": "ad_captandum2",
+        "id": "1060410338972196864",
+        "time": "2018-11-08T05:55:00.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "American self awareness about their voting patterns is painfully low because Americans by and large refuse to study other multi-ethnic democracies - probably because they are depressing.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 1,
+        "retweetCount": 5,
+        "favoriteCount": 27,
+        "sentimentScore": -4,
+        "comparativeSentimentScore": -0.14814814814814814,
+        "sentimentWords": [
+            "depressing",
+            "refuse"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "depressing",
+            "refuse"
+        ]
+    },
+    {
+        "screenName": "sulpuroxide",
+        "id": "1060456287513718784",
+        "time": "2018-11-08T08:57:35.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "It doesn't matter who you vote for in that the rich just get richer. One way is more obvious than the other unless you lean in some ideological direction. Pick your oppressors.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": 1,
+        "comparativeSentimentScore": 0.03125,
+        "sentimentWords": [
+            "rich",
+            "matter"
+        ],
+        "positiveWords": [
+            "rich"
+        ],
+        "negativeWords": [
+            "matter"
+        ]
+    },
+    {
+        "screenName": "sulpuroxide",
+        "id": "1060447801593589760",
+        "time": "2018-11-08T08:23:52.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "We've lost sight of significance/see it everywhere because today anything can be neutral.\n\nNew neutrals are new frames of reference. Each frame is invisible from it's own content. So we end up trapping ourselves in bubbles.\n\nThere are historic reasons to this, of course.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": -3,
+        "comparativeSentimentScore": -0.06521739130434782,
+        "sentimentWords": [
+            "lost"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "lost"
+        ]
+    },
+    {
+        "screenName": "sulpuroxide",
+        "id": "1060447036762279937",
+        "time": "2018-11-08T08:20:50.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Metamodernism is characterized by new forms of neutral.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "isomorphisms",
+        "id": "1060425620469903360",
+        "time": "2018-11-08T06:55:44.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "Paula Stephan: «Of the 30 men and women who began PhD’s at #Yale in molecular biochemistry and biophysics in 1991, *one* received tenure by 2008, 17 years later. This is representative.»\n\nfrom Daisy Fuentes to Harry Styles",
+        "userMentions": [],
+        "hashtags": [
+            {
+                "hashtag": "Yale",
+                "indices": [
+                    59,
+                    64
+                ]
+            }
+        ],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "coldplums",
+        "id": "1059200147865821184",
+        "time": "2018-11-04T21:46:08.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "(No song is yours after Johnny Cash covers it)",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 1,
+        "retweetCount": 2,
+        "favoriteCount": 7,
+        "sentimentScore": -1,
+        "comparativeSentimentScore": -0.1111111111111111,
+        "sentimentWords": [
+            "no"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "no"
+        ]
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060411435489116160",
+        "time": "2018-11-08T05:59:22.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "And odds it came via Syriac",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/DrdWkT3WoAEfMkg.jpg"
+        ],
+        "urls": [],
+        "replyCount": 3,
+        "retweetCount": 3,
+        "favoriteCount": 21,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060410765738500097",
+        "time": "2018-11-08T05:56:42.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Philology du Jour:\n\nBorj ( برج ) [TOWER] comes from Πύργος itself from the Urartian Burgana (unless it came directly from Burgama.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 9,
+        "retweetCount": 11,
+        "favoriteCount": 57,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060397603181871104",
+        "time": "2018-11-08T05:04:24.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "On behalf of all Nevadans: we would never.\n*assistant whispers in ear*\nahahaha no way\nwait literally Ron Jeremy???",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://twitter.com/darshandtaxes/status/1060178001357344774",
+                "indices": [
+                    114,
+                    174
+                ]
+            }
+        ],
+        "replyCount": 3,
+        "retweetCount": 0,
+        "favoriteCount": 11,
+        "quote": {
+            "screenName": "darshandtaxes",
+            "id": "1060178001357344774",
+            "text": "pic.twitter.com/qjaRzuYkZH"
+        },
+        "sentimentScore": -1,
+        "comparativeSentimentScore": -0.05263157894736842,
+        "sentimentWords": [
+            "no"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "no"
+        ]
+    },
+    {
+        "screenName": "TheAgeofShoddy",
+        "id": "1060393912840290304",
+        "time": "2018-11-08T04:49:44.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "Hiking is a self-service zoo.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 1,
+        "retweetCount": 3,
+        "favoriteCount": 12,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "isomorphisms",
+        "id": "1060389478403985408",
+        "time": "2018-11-08T04:32:07.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "c.f.,",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://twitter.com/ProfEmilyOster/status/494799416247988224",
+                "indices": [
+                    5,
+                    65
+                ]
+            }
+        ],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "quote": {
+            "screenName": "ProfEmilyOster",
+            "id": "494799416247988224",
+            "text": "Just discovered Renoylds makes pre-cut tin foil. Great example of price discrimination against those whose time is too valuable to tear foil"
+        },
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "isomorphisms",
+        "id": "1060389259687821313",
+        "time": "2018-11-08T04:31:15.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "when you leave a $500 million bill somewhere in the receipts folder…or maybe between the carseats…or was it in my other wallet?  Ahhh, F___ it\n\n#decisionTheory #behavioural #cognitive #arbitrage",
+        "userMentions": [],
+        "hashtags": [
+            {
+                "hashtag": "decisionTheory",
+                "indices": [
+                    144,
+                    159
+                ]
+            },
+            {
+                "hashtag": "behavioural",
+                "indices": [
+                    160,
+                    172
+                ]
+            },
+            {
+                "hashtag": "cognitive",
+                "indices": [
+                    173,
+                    183
+                ]
+            },
+            {
+                "hashtag": "arbitragehttps",
+                "indices": [
+                    184,
+                    199
+                ]
+            }
+        ],
+        "images": [],
+        "urls": [
+            {
+                "url": "arbitragehttps://twitter.com/WDTN/status/1052538719838892033",
+                "indices": [
+                    185,
+                    245
+                ]
+            }
+        ],
+        "replyCount": 1,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "quote": {
+            "screenName": "WDTN",
+            "id": "1052538719838892033",
+            "text": "The Lottery's Mega Millions jackpot is now at a record-breaking amount after Tuesday's jackpot went unclaimed. https://wdtn.tv/2NISqXj?utm_medium=social&utm_source=twitter_WDTN …"
+        },
+        "sentimentScore": -1,
+        "comparativeSentimentScore": -0.03225806451612903,
+        "sentimentWords": [
+            "leave"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "leave"
+        ]
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060385533744926720",
+        "time": "2018-11-08T04:16:26.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/Drc_BW0VAAAyohg.jpg"
+        ],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 3,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060385447166140416",
+        "time": "2018-11-08T04:16:06.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "It’s called scree because that’s the noise you make when you’re sliding down it",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 1,
+        "retweetCount": 1,
+        "favoriteCount": 1,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060385381852409856",
+        "time": "2018-11-08T04:15:50.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "It’s called scree because you have to ski down it in your shoes but you also skrrrt",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 2,
+        "retweetCount": 0,
+        "favoriteCount": 2,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060384748336529408",
+        "time": "2018-11-08T04:13:19.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "Deadlifting trains you to lift heavy objects, not so much to ski hard slopes.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 20,
+        "retweetCount": 13,
+        "favoriteCount": 130,
+        "sentimentScore": -1,
+        "comparativeSentimentScore": -0.07142857142857142,
+        "sentimentWords": [
+            "hard"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "hard"
+        ]
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060384417024217088",
+        "time": "2018-11-08T04:12:00.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "So to clarify, the statement is:\n\n“You learn disproportionally more from tails of distributions than you do from their center.”\n\nGabish?",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 14,
+        "retweetCount": 48,
+        "favoriteCount": 357,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "PithyThought",
+        "id": "1060373703652003841",
+        "time": "2018-11-08T03:29:26.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "I’m often simultaneously annoyed by your aura of arrogance and impressed by the clarity of your reasoning.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 11,
+        "retweetCount": 18,
+        "favoriteCount": 157,
+        "sentimentScore": 4,
+        "comparativeSentimentScore": 0.23529411764705882,
+        "sentimentWords": [
+            "clarity",
+            "impressed",
+            "aura",
+            "annoyed"
+        ],
+        "positiveWords": [
+            "clarity",
+            "impressed",
+            "aura"
+        ],
+        "negativeWords": [
+            "annoyed"
+        ]
+    },
+    {
+        "screenName": "sarahdoingthing",
+        "id": "1060377505205444610",
+        "time": "2018-11-08T03:44:32.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "I never said the state of florida was a conspiracy theory I simply observed that sandhill cranes are obviously CG",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "CGhttps://twitter.com/missoraine/status/1060257338500751360",
+                "indices": [
+                    111,
+                    170
+                ]
+            }
+        ],
+        "replyCount": 0,
+        "retweetCount": 1,
+        "favoriteCount": 18,
+        "quote": {
+            "screenName": "MissOraine",
+            "id": "1060257338500751360",
+            "text": "But it isn't a conspiracy theory--other state courts don't open the records immediately after trial like Florida does.\n\nThis is proven fact. https://twitter.com/sarahdoingthing/status/702429975132164096 …"
+        },
+        "sentimentScore": -3,
+        "comparativeSentimentScore": -0.15,
+        "sentimentWords": [
+            "conspiracy"
+        ],
+        "positiveWords": [],
+        "negativeWords": [
+            "conspiracy"
+        ]
+    },
+    {
+        "screenName": "nntaleb",
+        "id": "1060371786221654016",
+        "time": "2018-11-08T03:21:49.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Not my point @yaneerbaryam. \nMy point is that if you want to practice skiing, you learn disproportionally more from hard runs (tail events) than from slopes for beginner. Just as you gain more from lifting extremes (from convexity) than regular weights.\n\nRevise that stuff.",
+        "userMentions": [
+            {
+                "screenName": "yaneerbaryam",
+                "indices": [
+                    13,
+                    26
+                ]
+            }
+        ],
+        "hashtags": [],
+        "images": [],
+        "urls": [
+            {
+                "url": "https://twitter.com/yaneerbaryam/status/1060205836595855360",
+                "indices": [
+                    273,
+                    332
+                ]
+            }
+        ],
+        "replyCount": 52,
+        "retweetCount": 72,
+        "favoriteCount": 430,
+        "quote": {
+            "screenName": "yaneerbaryam",
+            "id": "1060205836595855360",
+            "text": "Training of pilots is not comparable to deadlifting as @nntaleb claims, because one is high complexity not large scale, whereas the other is low complexity large scale #becarefull #justlookingout Try skiing!  http://www.necsi.edu/research/multiscale/exercise …"
+        },
+        "sentimentScore": 2,
+        "comparativeSentimentScore": 0.043478260869565216,
+        "sentimentWords": [
+            "gain",
+            "hard",
+            "want"
+        ],
+        "positiveWords": [
+            "gain",
+            "want"
+        ],
+        "negativeWords": [
+            "hard"
+        ]
+    },
+    {
+        "screenName": "sulpuroxide",
+        "id": "1060363288477753344",
+        "time": "2018-11-08T02:48:03.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "I find it discordant that both sides have a preponderance to declare what is essentially a gentle shift as a historic victory. #ElectionResults2018 \n\nWe live in a world where we don't even know what change is anymore or what can give rise to change.",
+        "userMentions": [],
+        "hashtags": [
+            {
+                "hashtag": "ElectionResults2018",
+                "indices": [
+                    127,
+                    147
+                ]
+            }
+        ],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": 4,
+        "comparativeSentimentScore": 0.08695652173913043,
+        "sentimentWords": [
+            "rise",
+            "victory"
+        ],
+        "positiveWords": [
+            "rise",
+            "victory"
+        ],
+        "negativeWords": []
+    },
+    {
+        "screenName": "sulpuroxide",
+        "id": "1060359578414571520",
+        "time": "2018-11-08T02:33:18.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "The greatest spiritual challenge is to not succumb to closing yourself off... To both recognize your unique completeness and yet how you are incomplete and partial.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 0,
+        "sentimentScore": 1,
+        "comparativeSentimentScore": 0.038461538461538464,
+        "sentimentWords": [
+            "incomplete",
+            "challenge",
+            "greatest"
+        ],
+        "positiveWords": [
+            "greatest"
+        ],
+        "negativeWords": [
+            "incomplete",
+            "challenge"
+        ]
+    },
+    {
+        "screenName": "asquidislove",
+        "id": "1060343927239172097",
+        "time": "2018-11-08T01:31:07.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Borrowed light.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 0,
+        "retweetCount": 0,
+        "favoriteCount": 2,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "literalbanana",
+        "id": "1060305098117500928",
+        "time": "2018-11-07T22:56:49.000Z",
+        "isRetweet": false,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "oh come on",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/Drb12JFU0AAtXYW.jpg"
+        ],
+        "urls": [],
+        "replyCount": 2,
+        "retweetCount": 2,
+        "favoriteCount": 22,
+        "sentimentScore": 0,
+        "comparativeSentimentScore": 0,
+        "sentimentWords": [],
+        "positiveWords": [],
+        "negativeWords": []
+    },
+    {
+        "screenName": "BDSixsmith",
+        "id": "1060288559230472192",
+        "time": "2018-11-07T21:51:06.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "Watching a documentary on Jonestown and reflecting that as weird as the Current Year is I would still be surprised to hear a US politician had been assassinated by a crazed religious cult that had subsequently committed mass suicide via poisoned soft drinks.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [],
+        "urls": [],
+        "replyCount": 14,
+        "retweetCount": 17,
+        "favoriteCount": 108,
+        "sentimentScore": -5,
+        "comparativeSentimentScore": -0.11627906976744186,
+        "sentimentWords": [
+            "poisoned",
+            "suicide",
+            "committed",
+            "weird"
+        ],
+        "positiveWords": [
+            "committed"
+        ],
+        "negativeWords": [
+            "poisoned",
+            "suicide",
+            "weird"
+        ]
+    },
+    {
+        "screenName": "Beautyon_",
+        "id": "1059846692856565761",
+        "time": "2018-11-06T16:35:17.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": true,
+        "text": "Companies have been giving away shopping coupons for decades that are redeemable without requiring the identity of the person presenting the coupon. By this twisted logic, every coupon redeem should require government ID. It's clearly total made up nonsense.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/DrVU4YMWwAAR4-A.jpg"
+        ],
+        "urls": [],
+        "replyCount": 2,
+        "retweetCount": 28,
+        "favoriteCount": 99,
+        "sentimentScore": -1,
+        "comparativeSentimentScore": -0.02564102564102564,
+        "sentimentWords": [
+            "nonsense",
+            "clearly"
+        ],
+        "positiveWords": [
+            "clearly"
+        ],
+        "negativeWords": [
+            "nonsense"
+        ]
+    },
+    {
+        "screenName": "Beautyon_",
+        "id": "1059846159852888064",
+        "time": "2018-11-06T16:33:10.000Z",
+        "isRetweet": true,
+        "isPinned": false,
+        "isReplyTo": false,
+        "text": "This is simply not true. Anyone can buy a Monopoly set or use a database without having to identify themselves, and \"tokens\" are no exception. The word \"value\" here is meaningless. When companies give away free goods or services, they are \"valuable\" and don't require an identity.",
+        "userMentions": [],
+        "hashtags": [],
+        "images": [
+            "https://pbs.twimg.com/media/DrVUA1XWsAAefoM.jpg"
+        ],
+        "urls": [],
+        "replyCount": 11,
+        "retweetCount": 41,
+        "favoriteCount": 149,
+        "sentimentScore": -4,
+        "comparativeSentimentScore": -0.0851063829787234,
+        "sentimentWords": [
+            "free",
+            "meaningless",
+            "no",
+            "true"
+        ],
+        "positiveWords": [
+            "free"
+        ],
+        "negativeWords": [
+            "meaningless",
+            "no",
+            "true"
+        ]
+    }
+]
