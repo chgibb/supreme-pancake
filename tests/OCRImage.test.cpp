@@ -6,8 +6,8 @@
 #include "../src/include/loadJSON.hpp"
 #include "../src/include/searchScrapeTweet.hpp"
 #include "../src/include/bulkTweetStore.hpp"
+#include "../src/include/OCRImagesFromBin.hpp"
 #include "../src/include/downloadImagesFromBin.hpp"
-#include "../src/include/OCRImage.hpp"
 #include "../src/include/tweetBin.hpp"
 #include "../src/include/loadTweetBin.hpp"
 #include "../src/include/saveTweetBin.hpp"
@@ -22,7 +22,7 @@ std::string expectedOCRText = "Your account has been limited until we hear from 
 "account. We want to work with you to get your account back to normal as\n"
 "quickly as possible.\n\n";
 
-TEST_CASE("should OCR and update images","")
+TEST_CASE("should write test data","")
 {
     std::ifstream tweetStream("tests/res/bulkStore.json");
     auto json = PanCake::loadJSONFromStream(tweetStream);
@@ -33,14 +33,44 @@ TEST_CASE("should OCR and update images","")
     PanCake::BulkStoreStatus status = PanCake::bulkStoreTweets("tests/rt/OCRImage1",tweets);
 
     REQUIRE(status.success == true);
+}
 
+TEST_CASE("should not try to OCR image that has not been downloaded","")
+{
     PanCake::TweetBin*bin = PanCake::loadTweetBin("tests/rt/OCRImage1/2018/11/08/22/34/22/e.json");
 
-    PanCake::BulkImageDownloadStatus dlstatus = PanCake::downloadImagesFromBin("tests/rt/OCRImage1",*bin,&PanCake::OCRImage);
+    PanCake::BulkOCRStatus OCRStatus = PanCake::OCRImagesFromBin("tests/rt/OCRImage1",*bin);
 
-    REQUIRE(dlstatus.attempted == 1);
-    REQUIRE(dlstatus.succeeded == 1);
-    REQUIRE(dlstatus.failed == 0);
+    REQUIRE(OCRStatus.attempted == 0);
+    REQUIRE(OCRStatus.succeeded == 0);
+    REQUIRE(OCRStatus.failed == 0);
+
+    REQUIRE(bin->bucketd.at(0).images.at(0).url == "https://pbs.twimg.com/media/Drg2f0uWsAIDCGo.jpg");
+
+    REQUIRE(bin->bucketd.at(0).images.at(0).OCRText == "");
+
+    REQUIRE(PanCake::saveTweetBin(*bin,"tests/rt/OCRImage1/2018/11/08/22/34/22/e.json") == true);
+}
+
+TEST_CASE("should OCR and update images","")
+{
+    PanCake::TweetBin*bin = PanCake::loadTweetBin("tests/rt/OCRImage1/2018/11/08/22/34/22/e.json");
+
+    //should not have been modified because image has not been downloaded yet
+    REQUIRE(bin->bucketd.at(0).images.at(0).url == "https://pbs.twimg.com/media/Drg2f0uWsAIDCGo.jpg");
+    REQUIRE(bin->bucketd.at(0).images.at(0).OCRText == "");
+
+    PanCake::BulkImageDownloadStatus bindlStatus = PanCake::downloadImagesFromBin("tests/rt/OCRImage1",*bin);
+            
+    REQUIRE(bindlStatus.succeeded == 1);
+    REQUIRE(bindlStatus.failed == 0);
+    REQUIRE(bindlStatus.attempted == 1);
+
+    PanCake::BulkOCRStatus OCRStatus = PanCake::OCRImagesFromBin("tests/rt/OCRImage1",*bin);
+
+    REQUIRE(OCRStatus.attempted == 1);
+    REQUIRE(OCRStatus.succeeded == 1);
+    REQUIRE(OCRStatus.failed == 0);
 
     REQUIRE(bin->bucketd.at(0).images.at(0).url == "https://pbs.twimg.com/media/Drg2f0uWsAIDCGo.jpg");
 

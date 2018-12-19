@@ -10,7 +10,7 @@ namespace
     tesseract::TessBaseAPI*api = nullptr;
 }
 
-void PanCake::OCRImage(std::vector<PanCake::Tweet>&bucket,const PanCake::Tweet&tweet,const int index,const std::string&imgPath)
+std::string PanCake::OCRImage(const std::string&imgPath)
 {
     if(!api)
     {
@@ -21,15 +21,8 @@ void PanCake::OCRImage(std::vector<PanCake::Tweet>&bucket,const PanCake::Tweet&t
     ::Pix*image = ::pixRead(imgPath.c_str());
     api->SetImage(image);
 
-    auto end = bucket.end();
-    for(auto it = bucket.begin(); it != end; ++it)
-    {
-        if(it->id == tweet.id)
-        {
-            it->images.at(index).OCRText = api->GetUTF8Text();
-            break;
-        }
-    }
 
     ::pixDestroy(&image);
+
+    return api->GetUTF8Text();
 }

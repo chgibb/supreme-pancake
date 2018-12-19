@@ -1,18 +1,18 @@
 #include <algorithm>
 #include <vector>
-#include <iostream>
 #include <experimental/filesystem>
 
-#include "downloadImagesFromBin.hpp"
-#include "downloadImage.hpp"
+#include "OCRImagesFromBin.hpp"
+#include "bulkOCRStatus.hpp"
+#include "OCRImage.hpp"
 #include "directoryExists.hpp"
 #include "fileExists.hpp"
 #include "makeTweetTimePointPaths.hpp"
 #include "tweet.hpp"
 
-[[nodiscard]] PanCake::BulkImageDownloadStatus PanCake::downloadImagesFromBin(const char*dataDir,PanCake::TweetBin&bin)
+[[nodiscard]] PanCake::BulkOCRStatus PanCake::OCRImagesFromBin(const char*dataDir,PanCake::TweetBin&bin)
 {
-    PanCake::BulkImageDownloadStatus res;
+    PanCake::BulkOCRStatus res;
 
     PanCake::forEachBucket(
         bin,
@@ -24,30 +24,43 @@
                 [&dataDir,&res,&bucket]
                 (PanCake::Tweet&tweet) -> void {
                     std::string folderPath = PanCake::makeTweetImagePath(dataDir,tweet);
-
+                    
                     if(!PanCake::directoryExists(folderPath.c_str()))
-                        std::experimental::filesystem::create_directories(folderPath);
+                        return;
 
                     std::vector<std::string> imgPaths = PanCake::makeTweetImageFilePaths(dataDir,tweet);
 
                     for(std::size_t i = 0; i != imgPaths.size(); ++i)
                     {
-                        if(PanCake::fileExists(imgPaths.at(i).c_str()))
+                        if(!PanCake::fileExists(imgPaths.at(i).c_str()))
                             continue;
-                    
-                        bool downloadResult = PanCake::downloadImage(tweet.images.at(i).url,imgPaths.at(i));
-
+                        
                         res.attempted++;
 
-                        if(downloadResult)
+                        std::string OCRResult = PanCake::OCRImage(imgPaths.at(i));
+
+                        if(OCRResult != "")
                         {
                             res.succeeded++;
+
+                            auto end = bucket.end();
+                            for(auto it = bucket.begin(); it != end; ++it)
+                            {
+                                if(it->id == tweet.id)
+                                {
+                                    it->images.at(i).OCRText = OCRResult;
+                                    break;
+                                }
+                            }
                         }
-                        
+
                         else
                             res.failed++;
                     }
-                });
-            });
-        return res;
+                }
+            );
+        }
+    );
+
+    return res;
 }
