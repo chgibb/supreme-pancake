@@ -100,10 +100,25 @@ rule link
     command = g++ ${objFiles} ${ldFlags} -o $out $in
     description = Linking $out
 
+rule buildLuaJit
+    command = cd src/vendor/luajit-2.0; make;
+    description = Building LuaJit
+
+rule copyLuaJit
+    command = cp src/vendor/luajit-2.0/src/luajit out/luajit
+    description = Copying LuaJit binary
+
+rule copyLuaJitDeps
+    command = cp -R src/vendor/luajit-2.0/src/jit out/jit
+    description = Copying LuatJit deps
 
 ${testLinkRules}
 
 build src/vendor/Catch2/single_include/catch2/catch.hpp.gch : pch src/vendor/Catch2/single_include/catch2/catch.hpp
+
+build src/vendor/luajit-2.0/src/luajit : buildLuaJit
+build out/luajit : copyLuaJit
+build out/jit : copyLuaJitDeps
 
 ${objFileBuildSteps}
 
