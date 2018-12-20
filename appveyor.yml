@@ -3,6 +3,8 @@ image: ubuntu
 install:
 - sudo apt-get update
 - sudo -E apt-get -yq --no-install-suggests --no-install-recommends install nodejs g++-7 ninja-build graphviz tesseract-ocr libtesseract-dev libleptonica-dev
+- g++ -v
+- node -v
 - npm install
 
 test_script:
