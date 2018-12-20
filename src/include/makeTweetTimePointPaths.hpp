@@ -12,4 +12,5 @@ namespace PanCake
     [[nodiscard]] std::string makeTweetImagePath(const char*,PanCake::Tweet&);
     [[nodiscard]] std::string makeTweetImageFilePath(const char*,PanCake::Tweet&,int);
     [[nodiscard]] std::vector<std::string> makeTweetImageFilePaths(const char*,PanCake::Tweet&);
+    [[nodiscard]] std::vector<std::string> makeTweetBinPathsFromTimePointString(const char*,const char*);
 }

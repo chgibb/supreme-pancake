@@ -1,6 +1,6 @@
 #include "enumerateTimePoints.hpp"
 
-[[nodiscard]] std::vector<std::string> PanCake::enumerateTimePointPathString(PanCake::TweetDate date)
+[[nodiscard]] std::vector<std::string> PanCake::enumerateTimePointPathStringForDay(PanCake::TweetDate date)
 {
     std::vector<std::string> res;
     

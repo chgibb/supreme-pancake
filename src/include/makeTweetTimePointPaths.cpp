@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "makeTweetTimePointPaths.hpp"
+#include "tweetDate.hpp"
 
 [[nodiscard]] std::string PanCake::makeTweetTimePointPath(const char*path,PanCake::Tweet&tweet)
 {
@@ -35,6 +36,30 @@
             i++;
         }
     );
+
+    return res;
+}
+
+[[nodiscard]] std::vector<std::string> PanCake::makeTweetBinPathsFromTimePointString(const char*dataDir,const char*timePointStr)
+{
+    std::vector<std::string> res;
+
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/0.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/1.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/2.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/3.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/4.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/5.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/6.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/7.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/8.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/9.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/a.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/b.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/c.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/d.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/e.json");
+    res.push_back(std::string(dataDir) + "/" + std::string(timePointStr) + "/f.json");
 
     return res;
 }
