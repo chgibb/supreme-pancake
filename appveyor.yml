@@ -2,7 +2,7 @@ image: ubuntu
 
 install:
 - sudo apt-get update
-- sudo -E apt-get -yq --no-install-suggests --no-install-recommends nodejs install g++-7 ninja-build graphviz tesseract-ocr libtesseract-dev libleptonica-dev
+- sudo -E apt-get -yq --no-install-suggests --no-install-recommends install nodejs g++-7 ninja-build graphviz tesseract-ocr libtesseract-dev libleptonica-dev
 - npm install
 
 test_script:
