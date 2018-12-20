@@ -39,3 +39,15 @@ it(`should save tweets and download images from changed bins`,async () => {
     expect(dlStatus.succeeded).toBe(47);
     expect(dlStatus.failed).toBe(3);
 });
+
+it(`should save tweets and download images from changed bins`,async () => {
+    let tweets = fs.readFileSync("tests/res/bulkStore.json").toString();
+
+    let tweetStatus = await bulkStoreTweets("tests/rt/downloadImages877",tweets,"out/");
+
+    let dlStatus = await downloadImagesFromBinsMulti("tests/rt/downloadImages877",tweetStatus.binsWithNewTweets,40,"out/");
+
+    expect(dlStatus.attempted).toBe(732);
+    expect(dlStatus.succeeded).toBe(691);
+    expect(dlStatus.failed).toBe(41);
+});
