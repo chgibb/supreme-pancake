@@ -34,10 +34,10 @@
                     {
                         if(PanCake::fileExists(imgPaths.at(i).c_str()))
                             continue;
-                    
-                        bool downloadResult = PanCake::downloadImage(tweet.images.at(i).url,imgPaths.at(i));
-
+                        
                         res.attempted++;
+
+                        bool downloadResult = PanCake::downloadImage(tweet.images.at(i).url,imgPaths.at(i));
 
                         if(downloadResult)
                         {
