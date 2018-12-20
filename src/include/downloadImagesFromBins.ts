@@ -29,7 +29,16 @@ export function downloadImagesFromBins(dataDir : string,binList : Array<string>,
                 else
                 {
                     setTimeout(function(){
-                        return resolve(JSON.parse(stdoutBuffer));
+                        if(!stdoutBuffer)
+                        {
+                            setTimeout(function(){
+                                return resolve(JSON.parse(stdoutBuffer));
+                            },2000);
+                        }
+                        else
+                        {
+                            return resolve(JSON.parse(stdoutBuffer));
+                        }
                     },10);
                 }
             });
