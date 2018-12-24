@@ -1,14 +1,14 @@
 image: ubuntu
 
+environment:
+ nodejs_version: 10.3.0
+
 install:
 - sudo apt-get remove node
-- sudo apt-get --purge remove node
-- sudo apt-get --purge remove nodejs-legacy
-- sudo apt-get --purge remove nodejs
-- curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+
 - sudo apt-get update
-- sudo -E apt-get -yq --no-install-suggests --no-install-recommends install nodejs g++-7 ninja-build graphviz tesseract-ocr libtesseract-dev libleptonica-dev
-- sudo update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
+- sudo -E apt-get -yq --no-install-suggests --no-install-recommends install g++-7 ninja-build graphviz tesseract-ocr libtesseract-dev libleptonica-dev
+
 - sudo ln -s /usr/bin/gcc-7 /usr/local/bin/gcc
 - sudo ln -s /usr/bin/g++-7 /usr/local/bin/g++
 - g++ -v
