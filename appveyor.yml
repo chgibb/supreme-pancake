@@ -1,11 +1,7 @@
 image: ubuntu
 
-environment:
- nodejs_version: 10.3.0
-
 install:
-- sudo apt-get remove node
-
+- which node
 - sudo apt-get update
 - sudo -E apt-get -yq --no-install-suggests --no-install-recommends install g++-7 ninja-build graphviz tesseract-ocr libtesseract-dev libleptonica-dev
 
