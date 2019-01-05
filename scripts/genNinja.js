@@ -103,6 +103,10 @@ rule link
     command = g++ ${objFiles} ${ldFlags} -o $out $in
     description = Linking $out
 
+rule copyLuac
+    command = cp src/vendor/lua-5.3.5/src/luac out/luac
+    description = Copying Luac
+
 rule getLua
     command = bash scripts/getLua.bash
     description = Downloading Lua
@@ -115,12 +119,9 @@ ${testLinkRules}
 
 build src/vendor/Catch2/single_include/catch2/catch.hpp.gch : pch src/vendor/Catch2/single_include/catch2/catch.hpp
 
-build src/vendor/luajit-2.0/src/luajit : buildLuaJit
-build out/luajit : copyLuaJit
-build out/jit : copyLuaJitDeps
-
 build src/vendor/lua-5.3.5 : getLua
 build src/vendor/lua-5.3.5/src/liblua.a : buildLua
+build out/luac : copyLuac
 
 ${objFileBuildSteps}
 
