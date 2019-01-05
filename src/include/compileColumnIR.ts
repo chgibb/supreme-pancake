@@ -8,16 +8,12 @@ export function compileColumnIR(file : string,outFile : string,exeSearchPath = "
             let stdoutBuffer : string = "";
             let stdcerrBuffer : string = "";
 
-            let compileColumnIRJob = cp.spawn(`${exeSearchPath}luajit`,[
-                `-b`,
-                `${file}`,
-                `${outFile}`
-            ],
-            <cp.SpawnOptions>{
-                env : {
-                    LUA_PATH : `${exeSearchPath}/jit/bcsave.lua`
-                }
-            });
+            let compileColumnIRJob = cp.spawn(`${exeSearchPath}luac`,[
+                `-s`,
+                `-o`,
+                `${outFile}`,
+                `${file}`
+            ]);
 
             compileColumnIRJob.stdout.on("data",(data : string) : void => {
                 stdoutBuffer += data;
@@ -30,7 +26,7 @@ export function compileColumnIR(file : string,outFile : string,exeSearchPath = "
             compileColumnIRJob.on("exit",(code : number,signal : string) : void => {
                 if(code != 0)
                 {
-                    reject(`${exeSearchPath}luajit exited with ${signal}${"\n"}${stdcerrBuffer}`);
+                    reject(`${exeSearchPath}luac exited with ${signal}${"\n"}${stdcerrBuffer}`);
                 }
 
                 else
