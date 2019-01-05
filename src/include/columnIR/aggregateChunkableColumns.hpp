@@ -40,6 +40,13 @@ namespace PanCake
                     static_cast<T*>(_this)->endIR();
                     Helper<R...>::endIR(_this);
                 }
+
+                template<class C>
+                static void writeTotalChunksFunction(AggregateChunkableColumns*_this,const C&c)
+                {
+                    static_cast<T*>(_this)->writeTotalChunksFunction(c);
+                    Helper<R...>::writeTotalChunksFunction(_this,c);
+                }
             };
 
             template<class T>
@@ -70,6 +77,12 @@ namespace PanCake
                 static void endIR(AggregateChunkableColumns*_this)
                 {
                     static_cast<T*>(_this)->endIR();
+                }
+
+                template<class C>
+                static void writeTotalChunksFunction(AggregateChunkableColumns*_this,const C&c)
+                {
+                    static_cast<T*>(_this)->writeTotalChunksFunction(c);
                 }
             };
     
@@ -104,6 +117,12 @@ namespace PanCake
             void endIR()
             {
                 Helper<Chunkables...>::endIR(this);
+            }
+
+            template<class C>
+            void writeTotalChunksFunction(const C&c)
+            {
+                Helper<Chunkables...>::writeTotalChunksFunction(this,c);
             }
     };
 }

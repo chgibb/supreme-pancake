@@ -25,7 +25,7 @@ namespace PanCake
                 *this->stream<<"        "<<this->containerName<<":add([["<<val<<"]])\n";
             }
 
-            void writeFunctionSignature(std::string&functionSuffix)
+            void writeFunctionSignature(const char*functionSuffix)
             {
                 *this->stream<<"function "<<this->functionName<<functionSuffix<<"("<<this->containerName<<","<<this->chunkIndexName<<")\n";
             }
@@ -42,14 +42,22 @@ namespace PanCake
 
             void endIR()
             {
+                *this->stream<<"end\n";
+            }
+
+            void _writeTotalChunksFunction(int totalChunks,const char*functionSuffix)
+            {
+                *this->stream<<"function "<<this->totalChunksFunctionName<<functionSuffix<<"()\n";
+                *this->stream<<"    return "<<totalChunks<<"\n";
                 *this->stream<<"end";
             }
 
             std::ofstream*stream;
             int itemsInChunk = 0;
 
-            std::string containerName = "cont";
-            std::string chunkIndexName = "n";
-            std::string functionName = "chunk";
+            static constexpr const char*containerName = "cont";
+            static constexpr const char*chunkIndexName = "n";
+            static constexpr const char*functionName = "chunk";
+            static constexpr const char*totalChunksFunctionName = "totalChunksIn";
     };
 }

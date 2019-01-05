@@ -40,6 +40,8 @@ namespace PanCake
 
                 col.endChunk();
                 col.endIR();
+
+                col.writeTotalChunksFunction(currentChunk+1);
             }
 
         private:
