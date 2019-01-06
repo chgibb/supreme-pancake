@@ -1,17 +1,25 @@
 #pragma once
 
 #include "../enumerateRawTweetsInDay.hpp"
+#include "../tweetDate.hpp"
 
 namespace PanCake
 {
+    bool generateChunkedIR(const char*,PanCake::TweetDate&,int,const char*);
     class IRGenerator
     {
         public:
             IRGenerator(const char*_dataDir,PanCake::TweetDate _date,int _chunkSize) : dataDir(_dataDir),date(_date),chunkSize(_chunkSize) {}
     
             template<class T>
-            void generateChunkedIR(T&col)
+            bool generateChunkedIR(T&col)
             {
+                bool badStream = false;
+
+                col.badStream(badStream);
+                if(badStream)
+                    return false;
+
                 col.beginIR();
 
                 int currentChunk = 0;
@@ -42,6 +50,7 @@ namespace PanCake
                 col.endIR();
 
                 col.writeTotalChunksFunction(currentChunk+1);
+                return true;
             }
 
         private:

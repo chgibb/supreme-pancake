@@ -47,6 +47,13 @@ namespace PanCake
                     static_cast<T*>(_this)->writeTotalChunksFunction(c);
                     Helper<R...>::writeTotalChunksFunction(_this,c);
                 }
+
+                template<class C>
+                static void badStream(AggregateChunkableColumns*_this,C&c)
+                {
+                    static_cast<T*>(_this)->badStream(c);
+                    Helper<R...>::badStream(_this,c);
+                }
             };
 
             template<class T>
@@ -83,6 +90,12 @@ namespace PanCake
                 static void writeTotalChunksFunction(AggregateChunkableColumns*_this,const C&c)
                 {
                     static_cast<T*>(_this)->writeTotalChunksFunction(c);
+                }
+
+                template<class C>
+                static void badStream(AggregateChunkableColumns*_this,C&c)
+                {
+                    static_cast<T*>(_this)->badStream(c);
                 }
             };
     
@@ -123,6 +136,12 @@ namespace PanCake
             void writeTotalChunksFunction(const C&c)
             {
                 Helper<Chunkables...>::writeTotalChunksFunction(this,c);
+            }
+
+            template<class C>
+            void badStream(C&c)
+            {
+                Helper<Chunkables...>::badStream(this,c);
             }
     };
 }

@@ -52,6 +52,14 @@ namespace PanCake
                 *this->stream<<"end";
             }
 
+            void badStream(bool&badStream)
+            {
+                if(!this->stream->good())
+                    badStream = true;
+                else if(this->stream->bad())
+                    badStream = true;
+            }
+
             std::ofstream*stream;
             int itemsInChunk = 0;
 

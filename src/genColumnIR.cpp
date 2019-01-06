@@ -4,11 +4,6 @@
 
 #include "vendor/cxxopts/include/cxxopts.hpp"
 
-#include "include/enumerateRawTweetsInDay.hpp"
-#include "include/columnIR/aggregateChunkableColumns.hpp"
-#include "include/columnIR/chunkableColumn.hpp"
-#include "include/columnIR/chunkableSentimentScore.hpp"
-#include "include/columnIR/chunkableText.hpp"
 #include "include/columnIR/IRGenerator.hpp"
 
 int main(int argc,char*argv[])
@@ -37,14 +32,8 @@ int main(int argc,char*argv[])
     date.month = month;
     date.day = day;
 
-    auto sentimentScore = PanCake::ChunkableSentimentScore::makeOutPutPath(outDir,date);
-    auto text = PanCake::ChunkableText::makeOutPutPath(outDir,date);
-
-    PanCake::AggregateChunkableColumns<PanCake::ChunkableSentimentScore,PanCake::ChunkableText> cols(sentimentScore,text);
-
-    PanCake::IRGenerator gen(storageDir.c_str(),date,chunkSize);
-    
-    gen.generateChunkedIR(cols);
+    if(!PanCake::generateChunkedIR(storageDir.c_str(),date,chunkSize,outDir.c_str()))
+        return 1;
 
     return 0;
 }

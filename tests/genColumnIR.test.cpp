@@ -10,9 +10,6 @@
 #include "../src/include/searchScrapeTweet.hpp"
 #include "../src/include/bulkTweetStore.hpp"
 #include "../src/include/tweetDate.hpp"
-#include "../src/include/columnIR/chunkableSentimentScore.hpp"
-#include "../src/include/columnIR/chunkableText.hpp"
-#include "../src/include/columnIR/aggregateChunkableColumns.hpp"
 #include "../src/include/columnIR/IRGenerator.hpp"
 
 TEST_CASE("should write test data","")
@@ -35,15 +32,11 @@ TEST_CASE("should write column IR","")
     date.month = "11";
     date.day = "06";
 
-    auto sentimentScore = PanCake::ChunkableSentimentScore::makeOutPutPath("tests/rt/columnIR1",date);
-    auto text = PanCake::ChunkableText::makeOutPutPath("tests/rt/columnIR1",date);
-
-    PanCake::AggregateChunkableColumns<PanCake::ChunkableSentimentScore,PanCake::ChunkableText> cols(sentimentScore,text);
-
-    PanCake::IRGenerator gen("tests/rt/columnIR1",date,10);
-    
-    gen.generateChunkedIR(cols);
+    REQUIRE(PanCake::generateChunkedIR("tests/rt/columnIR1",date,10,"tests/rt/columnIR1") == true);
 
     REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06-sentimentScore.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06-text.lua"));
+
+
+    REQUIRE(PanCake::generateChunkedIR("tests/rt/columnIR1",date,10,"tests/rt/pathThatDoesntExist") == false);
 }
