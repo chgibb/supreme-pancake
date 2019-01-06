@@ -2,11 +2,14 @@ const fs = require("fs");
 const path = require("path");
 
 const glob = require("glob");
+const arg = require("minimist")(process.argv.slice(2));
 
-let ccFlags = `-pedantic -Wall -Wextra -Wcast-align -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls -Wsign-promo -Wstrict-null-sentinel -Wswitch-default -Werror -Wno-unused -std=c++17`;
-let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/PicoSHA2`;
-let ldFlags = `-lstdc++fs -lcurl -llept -ltesseract`;
-let optFlags = `-g -O1`;
+let noTests = arg.noTests;
+
+let ccFlags = `-pedantic -Wall -Wextra -Wcast-align -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls -Wsign-promo -Wstrict-null-sentinel -Werror -Wno-unused -std=c++17`;
+let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/PicoSHA2  -I src/vendor/lua-5.3.5/src -I src/vendor/sol2`;
+let ldFlags = `-L src/vendor/lua-5.3.5/src -llua -lstdc++fs -lcurl -llept -ltesseract -lm -ldl`;
+let optFlags = `-g -O1 -flto`;
 let objFiles = "";
 let objFileBuildSteps = "";
 let testBuildSteps = "";
@@ -31,7 +34,7 @@ function trimExtension(file)
 
  (async function(){
     await new Promise((resolve,reject) => {
-        glob("src/include/*.cpp",{},function(err,matches){
+        glob("src/include/**/*.cpp",{},function(err,matches){
             if(err)
                 reject(err);
             for(let i = 0; i != matches.length; ++i)
@@ -100,29 +103,29 @@ rule link
     command = g++ ${objFiles} ${ldFlags} -o $out $in
     description = Linking $out
 
-rule buildLuaJit
-    command = cd src/vendor/luajit-2.0; make;
-    description = Building LuaJit
+rule copyLuac
+    command = cp src/vendor/lua-5.3.5/src/luac out/luac
+    description = Copying Luac
 
-rule copyLuaJit
-    command = cp src/vendor/luajit-2.0/src/luajit out/luajit
-    description = Copying LuaJit binary
+rule getLua
+    command = bash scripts/getLua.bash
+    description = Downloading Lua
 
-rule copyLuaJitDeps
-    command = cp -R src/vendor/luajit-2.0/src/jit out/jit
-    description = Copying LuatJit deps
+rule buildLua
+    command = cd src/vendor/lua-5.3.5; make linux;
+    description = Building Lua
 
 ${testLinkRules}
 
 build src/vendor/Catch2/single_include/catch2/catch.hpp.gch : pch src/vendor/Catch2/single_include/catch2/catch.hpp
 
-build src/vendor/luajit-2.0/src/luajit : buildLuaJit
-build out/luajit : copyLuaJit
-build out/jit : copyLuaJitDeps
+build src/vendor/lua-5.3.5 : getLua
+build src/vendor/lua-5.3.5/src/liblua.a : buildLua
+build out/luac : copyLuac
 
 ${objFileBuildSteps}
 
-${testBuildSteps}
+${noTests ? "" : testBuildSteps}
 
 ${executableBuildSteps}
 `;

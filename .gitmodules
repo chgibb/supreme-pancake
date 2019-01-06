@@ -20,6 +20,7 @@
 [submodule "src/vendor/curlpp"]
 	path = src/vendor/curlpp
 	url = https://github.com/jpbarrette/curlpp
-[submodule "src/vendor/luajit-2.0"]
-	path = src/vendor/luajit-2.0
-	url = http://luajit.org/git/luajit-2.0.git
+
+[submodule "src/vendor/sol2"]
+	path = src/vendor/sol2
+	url = https://github.com/ThePhD/sol2

@@ -1,6 +1,7 @@
 /// <reference types="jest" />
 
 import * as fs from "fs";
+
 import {bulkStoreTweets} from "../src/include/bulkStoreTweets";
 import {downloadImagesFromBins} from "../src/include/downloadImagesFromBins";
 import {downloadImagesFromBinsMulti} from "../src/include/downloadImagesFromBinsMulti";
