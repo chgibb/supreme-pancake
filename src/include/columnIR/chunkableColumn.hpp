@@ -14,20 +14,20 @@ namespace PanCake
             }
 
             template<class T>
-            void addValueToChunk(T&val)
+            void addValueToChunk(const char*contName,T&val)
             {
-                *this->stream<<"        "<<this->containerName<<":add("<<val<<")\n";
+                *this->stream<<"        "<<contName<<":add("<<val<<")\n";
             }
 
             template<class T>
-            void addQuotedValueToChunk(T&val)
+            void addQuotedValueToChunk(const char*contName,T&val)
             {
-                *this->stream<<"        "<<this->containerName<<":add([["<<val<<"]])\n";
+                *this->stream<<"        "<<contName<<":add([["<<val<<"]])\n";
             }
 
             void writeFunctionSignature(const char*functionSuffix)
             {
-                *this->stream<<"function "<<this->functionName<<functionSuffix<<"("<<this->containerName<<","<<this->chunkIndexName<<")\n";
+                *this->stream<<"function "<<this->functionName<<functionSuffix<<"("<<this->chunkIndexName<<")\n";
             }
 
             void beginChunk(int n)
@@ -63,7 +63,6 @@ namespace PanCake
             std::ofstream*stream;
             int itemsInChunk = 0;
 
-            static constexpr const char*containerName = "cont";
             static constexpr const char*chunkIndexName = "n";
             static constexpr const char*functionName = "chunk";
             static constexpr const char*totalChunksFunctionName = "totalChunksIn";

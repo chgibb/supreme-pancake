@@ -13,10 +13,11 @@ namespace PanCake
             using PanCake::ChunkableColumn::ChunkableColumn;
 
             static constexpr const char*functionSuffix = "Text";
+            static constexpr const char*contName = "textCol";
 
             void addItem(const PanCake::Tweet&tweet)
             {
-                this->addQuotedValueToChunk(tweet.text);
+                this->addQuotedValueToChunk(this->contName,tweet.text);
             }
 
             void beginIR()
