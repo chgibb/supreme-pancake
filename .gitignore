@@ -47,3 +47,5 @@ src/include/*.js
 .vscode
 tests/rt/**/
 out/*
+
+src/vendor/lua-5.3.5
