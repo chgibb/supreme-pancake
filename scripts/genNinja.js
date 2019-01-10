@@ -6,6 +6,20 @@ const arg = require("minimist")(process.argv.slice(2));
 
 let noTests = arg.noTests;
 
+let only = [];
+let onlyCertainTargets = false;
+
+if(arg.only)
+{
+    if(Array.isArray(arg.only))
+    {
+        only = arg.only
+    }
+    else
+        only = [arg.only];
+    onlyCertainTargets = true;
+}
+
 let ccFlags = `-pedantic -Wall -Wextra -Wcast-align -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls -Wsign-promo -Wstrict-null-sentinel -Werror -Wno-unused -std=c++17`;
 let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/PicoSHA2  -I src/vendor/lua-5.3.5/src -I src/vendor/sol2`;
 let ldFlags = `-L src/vendor/lua-5.3.5/src -llua -lstdc++fs -lcurl -llept -ltesseract -lm -ldl`;
@@ -16,6 +30,19 @@ let testBuildSteps = "";
 let executableBuildSteps ="";
 
 let testLinkRules = ``;
+
+function onlyThisTarget(target)
+{
+    for(let i = 0; i != only.length; ++i)
+    {
+        if(only[i] == target)
+        {
+            console.log(`found ${target}`);
+            return true;
+        }
+    }
+    return false;
+}
 
 function makeObjectFilePath(file)
 {
@@ -53,6 +80,9 @@ function trimExtension(file)
                 reject(err);
             for(let i = 0; i != matches.length; ++i)
             {       
+                if(onlyCertainTargets && !onlyThisTarget(matches[i]))
+                    continue;
+
                 testBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]}${"\n"}`;
 
                 if(/\.test/.test(matches[i]))
@@ -71,8 +101,12 @@ function trimExtension(file)
         glob("src/*.cpp",{},function(err,matches){
             if(err)
                 reject(err);
+
             for(let i = 0; i != matches.length; ++i)
             {
+                if(onlyCertainTargets && !onlyThisTarget(matches[i]))
+                    continue;
+
                 executableBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]}${"\n"}`;
                 executableBuildSteps += `build ${makeExecutableFilePath(matches[i])} : link ${makeObjectFilePath(matches[i])} | ${objFiles}${"\n"}`;
                 executableBuildSteps += `  description = Linking $out${"\n"}`;
