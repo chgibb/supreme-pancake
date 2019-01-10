@@ -9,7 +9,7 @@ let noTests = arg.noTests;
 let ccFlags = `-pedantic -Wall -Wextra -Wcast-align -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls -Wsign-promo -Wstrict-null-sentinel -Werror -Wno-unused -std=c++17`;
 let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/PicoSHA2  -I src/vendor/lua-5.3.5/src -I src/vendor/sol2`;
 let ldFlags = `-L src/vendor/lua-5.3.5/src -llua -lstdc++fs -lcurl -llept -ltesseract -lm -ldl`;
-let optFlags = `-g -O1 -flto`;
+let optFlags = `-g -O1`;
 let objFiles = "";
 let objFileBuildSteps = "";
 let testBuildSteps = "";
@@ -120,8 +120,8 @@ ${testLinkRules}
 build src/vendor/Catch2/single_include/catch2/catch.hpp.gch : pch src/vendor/Catch2/single_include/catch2/catch.hpp
 
 build src/vendor/lua-5.3.5 : getLua
-build src/vendor/lua-5.3.5/src/liblua.a : buildLua
-build out/luac : copyLuac
+build src/vendor/lua-5.3.5/src/liblua.a : buildLua | src/vendor/lua-5.3.5 
+build out/luac : copyLuac | src/vendor/lua-5.3.5 src/vendor/lua-5.3.5/src/liblua.a
 
 ${objFileBuildSteps}
 
