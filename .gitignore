@@ -43,6 +43,7 @@ graph.png
 *.cbp
 *.layout
 tests/*.js
+tests/stress/*.js
 src/include/*.js
 .vscode
 tests/rt/**/

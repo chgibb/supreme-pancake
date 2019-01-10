@@ -25,7 +25,7 @@ int main(int argc,char*argv[])
     }
 
     std::string raw;
-    
+
     std::getline(std::cin,raw);
     
     auto json = PanCake::loadJSONFromString(raw);    
