@@ -45,7 +45,7 @@ graph.png
 tests/*.js
 tests/stress/*.js
 src/include/*.js
-.vscode
+
 tests/rt/**/
 out/*
 
