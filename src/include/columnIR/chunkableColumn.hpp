@@ -3,6 +3,8 @@
 #include <fstream>
 #include <string>
 
+#include "../findAndReplace.hpp"
+
 namespace PanCake
 {
     class ChunkableColumn
@@ -22,7 +24,13 @@ namespace PanCake
             template<class T>
             void addQuotedValueToChunk(const char*contName,T&val)
             {
-                *this->stream<<"        "<<contName<<":add([["<<val<<"]])\n";
+                std::string lB = "[";
+                std::string rB = "]";
+                std::string eLB = "=[";
+                std::string eRB = "]=";
+                std::string escaped = PanCake::findAndReplace(val,lB,eLB);
+                escaped = PanCake::findAndReplace(escaped,rB,eRB);
+                *this->stream<<"        "<<contName<<":add([["<<escaped<<"]])\n";
             }
 
             void writeFunctionSignature(const char*functionSuffix)
