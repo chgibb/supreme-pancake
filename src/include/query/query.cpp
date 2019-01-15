@@ -36,8 +36,7 @@ namespace
         PanCake::Query q(
             PanCake::ChunkableSentimentScore::makeOutPutPath(dataDir,date),
             PanCake::ChunkableText::makeOutPutPath(dataDir,date),
-            PanCake::ChunkRange(0,totalChunks),
-            totalChunks
+            PanCake::ChunkRange(0,totalChunks)
         );
 
         return q.runQueryFromFile(fileName);

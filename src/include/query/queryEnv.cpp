@@ -63,7 +63,7 @@ namespace
         int itCount = callQueryFunction(lua);
         count += itCount;
 
-        if(i + 1 != q.totalChunks)
+        if(i + 1 != q.range.end)
         {
             for(auto it = nextChunks.begin(); it != nextChunksEnd; ++it)
             {

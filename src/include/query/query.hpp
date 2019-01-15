@@ -34,12 +34,10 @@ namespace PanCake
             Query(
                 std::string _sentimentScoreColPath,
                 std::string _textColPath,
-                PanCake::ChunkRange _range,
-                int _totalChunks
+                PanCake::ChunkRange _range
             ) : sentimentScoreColPath(_sentimentScoreColPath),
                 textColPath(_textColPath),
-                range(_range),
-                totalChunks(_totalChunks) {}
+                range(_range) {}
 
             friend std::string runQueryFromFile(const char*,PanCake::TweetDate&,PanCake::QueryExecutionPolicy,std::string);
             friend std::string runQueryFromString(const char*,PanCake::TweetDate&,PanCake::QueryExecutionPolicy,std::string);
@@ -58,7 +56,6 @@ namespace PanCake
             PanCake::ChunkRange range;
             
             int currentChunk = 0;
-            int totalChunks = 0;
 
             std::vector<decltype(PanCake::Tweet::sentimentScore)> sentimentScoreCol;
             std::vector<decltype(PanCake::Tweet::text)> textCol;
