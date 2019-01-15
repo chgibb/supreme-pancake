@@ -5,8 +5,8 @@
 
 bool PanCake::generateChunkedIR(const char*dataDir,PanCake::TweetDate&date,int chunkSize,const char*outDir)
 {
-    auto sentimentScore = PanCake::ChunkableSentimentScore::makeOutPutPath(outDir,date);
-    auto text = PanCake::ChunkableText::makeOutPutPath(outDir,date);
+    auto sentimentScore = PanCake::ChunkableSentimentScore::makeOutPutStream(outDir,date);
+    auto text = PanCake::ChunkableText::makeOutPutStream(outDir,date);
 
     PanCake::AggregateChunkableColumns<PanCake::ChunkableSentimentScore,PanCake::ChunkableText> cols(sentimentScore,text);
 

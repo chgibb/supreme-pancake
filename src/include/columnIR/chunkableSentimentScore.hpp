@@ -12,7 +12,7 @@ namespace PanCake
         public:
             using PanCake::ChunkableColumn::ChunkableColumn;
 
-            static constexpr const char* functionSuffix = "SentimentScore";
+            static constexpr const char*functionSuffix = "SentimentScore";
             static constexpr const char*contName = "sentimentScoreCol";
 
             void addItem(const PanCake::Tweet&tweet)
@@ -25,14 +25,14 @@ namespace PanCake
                 this->writeFunctionSignature(this->functionSuffix);
             }
 
-            void writeTotalChunksFunction(const int&totalChunks)
+            static std::ofstream makeOutPutStream(std::string prefix,PanCake::TweetDate&date)
             {
-                this->_writeTotalChunksFunction(totalChunks,this->functionSuffix);
+                return std::ofstream(PanCake::ChunkableSentimentScore::makeOutPutPath(prefix,date),std::ios::out);
             }
 
-            static std::ofstream makeOutPutPath(std::string prefix,PanCake::TweetDate&date)
+            static std::string makeOutPutPath(std::string prefix,PanCake::TweetDate&date)
             {
-                return PanCake::makeColumnIROutPutPath(prefix,date,"sentimentScore");
+                return PanCake::makeColumnIROutputPath(prefix,date,"sentimentScore");
             }
     };
 }

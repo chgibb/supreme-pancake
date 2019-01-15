@@ -2,6 +2,7 @@
 
 #include "../enumerateRawTweetsInDay.hpp"
 #include "../tweetDate.hpp"
+#include "makeColumnIROutPutPath.hpp"
 
 namespace PanCake
 {
@@ -24,11 +25,13 @@ namespace PanCake
 
                 int currentChunk = 0;
                 int itemsInChunk = 0;
+                int totalCount = 0;
 
                 PanCake::enumerateRawTweetsInDay(
                     this->dataDir,
                     this->date,
-                    [this,&col,&currentChunk,&itemsInChunk](const PanCake::Tweet&tweet) -> void {
+                    [this,&col,&currentChunk,&itemsInChunk,&totalCount](const PanCake::Tweet&tweet) -> void {
+                        totalCount++;
                         if(itemsInChunk >= this->chunkSize)
                         {
                             itemsInChunk = 0;
@@ -49,7 +52,12 @@ namespace PanCake
                 col.endChunk();
                 col.endIR();
 
-                col.writeTotalChunksFunction(currentChunk+1);
+                auto totalChunksStream = PanCake::makeColumnIRChunkCountStream(this->dataDir,this->date);
+                auto totalCountStream = PanCake::makeColumnIRTotalCountStream(this->dataDir,this->date);
+
+                totalChunksStream<<currentChunk+1;
+                totalCountStream<<totalCount;
+
                 return true;
             }
 

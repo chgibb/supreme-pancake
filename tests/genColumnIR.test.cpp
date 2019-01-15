@@ -36,6 +36,8 @@ TEST_CASE("should write column IR","")
 
     REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06-sentimentScore.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06-text.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06.chunkCount"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06.totalCount"));
 
 
     REQUIRE(PanCake::generateChunkedIR("tests/rt/columnIR1",date,10,"tests/rt/pathThatDoesntExist") == false);

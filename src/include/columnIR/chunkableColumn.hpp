@@ -53,13 +53,6 @@ namespace PanCake
                 *this->stream<<"end\n";
             }
 
-            void _writeTotalChunksFunction(int totalChunks,const char*functionSuffix)
-            {
-                *this->stream<<"function "<<this->totalChunksFunctionName<<functionSuffix<<"()\n";
-                *this->stream<<"    return "<<totalChunks<<"\n";
-                *this->stream<<"end";
-            }
-
             void badStream(bool&badStream)
             {
                 if(!this->stream->good())

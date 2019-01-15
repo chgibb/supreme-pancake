@@ -38,10 +38,10 @@ TEST_CASE("manually written query for 2018/11/06","")
 
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-sentimentScore.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-text.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06.chunkCount"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06.totalCount"));
 
-    PanCake::Query q("tests/rt/columnIRQuery1/2018-11-06-sentimentScore.lua","tests/rt/columnIRQuery1/2018-11-06-text.lua");
-
-    int qCount = std::atoi(q.runQueryFromFile("tests/res/manualFindNeutralTweets.lua").c_str());
+    int qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,PanCake::QueryExecutionPolicy::serial,"tests/res/manualFindNeutralTweets.lua").c_str());
 
     REQUIRE(qCount == 7);
 
@@ -68,10 +68,10 @@ TEST_CASE("manually written query for 2018/11/09","")
 
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-09-sentimentScore.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-09-text.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-09.chunkCount"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-09.totalCount"));
 
-    PanCake::Query q("tests/rt/columnIRQuery1/2018-11-09-sentimentScore.lua","tests/rt/columnIRQuery1/2018-11-09-text.lua");
-
-    int qCount = std::atoi(q.runQueryFromFile("tests/res/manualFindNeutralTweets.lua").c_str());
+    int qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,PanCake::QueryExecutionPolicy::serial,"tests/res/manualFindNeutralTweets.lua").c_str());
 
     REQUIRE(qCount == 1402);
 

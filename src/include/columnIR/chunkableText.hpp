@@ -25,14 +25,14 @@ namespace PanCake
                 this->writeFunctionSignature(this->functionSuffix);
             }
 
-            void writeTotalChunksFunction(const int&totalChunks)
+            static std::ofstream makeOutPutStream(std::string prefix,PanCake::TweetDate&date)
             {
-                this->_writeTotalChunksFunction(totalChunks,this->functionSuffix);
+                return std::ofstream(PanCake::ChunkableText::makeOutPutPath(prefix,date),std::ios::out);
             }
 
-            static std::ofstream makeOutPutPath(std::string prefix,PanCake::TweetDate&date)
+            static std::string makeOutPutPath(std::string prefix,PanCake::TweetDate&date)
             {
-                return PanCake::makeColumnIROutPutPath(prefix,date,"text");
+                return PanCake::makeColumnIROutputPath(prefix,date,"text");
             }
     };
 }

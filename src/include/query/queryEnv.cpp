@@ -58,14 +58,12 @@ namespace
     
     int count = 0;
 
-    int totalChunks = lua[std::string(PanCake::ChunkableColumn::totalChunksFunctionName)+std::string(PanCake::ChunkableSentimentScore::functionSuffix)]();
-
-    for(int i = 0; i != totalChunks; ++i)
+    for(int i = 0; i != q.totalChunks; ++i)
     {
         int itCount = callQueryFunction(lua);
         count += itCount;
 
-        if(i + 1 != totalChunks)
+        if(i + 1 != q.totalChunks)
         {
             for(auto it = nextChunks.begin(); it != nextChunksEnd; ++it)
             {
