@@ -28,6 +28,25 @@ namespace
     {
         return lua["q"]();
     }
+
+    template<class T>
+    auto getColumnLoadFunction(sol::state&lua)
+    {
+        return lua[std::string(T::functionSuffix)+"Load"];
+    }
+
+    template<class T>
+    void setupColumnLoadFunction(sol::state&lua,PanCake::Query&q,std::string path)
+    {
+        getColumnLoadFunction<T>(lua) = [&q,&lua,path]() -> void {
+            sol::optional<int> exists = lua[T::functionName+std::string(T::functionSuffix)];
+            if(exists == sol::nullopt)
+            {
+                lua.script_file(path);
+                lua[std::string(T::functionName)+std::string(T::functionSuffix)](0);
+            }
+        };
+    }
 }
 
 [[nodiscard]] bool PanCake::setupEnv(PanCake::Query&q,sol::state&lua)
@@ -35,14 +54,8 @@ namespace
     lua[std::string(PanCake::ChunkableSentimentScore::contName)] = &q.sentimentScoreCol;
     lua[std::string(PanCake::ChunkableText::contName)] = &q.textCol;
 
-    lua[std::string(PanCake::ChunkableSentimentScore::functionSuffix)+"Load"] = [&q,&lua]() -> void {
-        sol::optional<int> exists = lua[PanCake::ChunkableColumn::functionName+std::string(PanCake::ChunkableSentimentScore::functionSuffix)];
-        if(exists == sol::nullopt)
-        {
-            lua.script_file(q.sentimentScoreColPath);
-            lua[std::string(PanCake::ChunkableColumn::functionName)+std::string(PanCake::ChunkableSentimentScore::functionSuffix)](0);
-        }
-    };
+    setupColumnLoadFunction<PanCake::ChunkableSentimentScore>(lua,q,q.sentimentScoreColPath);
+    setupColumnLoadFunction<PanCake::ChunkableText>(lua,q,q.textColPath);
 
     return true;
 }
@@ -53,6 +66,7 @@ namespace
     std::vector<sol::function> nextChunks;
 
     maybeGetNextChunkFunction<PanCake::ChunkableSentimentScore>(q.sentimentScoreCol,nextChunks,lua);
+    maybeGetNextChunkFunction<PanCake::ChunkableText>(q.textCol,nextChunks,lua);
 
     auto nextChunksEnd = nextChunks.end();
     
