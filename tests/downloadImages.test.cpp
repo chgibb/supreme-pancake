@@ -4,12 +4,12 @@
 #define CATCH_CONFIG_FAST_COMPILE
 #include <catch2/catch.hpp>
 
-#include "../src/include/loadJSON.hpp"
-#include "../src/include/searchScrapeTweet.hpp"
-#include "../src/include/bulkTweetStore.hpp"
-#include "../src/include/downloadImagesFromBin.hpp"
-#include "../src/include/tweetBin.hpp"
-#include "../src/include/loadTweetBin.hpp"
+#include "../src/lib/loadJSON.hpp"
+#include "../src/lib/searchScrapeTweet.hpp"
+#include "../src/lib/bulkTweetStore.hpp"
+#include "../src/lib/downloadImagesFromBin.hpp"
+#include "../src/lib/tweetBin.hpp"
+#include "../src/lib/loadTweetBin.hpp"
 
 
 TEST_CASE("Should not download anything from bins with no image urls","")

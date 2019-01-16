@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_FAST_COMPILE
 #include <catch2/catch.hpp>
 
-#include "./../src/include/makeTweetTimePointPaths.hpp"
+#include "./../src/lib/makeTweetTimePointPaths.hpp"
 
 TEST_CASE("Time point image strings should be correct","")
 {

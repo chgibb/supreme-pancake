@@ -4,9 +4,9 @@
 
 #include "vendor/cxxopts/include/cxxopts.hpp"
 
-#include "include/loadJSON.hpp"
-#include "include/searchScrapeTweet.hpp"
-#include "include/bulkTweetStore.hpp"
+#include "lib/loadJSON.hpp"
+#include "lib/searchScrapeTweet.hpp"
+#include "lib/bulkTweetStore.hpp"
 
 int main(int argc,char*argv[])
 {

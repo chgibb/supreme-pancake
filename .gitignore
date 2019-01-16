@@ -45,6 +45,7 @@ graph.png
 tests/*.js
 tests/stress/*.js
 src/include/*.js
+src/lib/*.js
 
 tests/rt/**/
 out/*

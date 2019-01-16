@@ -5,14 +5,14 @@
 #define CATCH_CONFIG_FAST_COMPILE
 #include <catch2/catch.hpp>
 
-#include "../src/include/loadJSON.hpp"
-#include "../src/include/fileExists.hpp"
-#include "../src/include/searchScrapeTweet.hpp"
-#include "../src/include/bulkTweetStore.hpp"
-#include "../src/include/tweetDate.hpp"
-#include "../src/include/enumerateRawTweetsInDay.hpp"
-#include "../src/include/columnIR/IRGenerator.hpp"
-#include "../src/include/query/query.hpp"
+#include "../src/lib/loadJSON.hpp"
+#include "../src/lib/fileExists.hpp"
+#include "../src/lib/searchScrapeTweet.hpp"
+#include "../src/lib/bulkTweetStore.hpp"
+#include "../src/lib/tweetDate.hpp"
+#include "../src/lib/enumerateRawTweetsInDay.hpp"
+#include "../src/lib/columnIR/IRGenerator.hpp"
+#include "../src/lib/query/query.hpp"
 
 TEST_CASE("should write test data","")
 {

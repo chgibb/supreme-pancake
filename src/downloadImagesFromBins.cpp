@@ -4,12 +4,12 @@
 
 #include "vendor/cxxopts/include/cxxopts.hpp"
 
-#include "include/loadJSON.hpp"
-#include "include/tweetBin.hpp"
-#include "include/loadTweetBin.hpp"
-#include "include/saveTweetBin.hpp"
-#include "include/downloadImagesFromBin.hpp"
-#include "include/OCRImage.hpp"
+#include "lib/loadJSON.hpp"
+#include "lib/tweetBin.hpp"
+#include "lib/loadTweetBin.hpp"
+#include "lib/saveTweetBin.hpp"
+#include "lib/downloadImagesFromBin.hpp"
+#include "lib/OCRImage.hpp"
 
 int main(int argc,char*argv[])
 {

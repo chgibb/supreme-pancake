@@ -61,7 +61,7 @@ function trimExtension(file)
 
  (async function(){
     await new Promise((resolve,reject) => {
-        glob("src/include/**/*.cpp",{},function(err,matches){
+        glob("src/lib/**/*.cpp",{},function(err,matches){
             if(err)
                 reject(err);
             for(let i = 0; i != matches.length; ++i)

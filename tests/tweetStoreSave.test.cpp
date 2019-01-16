@@ -4,11 +4,11 @@
 #define CATCH_CONFIG_FAST_COMPILE
 #include <catch2/catch.hpp>
 
-#include "../src/include/directoryExists.hpp"
-#include "../src/include/makeTweetTimePointPaths.hpp"
-#include "../src/include/loadJSON.hpp"
-#include "../src/include/searchScrapeTweet.hpp"
-#include "../src/include/tweetStore.hpp"
+#include "../src/lib/directoryExists.hpp"
+#include "../src/lib/makeTweetTimePointPaths.hpp"
+#include "../src/lib/loadJSON.hpp"
+#include "../src/lib/searchScrapeTweet.hpp"
+#include "../src/lib/tweetStore.hpp"
 
 TEST_CASE("Save select tweets to JSON","[JSON]")
 {

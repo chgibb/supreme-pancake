@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_FAST_COMPILE
 #include <catch2/catch.hpp>
 
-#include "../src/include/dateParser.hpp"
+#include "../src/lib/dateParser.hpp"
 
 TEST_CASE("Parse search scrape date", "[date]")
 {

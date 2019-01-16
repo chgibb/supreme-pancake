@@ -2,9 +2,9 @@
 
 import * as fs from "fs";
 
-import {bulkStoreTweets} from "../src/include/bulkStoreTweets";
-import {genColumnIR} from "../src/include/genColumnIR";
-import {compileColumnIR} from "../src/include/compileColumnIR";
+import {bulkStoreTweets} from "../src/lib/bulkStoreTweets";
+import {genColumnIR} from "../src/lib/genColumnIR";
+import {compileColumnIR} from "../src/lib/compileColumnIR";
 
 jest.setTimeout(10000);
 

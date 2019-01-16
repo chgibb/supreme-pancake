@@ -3,14 +3,14 @@
 #define CATCH_CONFIG_FAST_COMPILE
 #include <catch2/catch.hpp>
 
-#include "../src/include/loadJSON.hpp"
-#include "../src/include/searchScrapeTweet.hpp"
-#include "../src/include/bulkTweetStore.hpp"
-#include "../src/include/OCRImagesFromBin.hpp"
-#include "../src/include/downloadImagesFromBin.hpp"
-#include "../src/include/tweetBin.hpp"
-#include "../src/include/loadTweetBin.hpp"
-#include "../src/include/saveTweetBin.hpp"
+#include "../src/lib/loadJSON.hpp"
+#include "../src/lib/searchScrapeTweet.hpp"
+#include "../src/lib/bulkTweetStore.hpp"
+#include "../src/lib/OCRImagesFromBin.hpp"
+#include "../src/lib/downloadImagesFromBin.hpp"
+#include "../src/lib/tweetBin.hpp"
+#include "../src/lib/loadTweetBin.hpp"
+#include "../src/lib/saveTweetBin.hpp"
 
 std::string expectedOCRText = "Your account has been limited until we hear from you\n"
 "service@intl.paypal.com Tue, May 1, 2012, 1:48 PM\n"

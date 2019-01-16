@@ -1,9 +1,9 @@
 import * as fs from "fs";
 
-import {bulkStoreTweets} from "../../src/include/bulkStoreTweets";
-import {BulkStoreStatus} from "../../src/include/bulkStoreStatus";
-import {genColumnIR} from "../../src/include/genColumnIR";
-import {compileColumnIR} from "../../src/include/compileColumnIR";
+import {bulkStoreTweets} from "../../src/lib/bulkStoreTweets";
+import {BulkStoreStatus} from "../../src/lib/bulkStoreStatus";
+import {genColumnIR} from "../../src/lib/genColumnIR";
+import {compileColumnIR} from "../../src/lib/compileColumnIR";
 
 (async function(){
     let packs = fs.readdirSync("tests/res/10kPacs");

@@ -3,9 +3,9 @@
 #define CATCH_CONFIG_FAST_COMPILE
 #include <catch2/catch.hpp>
 
-#include "../src/include/loadJSON.hpp"
-#include "../src/include/searchScrapeTweet.hpp"
-#include "../src/include/bulkTweetStore.hpp"
+#include "../src/lib/loadJSON.hpp"
+#include "../src/lib/searchScrapeTweet.hpp"
+#include "../src/lib/bulkTweetStore.hpp"
 
 TEST_CASE("Load JSON from stream","[JSON]")
 {

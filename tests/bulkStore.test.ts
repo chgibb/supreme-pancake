@@ -2,7 +2,7 @@
 
 import * as fs from "fs";
 
-import {bulkStoreTweets} from "../src/include/bulkStoreTweets";
+import {bulkStoreTweets} from "../src/lib/bulkStoreTweets";
 
 jest.setTimeout(10000);
 

@@ -3,9 +3,9 @@
 #define CATCH_CONFIG_FAST_COMPILE
 #include <catch2/catch.hpp>
 
-#include "./../src/include/enumerateTimePoints.hpp"
-#include "./../src/include/makeTweetTimePointPaths.hpp"
-#include "./../src/include/tweetDate.hpp"
+#include "./../src/lib/enumerateTimePoints.hpp"
+#include "./../src/lib/makeTweetTimePointPaths.hpp"
+#include "./../src/lib/tweetDate.hpp"
 
 TEST_CASE("Time point strings should be correct","[paths]")
 {

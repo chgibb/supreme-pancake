@@ -2,9 +2,9 @@
 
 import * as fs from "fs";
 
-import {bulkStoreTweets} from "../src/include/bulkStoreTweets";
-import {downloadImagesFromBins} from "../src/include/downloadImagesFromBins";
-import {downloadImagesFromBinsMulti} from "../src/include/downloadImagesFromBinsMulti";
+import {bulkStoreTweets} from "../src/lib/bulkStoreTweets";
+import {downloadImagesFromBins} from "../src/lib/downloadImagesFromBins";
+import {downloadImagesFromBinsMulti} from "../src/lib/downloadImagesFromBinsMulti";
 
 jest.setTimeout(1200000);
 
