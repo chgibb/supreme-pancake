@@ -2,8 +2,8 @@
 
 #include "chunkableColumn.hpp"
 #include "makeColumnIROutPutPath.hpp"
-#include "../tweet.hpp"
-#include "../tweetDate.hpp"
+#include "tweet.hpp"
+#include "tweetDate.hpp"
 
 namespace PanCake
 {

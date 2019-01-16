@@ -5,9 +5,9 @@
 
 #include "query.hpp"
 #include "queryEnv.hpp"
-#include "../columnIR/makeColumnIROutPutPath.hpp"
-#include "../columnIR/chunkableSentimentScore.hpp"
-#include "../columnIR/chunkableText.hpp"
+#include "makeColumnIROutPutPath.hpp"
+#include "chunkableSentimentScore.hpp"
+#include "chunkableText.hpp"
 
 namespace
 {

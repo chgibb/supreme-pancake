@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 
-#include "../findAndReplace.hpp"
+#include "findAndReplace.hpp"
 
 namespace PanCake
 {

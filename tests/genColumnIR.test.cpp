@@ -10,7 +10,7 @@
 #include "../src/lib/searchScrapeTweet.hpp"
 #include "../src/lib/bulkTweetStore.hpp"
 #include "../src/lib/tweetDate.hpp"
-#include "../src/lib/columnIR/IRGenerator.hpp"
+#include "../src/lib/IRGenerator.hpp"
 
 TEST_CASE("should write test data","")
 {

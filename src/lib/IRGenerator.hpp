@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../enumerateRawTweetsInDay.hpp"
-#include "../tweetDate.hpp"
+#include "enumerateRawTweetsInDay.hpp"
+#include "tweetDate.hpp"
 #include "makeColumnIROutPutPath.hpp"
 
 namespace PanCake

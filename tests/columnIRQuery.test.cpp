@@ -11,8 +11,8 @@
 #include "../src/lib/bulkTweetStore.hpp"
 #include "../src/lib/tweetDate.hpp"
 #include "../src/lib/enumerateRawTweetsInDay.hpp"
-#include "../src/lib/columnIR/IRGenerator.hpp"
-#include "../src/lib/query/query.hpp"
+#include "../src/lib/IRGenerator.hpp"
+#include "../src/lib/query.hpp"
 
 TEST_CASE("should write test data","")
 {

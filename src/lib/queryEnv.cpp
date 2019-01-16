@@ -1,9 +1,9 @@
 #include <iostream>
 
 #include "queryEnv.hpp"
-#include "../columnIR/chunkableColumn.hpp"
-#include "../columnIR/chunkableSentimentScore.hpp"
-#include "../columnIR/chunkableText.hpp"
+#include "chunkableColumn.hpp"
+#include "chunkableSentimentScore.hpp"
+#include "chunkableText.hpp"
 
 namespace
 {

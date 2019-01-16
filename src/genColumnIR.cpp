@@ -4,7 +4,7 @@
 
 #include "vendor/cxxopts/include/cxxopts.hpp"
 
-#include "lib/columnIR/IRGenerator.hpp"
+#include "lib/IRGenerator.hpp"
 
 int main(int argc,char*argv[])
 {
