@@ -28,7 +28,6 @@ import {compileColumnIR} from "../../src/lib/compileColumnIR";
 
     await genColumnIR("tests/rt/100k","tests/rt/100k","2018","12","31",10,"out/");
     await compileColumnIR("tests/rt/100k/2018-12-31-text.lua","tests/rt/100k/2018-12-31-text.byc","out/");
-
-    await genColumnIR("tests/rt/100k","tests/rt/100k","2018","12","31",10,"out/");
     await compileColumnIR("tests/rt/100k/2018-12-31-sentimentScore.lua","tests/rt/100k/2018-12-31-sentimentScore.byc","out/");
+    await compileColumnIR("tests/rt/100k/2018-12-31-user.lua","tests/rt/100k/2018-12-31-user.byc","out/");
 })();
