@@ -48,13 +48,19 @@ namespace
             }
         };
     }
+
+    template<class T,class U>
+    void bindColumnToGlobal(sol::state&lua,U&u)
+    {
+        lua[std::string(T::contName)] = &u;
+    }
 }
 
 [[nodiscard]] bool PanCake::setupEnv(PanCake::Query&q,sol::state&lua)
 {
-    lua[std::string(PanCake::ChunkableSentimentScore::contName)] = &q.sentimentScoreCol;
-    lua[std::string(PanCake::ChunkableText::contName)] = &q.textCol;
-    lua[std::string(PanCake::ChunkableUser::contName)] = &q.userCol;
+    bindColumnToGlobal<PanCake::ChunkableSentimentScore>(lua,q.sentimentScoreCol);
+    bindColumnToGlobal<PanCake::ChunkableText>(lua,q.textCol);
+    bindColumnToGlobal<PanCake::ChunkableUser>(lua,q.userCol);
 
     setupColumnLoadFunction<PanCake::ChunkableSentimentScore>(lua,q,q.sentimentScoreColPath);
     setupColumnLoadFunction<PanCake::ChunkableText>(lua,q,q.textColPath);
