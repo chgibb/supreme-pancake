@@ -4,6 +4,7 @@
 #include "chunkableColumn.hpp"
 #include "chunkableSentimentScore.hpp"
 #include "chunkableText.hpp"
+#include "chunkableUser.hpp"
 
 namespace
 {
@@ -53,9 +54,11 @@ namespace
 {
     lua[std::string(PanCake::ChunkableSentimentScore::contName)] = &q.sentimentScoreCol;
     lua[std::string(PanCake::ChunkableText::contName)] = &q.textCol;
+    lua[std::string(PanCake::ChunkableUser::contName)] = &q.userCol;
 
     setupColumnLoadFunction<PanCake::ChunkableSentimentScore>(lua,q,q.sentimentScoreColPath);
     setupColumnLoadFunction<PanCake::ChunkableText>(lua,q,q.textColPath);
+    setupColumnLoadFunction<PanCake::ChunkableUser>(lua,q,q.userColPath);
 
     return true;
 }
@@ -67,6 +70,7 @@ namespace
 
     maybeGetNextChunkFunction<PanCake::ChunkableSentimentScore>(q.sentimentScoreCol,nextChunks,lua);
     maybeGetNextChunkFunction<PanCake::ChunkableText>(q.textCol,nextChunks,lua);
+    maybeGetNextChunkFunction<PanCake::ChunkableUser>(q.userCol,nextChunks,lua);
 
     auto nextChunksEnd = nextChunks.end();
     

@@ -8,6 +8,7 @@
 #include "makeColumnIROutPutPath.hpp"
 #include "chunkableSentimentScore.hpp"
 #include "chunkableText.hpp"
+#include "chunkableUser.hpp"
 
 namespace
 {
@@ -36,6 +37,7 @@ namespace
         PanCake::Query q(
             PanCake::ChunkableSentimentScore::makeOutPutPath(dataDir,date),
             PanCake::ChunkableText::makeOutPutPath(dataDir,date),
+            PanCake::ChunkableUser::makeOutPutPath(dataDir,date),
             PanCake::ChunkRange(0,totalChunks)
         );
 

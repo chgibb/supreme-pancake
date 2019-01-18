@@ -36,6 +36,7 @@ TEST_CASE("should write column IR","")
 
     REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06-sentimentScore.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06-text.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06-user.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06.chunkCount"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06.totalCount"));
 
