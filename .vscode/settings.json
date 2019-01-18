@@ -65,7 +65,7 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "tests/*.js" : true,
-        "src/include/*.js":true,
+        "src/lib/*.js":true,
         "tests/*.out":true
 
     },
