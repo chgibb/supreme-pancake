@@ -8,14 +8,20 @@
 
 namespace
 {
+    template<class T>
+    constexpr std::string getChunkFunctionName()
+    {
+        return std::string(PanCake::ChunkableColumn::functionName)+
+               std::string(T::functionSuffix);
+    }
+
     template<class T,class U>
     constexpr void maybeGetNextChunkFunction(U&u,std::vector<sol::function>&funcs,sol::state&lua)
     {
         if(u.size() != 0)
         {
             funcs.push_back(lua[
-                std::string(PanCake::ChunkableColumn::functionName)+
-                std::string(T::functionSuffix)
+                getChunkFunctionName<T>()
             ]);
         }
     }
@@ -31,20 +37,26 @@ namespace
     }
 
     template<class T>
+    constexpr std::string getColumnLoadFunctionName()
+    {
+        return std::string(T::functionSuffix)+"Load";
+    }
+
+    template<class T>
     constexpr auto getColumnLoadFunction(sol::state&lua)
     {
-        return lua[std::string(T::functionSuffix)+"Load"];
+        return lua[getColumnLoadFunctionName<T>()];
     }
 
     template<class T>
     void setupColumnLoadFunction(sol::state&lua,PanCake::Query&q,std::string path)
     {
         getColumnLoadFunction<T>(lua) = [&q,&lua,path]() -> void {
-            sol::optional<int> exists = lua[T::functionName+std::string(T::functionSuffix)];
+            sol::optional<int> exists = lua[getChunkFunctionName<T>()];
             if(exists == sol::nullopt)
             {
                 lua.script_file(path);
-                lua[std::string(T::functionName)+std::string(T::functionSuffix)](0);
+                lua[getChunkFunctionName<T>()](0);
             }
         };
     }
