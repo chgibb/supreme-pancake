@@ -9,7 +9,7 @@
 namespace
 {
     template<class T,class U>
-    void maybeGetNextChunkFunction(U&u,std::vector<sol::function>&funcs,sol::state&lua)
+    constexpr void maybeGetNextChunkFunction(U&u,std::vector<sol::function>&funcs,sol::state&lua)
     {
         if(u.size() != 0)
         {
@@ -31,7 +31,7 @@ namespace
     }
 
     template<class T>
-    auto getColumnLoadFunction(sol::state&lua)
+    constexpr auto getColumnLoadFunction(sol::state&lua)
     {
         return lua[std::string(T::functionSuffix)+"Load"];
     }
@@ -50,7 +50,7 @@ namespace
     }
 
     template<class T,class U>
-    void bindColumnToGlobal(sol::state&lua,U&u)
+    constexpr void bindColumnToGlobal(sol::state&lua,U&u)
     {
         lua[std::string(T::contName)] = &u;
     }
