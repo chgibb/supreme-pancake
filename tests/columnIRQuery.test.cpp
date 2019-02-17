@@ -41,6 +41,12 @@ TEST_CASE("manually written query for 2018/11/06","")
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-user.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06.chunkCount"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06.totalCount"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-favouriteCount.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-isPinned.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-isReplyTo.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-isRetweet.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-replyCount.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-reTweetCount.lua"));
 
     int qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,PanCake::QueryExecutionPolicy::serial,"tests/res/manualFindNeutralTweets.lua").c_str());
 

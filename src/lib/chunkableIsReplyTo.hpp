@@ -32,7 +32,7 @@ namespace PanCake
 
             static std::string makeOutPutPath(std::string prefix,PanCake::TweetDate&date)
             {
-                return PanCake::makeColumnIROutputPath(prefix,date,"IsReplyTo");
+                return PanCake::makeColumnIROutputPath(prefix,date,"isReplyTo");
             }
     };
 }

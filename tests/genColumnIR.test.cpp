@@ -34,11 +34,17 @@ TEST_CASE("should write column IR","")
 
     REQUIRE(PanCake::generateChunkedIR("tests/rt/columnIR1",date,10,"tests/rt/columnIR1") == true);
 
-    REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06-sentimentScore.lua"));
-    REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06-text.lua"));
-    REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06-user.lua"));
-    REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06.chunkCount"));
-    REQUIRE(PanCake::fileExists("tests/rt/columnIR1/2018-11-06.totalCount"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-sentimentScore.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-text.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-user.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06.chunkCount"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06.totalCount"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-favouriteCount.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-isPinned.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-isReplyTo.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-isRetweet.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-replyCount.lua"));
+    REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-reTweetCount.lua"));
 
 
     REQUIRE(PanCake::generateChunkedIR("tests/rt/columnIR1",date,10,"tests/rt/pathThatDoesntExist") == false);
