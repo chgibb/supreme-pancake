@@ -7,6 +7,8 @@
 #include "chunkableReTweetCount.hpp"
 #include "chunkableFavouriteCount.hpp"
 #include "chunkableIsRetweet.hpp"
+#include "chunkableIsPinned.hpp"
+#include "chunkableIsReplyTo.hpp"
 
 bool PanCake::generateChunkedIR(const char*dataDir,PanCake::TweetDate&date,int chunkSize,const char*outDir)
 {
@@ -17,6 +19,8 @@ bool PanCake::generateChunkedIR(const char*dataDir,PanCake::TweetDate&date,int c
     auto reTweetCount = PanCake::ChunkableReTweetCount::makeOutPutStream(outDir,date);
     auto favouriteCount = PanCake::ChunkableFavouriteCount::makeOutPutStream(outDir,date);
     auto isRetweet = PanCake::ChunkableIsRetweet::makeOutPutStream(outDir,date);
+    auto isPinned = PanCake::ChunkableIsPinned::makeOutPutStream(outDir,date);
+    auto isReplyTo = PanCake::ChunkableIsReplyTo::makeOutPutStream(outDir,date);
 
     PanCake::AggregateChunkableColumns<
         PanCake::ChunkableSentimentScore,
@@ -25,7 +29,9 @@ bool PanCake::generateChunkedIR(const char*dataDir,PanCake::TweetDate&date,int c
         PanCake::ChunkableReplyCount,
         PanCake::ChunkableReTweetCount,
         PanCake::ChunkableFavouriteCount,
-        PanCake::ChunkableIsRetweet
+        PanCake::ChunkableIsRetweet,
+        PanCake::ChunkableIsPinned,
+        PanCake::ChunkableIsReplyTo
     > cols(
         sentimentScore,
         text,
@@ -33,7 +39,9 @@ bool PanCake::generateChunkedIR(const char*dataDir,PanCake::TweetDate&date,int c
         replyCount,
         reTweetCount,
         favouriteCount,
-        isRetweet
+        isRetweet,
+        isPinned,
+        isReplyTo
     );
 
     PanCake::IRGenerator gen(dataDir,date,chunkSize);
