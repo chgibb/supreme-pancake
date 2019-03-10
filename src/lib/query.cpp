@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 
+#define SOL_PRINT_ERRORS 1
 #include <sol.hpp>
 
 #include "query.hpp"
@@ -9,6 +10,12 @@
 #include "chunkableSentimentScore.hpp"
 #include "chunkableText.hpp"
 #include "chunkableUser.hpp"
+#include "chunkableFavouriteCount.hpp"
+#include "chunkableIsPinned.hpp"
+#include "chunkableIsReplyTo.hpp"
+#include "chunkableIsRetweet.hpp"
+#include "chunkableReplyCount.hpp"
+#include "chunkableReTweetCount.hpp"
 
 namespace
 {
@@ -38,6 +45,12 @@ namespace
             PanCake::ChunkableSentimentScore::makeOutPutPath(dataDir,date),
             PanCake::ChunkableText::makeOutPutPath(dataDir,date),
             PanCake::ChunkableUser::makeOutPutPath(dataDir,date),
+            PanCake::ChunkableFavouriteCount::makeOutPutPath(dataDir,date),
+            PanCake::ChunkableIsPinned::makeOutPutPath(dataDir,date),
+            PanCake::ChunkableIsReplyTo::makeOutPutPath(dataDir,date),
+            PanCake::ChunkableIsRetweet::makeOutPutPath(dataDir,date),
+            PanCake::ChunkableReplyCount::makeOutPutPath(dataDir,date),
+            PanCake::ChunkableReTweetCount::makeOutPutPath(dataDir,date),
             PanCake::ChunkRange(0,totalChunks)
         );
 

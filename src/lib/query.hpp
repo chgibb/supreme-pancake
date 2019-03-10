@@ -1,9 +1,13 @@
 #pragma once
 
 #include <vector>
+#include <type_traits>
+#include <assert.h>
 
+#define SOL_PRINT_ERRORS 1
 #include <sol.hpp>
 
+#include "fileExists.hpp"
 #include "tweet.hpp"
 #include "tweetDate.hpp"
 
@@ -35,16 +39,40 @@ namespace PanCake
                 std::string _sentimentScoreColPath,
                 std::string _textColPath,
                 std::string _userColPath,
+                std::string _favouriteCountColPath,
+                std::string _isPinnedColPath,
+                std::string _isReplyToColPath,
+                std::string _isRetweetColPath,
+                std::string _replyCountColPath,
+                std::string _reTweetCountColPath,
                 PanCake::ChunkRange _range
             ) : sentimentScoreColPath(_sentimentScoreColPath),
                 textColPath(_textColPath),
                 userColPath(_userColPath),
-                range(_range) {}
+                favouriteCountColPath(_favouriteCountColPath),
+                isPinnedColPath(_isPinnedColPath),
+                isReplyToColPath(_isReplyToColPath),
+                isRetweetColPath(_isRetweetColPath),
+                replyCountColPath(_replyCountColPath),
+                reTweetCountColPath(_reTweetCountColPath),
+                range(_range) 
+                {
+                    assert(PanCake::fileExists(this->sentimentScoreColPath.c_str()));
+                    assert(PanCake::fileExists(this->textColPath.c_str()));
+                    assert(PanCake::fileExists(this->userColPath.c_str()));
+                    assert(PanCake::fileExists(this->favouriteCountColPath.c_str()));
+                    assert(PanCake::fileExists(this->isPinnedColPath.c_str()));
+                    assert(PanCake::fileExists(this->isReplyToColPath.c_str()));
+                    assert(PanCake::fileExists(this->isRetweetColPath.c_str()));
+                    assert(PanCake::fileExists(this->replyCountColPath.c_str()));
+                    assert(PanCake::fileExists(this->reTweetCountColPath.c_str()));
+                }
 
             friend std::string runQueryFromFile(const char*,PanCake::TweetDate&,PanCake::QueryExecutionPolicy,std::string);
             friend std::string runQueryFromString(const char*,PanCake::TweetDate&,PanCake::QueryExecutionPolicy,std::string);
             friend bool setupEnv(Query&,sol::state&);
             friend std::string runQuery(Query&,sol::state&);
+            friend void printEnv(PanCake::Query&,sol::state&);
 
             friend class ChunkRange;
 
@@ -55,6 +83,12 @@ namespace PanCake
             std::string sentimentScoreColPath;
             std::string textColPath;
             std::string userColPath;
+            std::string favouriteCountColPath;
+            std::string isPinnedColPath;
+            std::string isReplyToColPath;
+            std::string isRetweetColPath;
+            std::string replyCountColPath;
+            std::string reTweetCountColPath;
 
             PanCake::ChunkRange range;
             
@@ -63,5 +97,11 @@ namespace PanCake
             std::vector<decltype(PanCake::Tweet::sentimentScore)> sentimentScoreCol;
             std::vector<decltype(PanCake::Tweet::text)> textCol;
             std::vector<decltype(PanCake::Tweet::user)> userCol;
+            std::vector<decltype(PanCake::Tweet::favouriteCount)> favouriteCountCol;
+            std::vector<int> isPinnedCol;
+            std::vector<int> isReplyToCol;
+            std::vector<int> isRetweetCol;
+            std::vector<decltype(PanCake::Tweet::replyCount)> replyCountCol;
+            std::vector<decltype(PanCake::Tweet::reTweetCount)> reTweetCountCol;
     };
 }

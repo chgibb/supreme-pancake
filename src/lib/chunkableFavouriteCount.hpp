@@ -13,7 +13,7 @@ namespace PanCake
             using PanCake::ChunkableColumn::ChunkableColumn;
 
             static constexpr const char*functionSuffix = "FavouriteCount";
-            static constexpr const char*contName = "FavouriteCountCol";
+            static constexpr const char*contName = "favouriteCountCol";
 
             void addItem(const PanCake::Tweet&tweet)
             {

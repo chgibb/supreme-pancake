@@ -2,11 +2,23 @@
 
 #include <fstream>
 #include <string>
+#include <type_traits>
 
 #include "findAndReplace.hpp"
 
 namespace PanCake
 {
+    template <typename T, typename = void>
+    struct isChunkable : std::false_type {};
+
+    template <typename T>
+    struct isChunkable<T,
+        std::void_t<
+            decltype(std::declval<T&>().beginIR()),
+            decltype(std::declval<T&>().functionSuffix),
+            decltype(std::declval<T&>().contName)
+        >> : std::true_type {};
+
     class ChunkableColumn
     {
         public:

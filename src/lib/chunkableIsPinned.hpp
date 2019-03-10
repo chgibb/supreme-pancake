@@ -13,7 +13,7 @@ namespace PanCake
             using PanCake::ChunkableColumn::ChunkableColumn;
 
             static constexpr const char*functionSuffix = "IsPinned";
-            static constexpr const char*contName = "IsPinned";
+            static constexpr const char*contName = "isPinnedCol";
 
             void addItem(const PanCake::Tweet&tweet)
             {

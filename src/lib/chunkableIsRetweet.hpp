@@ -13,7 +13,7 @@ namespace PanCake
             using PanCake::ChunkableColumn::ChunkableColumn;
 
             static constexpr const char*functionSuffix = "IsRetweet";
-            static constexpr const char*contName = "IsRetweet";
+            static constexpr const char*contName = "isRetweetCol";
 
             void addItem(const PanCake::Tweet&tweet)
             {
