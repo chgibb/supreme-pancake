@@ -28,8 +28,8 @@ namespace PanCake
             int end;
     };
 
-    [[nodiscard]] std::string runQueryFromFile(const char*,PanCake::TweetDate&,PanCake::QueryExecutionPolicy,std::string);
-    [[nodiscard]] std::string runQueryFromString(const char*,PanCake::TweetDate&,PanCake::QueryExecutionPolicy,std::string);
+    [[nodiscard]] std::string runQueryFromFile(const char*,PanCake::TweetDate&,std::string,PanCake::QueryExecutionPolicy);
+    [[nodiscard]] std::string runQueryFromString(const char*,PanCake::TweetDate&,std::string,PanCake::QueryExecutionPolicy);
 
     class Query
     {
@@ -68,8 +68,8 @@ namespace PanCake
                     assert(PanCake::fileExists(this->reTweetCountColPath.c_str()));
                 }
 
-            friend std::string runQueryFromFile(const char*,PanCake::TweetDate&,PanCake::QueryExecutionPolicy,std::string);
-            friend std::string runQueryFromString(const char*,PanCake::TweetDate&,PanCake::QueryExecutionPolicy,std::string);
+            friend std::string runQueryFromFile(const char*,PanCake::TweetDate&,std::string,PanCake::QueryExecutionPolicy);
+            friend std::string runQueryFromString(const char*,PanCake::TweetDate&,std::string,PanCake::QueryExecutionPolicy);
             friend bool setupEnv(Query&,sol::state&);
             friend std::string runQuery(Query&,sol::state&);
             friend void printEnv(PanCake::Query&,sol::state&);

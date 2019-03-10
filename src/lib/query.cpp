@@ -27,7 +27,7 @@ namespace
     }
 }
 
-[[nodiscard]] std::string PanCake::runQueryFromFile(const char*dataDir,PanCake::TweetDate&date,PanCake::QueryExecutionPolicy pol,std::string fileName)
+[[nodiscard]] std::string PanCake::runQueryFromFile(const char*dataDir,PanCake::TweetDate&date,std::string fileName,PanCake::QueryExecutionPolicy pol)
 {
     std::string res = "";
 
@@ -60,7 +60,7 @@ namespace
     return res;
 }
 
-[[nodiscard]] std::string PanCake::runQueryFromString(const char*dataDir,PanCake::TweetDate&date,PanCake::QueryExecutionPolicy pol,std::string fileName)
+[[nodiscard]] std::string PanCake::runQueryFromString(const char*dataDir,PanCake::TweetDate&date,std::string fileName,PanCake::QueryExecutionPolicy)
 {
     std::string res = "";
 

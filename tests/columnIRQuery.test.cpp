@@ -48,7 +48,7 @@ TEST_CASE("manually written query for 2018/11/06","")
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-replyCount.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-06-reTweetCount.lua"));
 
-    int qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,PanCake::QueryExecutionPolicy::serial,"tests/res/manualFindNeutralTweets.lua").c_str());
+    int qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,"tests/res/manualFindNeutralTweets.lua",PanCake::QueryExecutionPolicy::serial).c_str());
 
     REQUIRE(qCount == 7);
 
@@ -62,7 +62,7 @@ TEST_CASE("manually written query for 2018/11/06","")
     REQUIRE(manualCount == 7);
     REQUIRE(manualCount == qCount);
 
-    qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,PanCake::QueryExecutionPolicy::serial,"tests/res/manualFindTweetsFromUser1.lua").c_str());
+    qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,"tests/res/manualFindTweetsFromUser1.lua",PanCake::QueryExecutionPolicy::serial).c_str());
 
     REQUIRE(qCount == 6);
 
@@ -89,7 +89,7 @@ TEST_CASE("manualFindNeutralTweets","")
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-09-replyCount.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-09-reTweetCount.lua"));
 
-    int qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,PanCake::QueryExecutionPolicy::serial,"tests/res/manualFindNeutralTweets.lua").c_str());
+    int qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,"tests/res/manualFindNeutralTweets.lua",PanCake::QueryExecutionPolicy::serial).c_str());
 
     REQUIRE(qCount == 1402);
 
@@ -103,7 +103,7 @@ TEST_CASE("manualFindNeutralTweets","")
     REQUIRE(manualCount == 1402);
     REQUIRE(manualCount == qCount);
 
-    qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,PanCake::QueryExecutionPolicy::serial,"tests/res/manualFindTweetsFromUser1.lua").c_str());
+    qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,"tests/res/manualFindTweetsFromUser1.lua",PanCake::QueryExecutionPolicy::serial).c_str());
 
     REQUIRE(qCount == 4);
 }
@@ -129,7 +129,7 @@ TEST_CASE("manualFindTotalRetweets","")
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-09-replyCount.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-09-reTweetCount.lua"));
 
-    int qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,PanCake::QueryExecutionPolicy::serial,"tests/res/manualFindTotalRetweets.lua").c_str());
+    int qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,"tests/res/manualFindTotalRetweets.lua",PanCake::QueryExecutionPolicy::serial).c_str());
 
     REQUIRE(qCount == 4);
 
@@ -143,7 +143,7 @@ TEST_CASE("manualFindTotalRetweets","")
     REQUIRE(manualCount == 4);
     REQUIRE(manualCount == qCount);
 
-    qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,PanCake::QueryExecutionPolicy::serial,"tests/res/manualFindTotalRetweets.lua").c_str());
+    qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,"tests/res/manualFindTotalRetweets.lua",PanCake::QueryExecutionPolicy::serial).c_str());
 
     REQUIRE(qCount == 4);
 }
