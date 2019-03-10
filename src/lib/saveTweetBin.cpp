@@ -84,7 +84,7 @@
         return false;
 
     rapidjson::OStreamWrapper osw(file);
-    rapidjson::PrettyWriter<rapidjson::OStreamWrapper> writer(osw);
+    rapidjson::Writer<rapidjson::OStreamWrapper> writer(osw);
     
     return doc.Accept(writer);
 }
