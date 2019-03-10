@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "npm run build && rm -rf tests/rt && npm run memCheckcpp && npm run testjs",
+    "test": "npm run build && rm -rf tests/rt && npm run buildAndTestcpp && npm run testjs",
     "testcpp": "bash scripts/testcpp.bash",
     "testjs": "rm -rf tests/rt && bash scripts/testjs.bash",
     "memCheckcpp": "bash scripts/memCheckcpp.bash",
