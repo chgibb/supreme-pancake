@@ -49,6 +49,6 @@ it(`should save tweets and download images from changed bins`,async () => {
     let dlStatus = await downloadImagesFromBinsMulti("tests/rt/downloadImages877",tweetStatus.binsWithNewTweets,40,"out/");
 
     expect(dlStatus.attempted).toBe(732);
-    expect(dlStatus.succeeded).toBe(691);
+    expect(dlStatus.succeeded).toBe(671);
     expect(dlStatus.failed).toBe(41);
 });
