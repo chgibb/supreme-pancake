@@ -34,8 +34,8 @@ namespace PanCake
                         totalCount++;
                         if(itemsInChunk >= this->chunkSize)
                         {
+                            col.endChunk(itemsInChunk);
                             itemsInChunk = 0;
-                            col.endChunk();
                             currentChunk++;
                         }
 
@@ -49,7 +49,7 @@ namespace PanCake
                     }
                 );
 
-                col.endChunk();
+                col.endChunk(itemsInChunk);
                 col.endIR();
 
                 auto totalChunksStream = PanCake::makeColumnIRChunkCountStream(this->dataDir,this->date);
@@ -67,3 +67,4 @@ namespace PanCake
             int chunkSize = 0;
     };
 }
+

@@ -29,10 +29,11 @@ namespace PanCake
                     Helper<R...>::beginChunk(_this,c);
                 }
 
-                static void endChunk(AggregateChunkableColumns*_this)
+                template<class C>
+                static void endChunk(AggregateChunkableColumns*_this,const C&c)
                 {
-                    static_cast<T*>(_this)->endChunk();
-                    Helper<R...>::endChunk(_this);
+                    static_cast<T*>(_this)->endChunk(c);
+                    Helper<R...>::endChunk(_this,c);
                 }
 
                 static void endIR(AggregateChunkableColumns*_this)
@@ -69,9 +70,10 @@ namespace PanCake
                     static_cast<T*>(_this)->beginChunk(c);
                 }
 
-                static void endChunk(AggregateChunkableColumns*_this)
+                template<class C>
+                static void endChunk(AggregateChunkableColumns*_this,const C&c)
                 {
-                    static_cast<T*>(_this)->endChunk();
+                    static_cast<T*>(_this)->endChunk(c);
                 }
 
                 static void endIR(AggregateChunkableColumns*_this)
@@ -109,9 +111,10 @@ namespace PanCake
                 Helper<Chunkables...>::beginChunk(this,c);
             }
 
-            void endChunk()
+            template<class C>
+            void endChunk(const C&c)
             {
-                Helper<Chunkables...>::endChunk(this);
+                Helper<Chunkables...>::endChunk(this,c);
             }
 
             void endIR()

@@ -55,8 +55,9 @@ namespace PanCake
                 *this->stream<<"    if n == "<<n<<" then\n";
             }
 
-            void endChunk()
+            void endChunk(int length)
             {
+                *this->stream<<"        "<<this->chunkLength<<" = "<<length<<"\n";
                 *this->stream<<"    end\n";
             }
 
@@ -79,5 +80,6 @@ namespace PanCake
             static constexpr const char*chunkIndexName = "n";
             static constexpr const char*functionName = "chunk";
             static constexpr const char*totalChunksFunctionName = "totalChunksIn";
+            static constexpr const char*chunkLength = "chunkLength";
     };
 }
