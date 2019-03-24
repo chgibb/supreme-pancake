@@ -9,7 +9,9 @@
                 "${workspaceFolder}/src/vendor/compile-time-regular-expressions/include",
                 "${workspaceFolder}/src/vendor/Catch2/single_include",
                 "${workspaceFolder}/src/vendor/PicoSHA2",
-                "${workspaceFolder}/src/vendor/ThreadPool"
+                "${workspaceFolder}/src/vendor/ThreadPool",
+                "${workspaceFolder}/src/vendor/sol2",
+                "${workspaceFolder}/src/vendor/lua-5.3.5/src"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
@@ -25,7 +27,9 @@
                     "${workspaceFolder}/src/vendor/compile-time-regular-expressions/include",
                     "${workspaceFolder}/src/vendor/Catch2/single_include",
                     "${workspaceFolder}/src/vendor/PicoSHA2",
-                    "${workspaceFolder}/src/vendor/ThreadPool"
+                    "${workspaceFolder}/src/vendor/ThreadPool",
+                    "${workspaceFolder}/src/vendor/sol2",
+                    "${workspaceFolder}/src/vendor/lua-5.3.5/src"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
