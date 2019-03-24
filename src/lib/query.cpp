@@ -88,3 +88,16 @@ namespace
         return "";
     return PanCake::runQuery(*this,lua);
 }
+
+void PanCake::Query::clearColumns()
+{
+    this->sentimentScoreCol.clear();
+    this->textCol.clear();
+    this->userCol.clear();
+    this->favouriteCountCol.clear();
+    this->isPinnedCol.clear();
+    this->isReplyToCol.clear();
+    this->isRetweetCol.clear();
+    this->replyCountCol.clear();
+    this->reTweetCountCol.clear();
+}

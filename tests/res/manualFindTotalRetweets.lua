@@ -2,12 +2,10 @@ function env()
     IsRetweetLoad()
 end
 
-function q()
+function q(s,e)
     local count = 0
-    local chunkEnd = #isRetweetCol
-    for i=1,chunkEnd do
+    for i=s,e do
         count = count + isRetweetCol[i]
     end
-    isRetweetCol:clear()
     return count
 end

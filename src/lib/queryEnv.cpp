@@ -1,6 +1,8 @@
 #include <iostream>
 #include <type_traits>
 
+#include <ThreadPool.h>
+
 #include "queryEnv.hpp"
 #include "chunkableColumn.hpp"
 #include "chunkableSentimentScore.hpp"
@@ -42,9 +44,9 @@ namespace
         lua["env"]();
     }
 
-    int callQueryFunction(sol::state&lua)
+    int callQueryFunction(sol::state&lua,int s,int e)
     {
-        return lua["q"]();
+        return lua["q"](s,e);
     }
 
     template<class T>
@@ -92,6 +94,11 @@ namespace
     bindColumnToGlobal(sol::state&lua,U&u)
     {
         getColumnGlobal<T>(lua) = &u;
+    }
+
+    int getChunkLength(sol::state&lua)
+    {
+        return lua[std::string(PanCake::ChunkableColumn::chunkLength)];
     }
 }
 
@@ -148,6 +155,8 @@ void PanCake::printEnv(PanCake::Query&q,sol::state&lua)
     printSymbol(lua,getChunkFunctionName<PanCake::ChunkableIsPinned>());
     printSymbol(lua,getChunkFunctionName<PanCake::ChunkableIsReplyTo>());
     printSymbol(lua,getChunkFunctionName<PanCake::ChunkableIsRetweet>());
+
+    printSymbol(lua,std::string(PanCake::ChunkableColumn::chunkLength));
 }
 
 [[nodiscard]] std::string PanCake::runQuery(PanCake::Query&q,sol::state&lua)
@@ -167,10 +176,25 @@ void PanCake::printEnv(PanCake::Query&q,sol::state&lua)
     
     int count = 0;
 
+    ::ThreadPool pool(1);
+    std::vector<std::future<int>> poolRes;
+
     for(int i = q.range.start; i != q.range.end; ++i)
-    {
-        int itCount = callQueryFunction(lua);
-        count += itCount;
+    {   
+        int chunkLength = getChunkLength(lua);
+
+        poolRes.emplace_back(pool.enqueue([&lua,&chunkLength](){
+            return callQueryFunction(lua,1,chunkLength);
+        }));
+
+        std::for_each(poolRes.begin(),poolRes.end(),[&count](std::future<int>&task) {
+            if(!task.valid())
+                return;
+            task.wait();
+            count += task.get();
+        });
+
+        q.clearColumns();
 
         if(i + 1 != q.range.end)
         {

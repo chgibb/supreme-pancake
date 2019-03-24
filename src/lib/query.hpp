@@ -80,6 +80,8 @@ namespace PanCake
             [[nodiscard]] std::string runQueryFromFile(std::string);
             [[nodiscard]] std::string runQueryFromString(std::string);
 
+            void clearColumns();
+
             std::string sentimentScoreColPath;
             std::string textColPath;
             std::string userColPath;
