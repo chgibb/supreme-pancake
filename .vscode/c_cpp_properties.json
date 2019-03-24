@@ -3,20 +3,13 @@
         {
             "name": "Linux",
             "includePath": [
-                "/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.1/../../../../include/c++/7.2.1",
-                "/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.1/../../../../include/c++/7.2.1/x86_64-pc-linux-gnu",
-                "/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.1/../../../../include/c++/7.2.1/backward",
-                "/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.1/include",
-                "/usr/local/include",
-                "/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.1/include-fixed",
-                "/usr/include",
+                "/usr/include/c++/7.3.0",
                 "${workspaceRoot}",
                 "${workspaceFolder}/src/vendor/rapidjson/include",
                 "${workspaceFolder}/src/vendor/compile-time-regular-expressions/include",
                 "${workspaceFolder}/src/vendor/Catch2/single_include",
-                "${workspaceFolder}/src/vendor/flatbuffers/include",
                 "${workspaceFolder}/src/vendor/PicoSHA2",
-                "${workspaceFolder}/src/vendor/curlpp/include/"
+                "${workspaceFolder}/src/vendor/ThreadPool"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",
@@ -25,17 +18,14 @@
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
-                    "/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.1/../../../../include/c++/7.2.1",
-                    "/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.1/../../../../include/c++/7.2.1/x86_64-pc-linux-gnu",
-                    "/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.1/../../../../include/c++/7.2.1/backward",
-                    "/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.1/include",
-                    "/usr/local/include",
-                    "/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.1/include-fixed",
+                    "/usr/include/c++/7.3.0",
                     "/usr/include",
                     "${workspaceRoot}",
-                    "${workspaceFolder}/src/vendor/flatbuffers/include",
+                    "${workspaceFolder}/src/vendor/rapidjson/include",
+                    "${workspaceFolder}/src/vendor/compile-time-regular-expressions/include",
+                    "${workspaceFolder}/src/vendor/Catch2/single_include",
                     "${workspaceFolder}/src/vendor/PicoSHA2",
-                    "${workspaceFolder}/src/vendor/curlpp/include/"
+                    "${workspaceFolder}/src/vendor/ThreadPool"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""

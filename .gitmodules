@@ -24,3 +24,6 @@
 [submodule "src/vendor/sol2"]
 	path = src/vendor/sol2
 	url = https://github.com/ThePhD/sol2
+[submodule "src/vendor/ThreadPool"]
+	path = src/vendor/ThreadPool
+	url = https://github.com/progschj/ThreadPool

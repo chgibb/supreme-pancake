@@ -21,8 +21,8 @@ if(arg.only)
 }
 
 let ccFlags = `-pedantic -Wall -Wextra -Wcast-align -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls -Wsign-promo -Wstrict-null-sentinel -Werror -Wno-unused -std=c++17`;
-let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/PicoSHA2  -I src/vendor/lua-5.3.5/src -I src/vendor/sol2`;
-let ldFlags = `-L src/vendor/lua-5.3.5/src -llua -lstdc++fs -lcurl -llept -ltesseract -lm -ldl`;
+let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/PicoSHA2  -I src/vendor/lua-5.3.5/src -I src/vendor/sol2 -I src/vendor/ThreadPool`;
+let ldFlags = `-L src/vendor/lua-5.3.5/src -llua -lstdc++fs -lcurl -llept -ltesseract -lm -ldl -pthread`;
 let optFlags = `-g -O1`;
 let objFiles = "";
 let objFileBuildSteps = "";

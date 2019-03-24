@@ -51,3 +51,4 @@ tests/rt/**/
 out/*
 
 src/vendor/lua-5.3.5
+.vscode/ipch
