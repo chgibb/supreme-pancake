@@ -56,7 +56,8 @@
         "utility": "cpp",
         "variant": "cpp",
         "algorithm": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "future": "cpp"
     },
     "files.exclude": {
         "**/.git": true,
