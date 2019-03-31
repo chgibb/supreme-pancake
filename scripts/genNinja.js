@@ -67,7 +67,7 @@ function trimExtension(file)
             for(let i = 0; i != matches.length; ++i)
             {
                 let fileName = path.basename(matches[i]);
-                objFileBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]}${"\n"}`;
+                objFileBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]} | out/luac ${"\n"}`;
                 objFiles += `${makeObjectFilePath(matches[i])} `;
             }
             return resolve();
@@ -83,7 +83,7 @@ function trimExtension(file)
                 if(onlyCertainTargets && !onlyThisTarget(matches[i]))
                     continue;
 
-                testBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]}${"\n"}`;
+                testBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]} | out/luac ${"\n"}`;
 
                 if(/\.test/.test(matches[i]))
                     continue;
@@ -107,7 +107,7 @@ function trimExtension(file)
                 if(onlyCertainTargets && !onlyThisTarget(matches[i]))
                     continue;
 
-                executableBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]}${"\n"}`;
+                executableBuildSteps += `build ${makeObjectFilePath(matches[i])} : cc ${matches[i]} | out/luac ${"\n"}`;
                 executableBuildSteps += `build ${makeExecutableFilePath(matches[i])} : link ${makeObjectFilePath(matches[i])} | ${objFiles}${"\n"}`;
                 executableBuildSteps += `  description = Linking $out${"\n"}`;
             }
@@ -137,25 +137,15 @@ rule link
     command = g++ ${objFiles} ${ldFlags} -o $out $in
     description = Linking $out
 
-rule copyLuac
-    command = cp src/vendor/lua-5.3.5/src/luac out/luac
-    description = Copying Luac
-
 rule getLua
     command = bash scripts/getLua.bash
     description = Downloading Lua
-
-rule buildLua
-    command = cd src/vendor/lua-5.3.5; make linux;
-    description = Building Lua
 
 ${testLinkRules}
 
 build src/vendor/Catch2/single_include/catch2/catch.hpp.gch : pch src/vendor/Catch2/single_include/catch2/catch.hpp
 
-build src/vendor/lua-5.3.5 : getLua
-build src/vendor/lua-5.3.5/src/liblua.a : buildLua | src/vendor/lua-5.3.5 
-build out/luac : copyLuac | src/vendor/lua-5.3.5 src/vendor/lua-5.3.5/src/liblua.a
+build out/luac : getLua 
 
 ${objFileBuildSteps}
 
