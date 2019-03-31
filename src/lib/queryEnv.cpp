@@ -215,7 +215,7 @@ void PanCake::printEnv(PanCake::Query&q,sol::state&lua)
             }
         }
     }
-    #error
+    
     return std::to_string(count);
 }
 
