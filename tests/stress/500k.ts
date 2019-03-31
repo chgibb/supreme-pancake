@@ -23,7 +23,6 @@ import {compileColumnIR} from "../../src/lib/compileColumnIR";
         status.duplicates += curStatus.duplicates;
         status.success += curStatus.success;
         status.metaUpdates += curStatus.metaUpdates;
-        console.log(status);
     }
 
     await genColumnIR("tests/rt/100k","tests/rt/100k","2018","12","31",10,"out/");
