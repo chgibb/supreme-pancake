@@ -16,6 +16,7 @@
 #include "chunkableReTweetCount.hpp"
 #include "isStdContainer.hpp"
 #include "isStdString.hpp"
+#include "regexProvider.hpp"
 
 namespace
 {
@@ -161,6 +162,16 @@ void PanCake::printEnv(PanCake::Query&q,sol::state&lua)
 
 [[nodiscard]] std::string PanCake::runQuery(PanCake::Query&q,sol::state&lua)
 {
+    PanCake::RegexProvider regProvider;
+
+    lua["addRegex"] = [&regProvider](std::string pat) -> void {
+        regProvider.addRegex(pat);
+    };
+
+    lua["match"] = [&regProvider](int index,std::string str) -> bool {
+        return regProvider.match(index,str);
+    };
+
     callQueryEnvSetup(lua);
     std::vector<sol::function> nextChunks;
 
@@ -204,7 +215,7 @@ void PanCake::printEnv(PanCake::Query&q,sol::state&lua)
             }
         }
     }
-
+    #error
     return std::to_string(count);
 }
 
