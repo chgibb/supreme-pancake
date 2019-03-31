@@ -14,7 +14,6 @@
 #include "../src/lib/enumerateRawTweetsInDay.hpp"
 #include "../src/lib/IRGenerator.hpp"
 #include "../src/lib/query.hpp"
-#include "../src/lib/doubleEqual.hpp"
 
 TEST_CASE("should write test data","")
 {
