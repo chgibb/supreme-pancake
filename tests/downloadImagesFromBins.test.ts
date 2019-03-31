@@ -50,5 +50,5 @@ it(`should save tweets and download images from changed bins`,async () => {
 
     expect(dlStatus.attempted).toBe(732);
     expect(dlStatus.succeeded).toBeGreaterThanOrEqual(660);
-    expect(dlStatus.failed).toBe(61);
+    expect(dlStatus.failed).toBeLessThanOrEqual(61);
 });
