@@ -15,3 +15,8 @@ function q(s,e)
        end
     end
 end
+
+function e()
+    return totalSentiment/count
+end
+

@@ -14,6 +14,7 @@
 #include "../src/lib/enumerateRawTweetsInDay.hpp"
 #include "../src/lib/IRGenerator.hpp"
 #include "../src/lib/query.hpp"
+#include "../src/lib/doubleEqual.hpp"
 
 TEST_CASE("should write test data","")
 {
@@ -213,9 +214,7 @@ TEST_CASE("manualAvgSentiment1","")
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-09-replyCount.lua"));
     REQUIRE(PanCake::fileExists("tests/rt/columnIRQuery1/2018-11-09-reTweetCount.lua"));
 
-    int qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,"tests/res/manualAvgSentiment1.lua",PanCake::QueryExecutionPolicy::serial).c_str());
-
-    REQUIRE(qCount == -14);
+    double qCount = std::stod(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,"tests/res/manualAvgSentiment1.lua",PanCake::QueryExecutionPolicy::serial).c_str());
 
     int manualCount = 0;
 
@@ -237,11 +236,10 @@ TEST_CASE("manualAvgSentiment1","")
 
     REQUIRE(matched == 22);
     REQUIRE(totalSentiment == -64.0);
-    //REQUIRE(avgSentiment == -14);
 
-    REQUIRE(avgSentiment == qCount);
+    REQUIRE(std::to_string(avgSentiment) == std::to_string(qCount));
 
     qCount = std::atoi(PanCake::runQueryFromFile("tests/rt/columnIRQuery1",date,"tests/res/manualFindTotalRetweets.lua",PanCake::QueryExecutionPolicy::serial).c_str());
 
-    REQUIRE(qCount == -64.0);
+    REQUIRE(qCount == 4);
 }

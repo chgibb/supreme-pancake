@@ -3,12 +3,17 @@ function env()
     addRegex("@realDonaldTrump")
 end
 
+local count = 0
+
 function q(s,e)
-    local count = 0
     for i=s,e do
        if match(0,textCol[i]) == true then
         count = count + 1
        end
     end
+end
+
+function e()
     return count
 end
+

@@ -45,9 +45,14 @@ namespace
         lua["env"]();
     }
 
-    int callQueryFunction(sol::state&lua,int s,int e)
+    void callQueryFunction(sol::state&lua,int s,int e)
     {
-        return lua["q"](s,e);
+        lua["q"](s,e);
+    }
+
+    std::string callQueryEndFunction(sol::state&lua)
+    {
+        return lua["e"]();
     }
 
     template<class T>
@@ -185,24 +190,23 @@ void PanCake::printEnv(PanCake::Query&q,sol::state&lua)
 
     auto nextChunksEnd = nextChunks.end();
     
-    int count = 0;
+    std::string res;
 
     ::ThreadPool pool(1);
-    std::vector<std::future<int>> poolRes;
+    std::vector<std::future<void>> poolRes;
 
     for(int i = q.range.start; i != q.range.end; ++i)
     {   
         int chunkLength = getChunkLength(lua);
 
         poolRes.emplace_back(pool.enqueue([&lua,&chunkLength](){
-            return callQueryFunction(lua,1,chunkLength);
+            callQueryFunction(lua,1,chunkLength);
         }));
 
-        std::for_each(poolRes.begin(),poolRes.end(),[&count](std::future<int>&task) {
+        std::for_each(poolRes.begin(),poolRes.end(),[](std::future<void>&task) {
             if(!task.valid())
                 return;
             task.wait();
-            count += task.get();
         });
 
         q.clearColumns();
@@ -215,7 +219,9 @@ void PanCake::printEnv(PanCake::Query&q,sol::state&lua)
             }
         }
     }
+
+    res = callQueryEndFunction(lua);
     
-    return std::to_string(count);
+    return res;
 }
 
