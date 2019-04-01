@@ -2,11 +2,9 @@
 
 import {scrapeSearchTerm} from "../src/lib/scrapeSearchTerm";
 
-jest.setTimeout(10000);
+jest.setTimeout(20000);
 
 it(`should scrape 100`,async() => {
-    let res = await scrapeSearchTerm("the",30);
-    console.log(res);
-    expect(res.length).toBe(30);
-
+    let res = await scrapeSearchTerm("but",100);
+    expect(res.length).toBe(100);
 });
