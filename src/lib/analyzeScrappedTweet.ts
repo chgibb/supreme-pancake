@@ -21,3 +21,12 @@ export function analyzeScrappedTweet(tweet : Tweet) : void
         tweet.comparativeSentimentScore = 0;
     }
 }
+
+
+export function analyzeScrappedTweets(tweets : Array<Tweet>) : void
+{
+    for(let i = 0; i!= tweets.length; ++i)
+    {
+        analyzeScrappedTweet(tweets[i]);
+    }
+}
