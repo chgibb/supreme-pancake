@@ -10,7 +10,9 @@ module.exports = {
         "require" : "readonly",
         "setImmediate" : "readonly",
         "process" : "readonly",
-        "Buffer" : "readonly"
+        "Buffer" : "readonly",
+        "jest" : "readonly",
+        "it" : "readonly"
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
