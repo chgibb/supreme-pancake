@@ -15,7 +15,9 @@
     "buildjs": "bash scripts/buildjs.bash",
     "buildAndTestcpp": "npm run build && rm -rf tests/rt && npm run testcpp",
     "buildAndMemCheckcpp": "npm run build && rm -rf tests/rt && npm run memCheckcpp",
-    "stressTests": "npm run build && bash scripts/runStressTests.bash"
+    "stressTests": "npm run build && bash scripts/runStressTests.bash",
+    "lintjs" : "./node_modules/.bin/eslint $(find src -name *.ts)",
+    "fixjs" : "./node_modules/.bin/eslint --fix $(find src -name *.ts)"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,8 @@
   "devDependencies": {
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.0",
+    "@typescript-eslint/parser": "^1.6.0",
+    "eslint": "^5.16.0",
     "franc": "^4.0.0",
     "glob": "^7.1.3",
     "jest": "^23.6.0",

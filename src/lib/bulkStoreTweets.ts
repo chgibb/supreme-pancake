@@ -4,23 +4,27 @@ import {BulkStoreStatus} from "./bulkStoreStatus";
 
 export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath = "") : Promise<BulkStoreStatus>
 {
-    return new Promise<BulkStoreStatus>((resolve : (value : BulkStoreStatus) => void,reject : (reason : string) => void) : void => {
+    return new Promise<BulkStoreStatus>((resolve : (value : BulkStoreStatus) => void,reject : (reason : string) => void) : void => 
+    {
         try
         {
             let stdoutBuffer : string = "";
             let stdcerrBuffer : string = "";
 
-            let bulkStoreJob = cp.spawn(`${exeSearchPath}bulkStoreTweets`,[`--type=searchScrape`,`--dir=${dataDir}`]);
+            let bulkStoreJob = cp.spawn(`${exeSearchPath}bulkStoreTweets`,["--type=searchScrape",`--dir=${dataDir}`]);
 
-            bulkStoreJob.stdout.on("data",(data : string) : void => {
+            bulkStoreJob.stdout.on("data",(data : string) : void => 
+            {
                 stdoutBuffer += data;
             });
 
-            bulkStoreJob.stderr.on("data",(data : string) : void => {
+            bulkStoreJob.stderr.on("data",(data : string) : void => 
+            {
                 stdcerrBuffer += data;
             });
 
-            bulkStoreJob.on("exit",(code : number,signal : string) : void => {
+            bulkStoreJob.on("exit",(code : number,signal : string) : void => 
+            {
                 if(code != 0)
                 {
                     reject(`${exeSearchPath}bulkStoreTweets exited with ${signal}${"\n"}${stdcerrBuffer}`);
@@ -28,7 +32,8 @@ export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath
 
                 else
                 {
-                    setTimeout(function(){
+                    setTimeout(function()
+                    {
                         return resolve(JSON.parse(stdoutBuffer));
                     },10);
                 }

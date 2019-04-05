@@ -4,7 +4,8 @@ import {BulkImageDownloadStatus} from "./bulkImageDownloadStatus";
 
 export function downloadImagesFromBins(dataDir : string,binList : Array<string>,exeSearchPath = "") : Promise<BulkImageDownloadStatus>
 {
-    return new Promise<BulkImageDownloadStatus>((resolve : (value : BulkImageDownloadStatus) => void,reject : (reason : string) => void) : void => {
+    return new Promise<BulkImageDownloadStatus>((resolve : (value : BulkImageDownloadStatus) => void,reject : (reason : string) => void) : void => 
+    {
         try
         {
             let stdoutBuffer : string = "";
@@ -12,15 +13,18 @@ export function downloadImagesFromBins(dataDir : string,binList : Array<string>,
 
             let downloadImagesJob = cp.spawn(`${exeSearchPath}downloadImagesFromBins`,[`--dir=${dataDir}`]);
 
-            downloadImagesJob.stdout.on("data",(data : string) : void => {
+            downloadImagesJob.stdout.on("data",(data : string) : void => 
+            {
                 stdoutBuffer += data;
             });
 
-            downloadImagesJob.stderr.on("data",(data : string) : void => {
+            downloadImagesJob.stderr.on("data",(data : string) : void => 
+            {
                 stdcerrBuffer += data;
             });
 
-            downloadImagesJob.on("exit",(code : number,signal : string) : void => {
+            downloadImagesJob.on("exit",(code : number,signal : string) : void => 
+            {
                 if(code != 0)
                 {
                     reject(`${exeSearchPath}downloadImagesFromBins exited with ${signal}${"\n"}${stdcerrBuffer}`);
@@ -28,10 +32,12 @@ export function downloadImagesFromBins(dataDir : string,binList : Array<string>,
 
                 else
                 {
-                    setTimeout(function(){
+                    setTimeout(function()
+                    {
                         if(!stdoutBuffer)
                         {
-                            setTimeout(function(){
+                            setTimeout(function()
+                            {
                                 return resolve(JSON.parse(stdoutBuffer));
                             },2000);
                         }

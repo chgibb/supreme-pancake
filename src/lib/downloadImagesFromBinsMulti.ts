@@ -4,7 +4,8 @@ import {chunkEqual} from "./chunkEqual";
 
 export function downloadImagesFromBinsMulti(dataDir : string,binList : Array<string>,par : number,exeSearchPath = "") : Promise<BulkImageDownloadStatus>
 {
-    return new Promise<BulkImageDownloadStatus>(async (resolve : (value : BulkImageDownloadStatus) => void,reject : (reason : string) => void) : Promise<void> => {
+    return new Promise<BulkImageDownloadStatus>(async (resolve : (value : BulkImageDownloadStatus) => void,reject : (reason : string) => void) : Promise<void> => 
+    {
         let promises = new Array<Promise<BulkImageDownloadStatus>>();
 
         try
@@ -24,7 +25,8 @@ export function downloadImagesFromBinsMulti(dataDir : string,binList : Array<str
 
             for(let i = 0; i != promises.length; ++i)
             {
-                promises[i].then((status : BulkImageDownloadStatus) => {
+                promises[i].then((status : BulkImageDownloadStatus) => 
+                {
                     res.succeeded += status.succeeded;
                     res.failed += status.failed;
                     res.attempted += status.attempted;

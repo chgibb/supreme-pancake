@@ -2,7 +2,8 @@ import * as cp from "child_process";
 
 export function genColumnIR(dataDir : string,outDir : string,year : string,month : string,day : string,chunkSize : number,exeSearchPath = "") : Promise<void>
 {
-    return new Promise<void>((resolve : (value : void) => void,reject : (reason : string) => void) : void => {
+    return new Promise<void>((resolve : (value : void) => void,reject : (reason : string) => void) : void => 
+    {
         try
         {
             let stdoutBuffer : string = "";
@@ -17,15 +18,18 @@ export function genColumnIR(dataDir : string,outDir : string,year : string,month
                 `--chunkSize=${chunkSize}`
             ]);
 
-            genColumnIRJob.stdout.on("data",(data : string) : void => {
+            genColumnIRJob.stdout.on("data",(data : string) : void => 
+            {
                 stdoutBuffer += data;
             });
 
-            genColumnIRJob.stderr.on("data",(data : string) : void => {
+            genColumnIRJob.stderr.on("data",(data : string) : void => 
+            {
                 stdcerrBuffer += data;
             });
 
-            genColumnIRJob.on("exit",(code : number,signal : string) : void => {
+            genColumnIRJob.on("exit",(code : number,signal : string) : void => 
+            {
                 if(code != 0)
                 {
                     reject(`${exeSearchPath}genColumnIR exited with ${signal}${"\n"}${stdcerrBuffer}`);
