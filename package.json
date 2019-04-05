@@ -9,7 +9,7 @@
   "scripts": {
     "test": "npm run build && rm -rf tests/rt && npm run buildAndTestcpp && npm run testjs && npm run stressTests",
     "testcpp": "bash scripts/testcpp.bash",
-    "testjs": "npm run buildjs && rm -rf tests/rt && bash scripts/testjs.bash",
+    "testjs": "npm run lintjs && npm run buildjs && rm -rf tests/rt && bash scripts/testjs.bash",
     "memCheckcpp": "bash scripts/memCheckcpp.bash",
     "build": "node scripts/genNinja && ninja -j 2 && bash scripts/makeDepGraph.bash && npm run buildjs",
     "buildjs": "bash scripts/buildjs.bash",
