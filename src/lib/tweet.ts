@@ -19,4 +19,11 @@ export interface Tweet
     lang : string
     comparativeSentimentScore : number;
     sentimentScore : number;
+    imageContent? : Array<ImageContent>;
+}
+
+export interface ImageContent
+{
+    url : string;
+    data : string;
 }
