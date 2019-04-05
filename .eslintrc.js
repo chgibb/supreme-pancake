@@ -12,7 +12,8 @@ module.exports = {
         "process" : "readonly",
         "Buffer" : "readonly",
         "jest" : "readonly",
-        "it" : "readonly"
+        "it" : "readonly",
+        "expect" : "readonly"
     },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
