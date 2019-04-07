@@ -74,10 +74,10 @@
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
         "**/node_modules/**": true,
-        "**/obj**":true,
-        "**/out/**":true,
-        "**/tests/rt/**":true
-
+        "**/obj/**": true,
+        "**/out/**": true,
+        "**/src/vendor/**": true,
+        "**/tests/rt/**": true
     },
     "eslint.autoFixOnSave": true,
     "eslint.validate": [
