@@ -1,11 +1,12 @@
 /// <reference types="jest" />
 
 import {scrapeSearchTerm} from "../src/lib/scrapeSearchTerm";
-import { analyzeScrappedTweets } from "../src/lib/analyzeScrappedTweet";
+import {analyzeScrappedTweets} from "../src/lib/analyzeScrappedTweet";
 
 jest.setTimeout(20000);
 
-it(`should scrape 100`,async() => {
+it("should scrape 100",async() => 
+{
     let res = await scrapeSearchTerm("but",100);
     expect(res.length).toBe(100);
 
