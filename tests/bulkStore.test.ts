@@ -6,7 +6,8 @@ import {bulkStoreTweets} from "../src/lib/bulkStoreTweets";
 
 jest.setTimeout(10000);
 
-it(`should generate directory and store tweets on first run`,async () => {
+it("should generate directory and store tweets on first run",async () => 
+{
     let tweets = fs.readFileSync("tests/res/searchScrapeTweets.json").toString();
 
     let status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
@@ -19,7 +20,8 @@ it(`should generate directory and store tweets on first run`,async () => {
 });
 
 
-it(`should not add duplicates`,async () => {
+it("should not add duplicates",async () => 
+{
     let tweets = fs.readFileSync("tests/res/searchScrapeTweets.json").toString();
 
     let status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
@@ -79,7 +81,8 @@ it(`should not add duplicates`,async () => {
     expect(status.binsWithNewTweets.length).toBe(0);
 });
 
-it(`should write bulk test data to its own directory`,async () => {
+it("should write bulk test data to its own directory",async () => 
+{
     let tweets = fs.readFileSync("tests/res/bulkStore.json").toString();
 
     let status = await bulkStoreTweets("tests/rt/bulkStoreTS2",tweets,"out/");
@@ -91,7 +94,8 @@ it(`should write bulk test data to its own directory`,async () => {
     expect(status.binsWithNewTweets.length).toBe(996);
 });
 
-it(`should merge bulk test data`,async () => {
+it("should merge bulk test data",async () => 
+{
     let tweets = fs.readFileSync("tests/res/bulkStore.json").toString();
 
     let status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
@@ -103,7 +107,8 @@ it(`should merge bulk test data`,async () => {
     expect(status.binsWithNewTweets.length).toBe(996);
 });
 
-it(`should not add duplicates`,async () => {
+it("should not add duplicates",async () => 
+{
     let tweets = fs.readFileSync("tests/res/bulkStore.json").toString();
 
     let status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
