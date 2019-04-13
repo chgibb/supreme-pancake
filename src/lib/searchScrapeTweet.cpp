@@ -32,7 +32,18 @@
         {
             if(url.IsString())
             {
-                tweet.images.push_back(PanCake::TweetImage(url.GetString(),""));
+                tweet.images.push_back(url.GetString());
+            }
+        }
+
+        if((*it).HasMember("imageContent"))
+        {
+            for(auto imgIt = (*it)["imageContent"].Begin(); imgIt != (*it)["imageContent"].End(); ++imgIt)
+            {
+                tweet.imageContent.push_back(PanCake::TweetImageContent(
+                    (*imgIt)["url"].GetString(),
+                    (*imgIt)["data"].GetString()
+                ));
             }
         }
 

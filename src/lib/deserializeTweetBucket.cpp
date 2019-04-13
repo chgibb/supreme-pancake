@@ -23,10 +23,7 @@ void PanCake::deserializeTweetBucket(rapidjson::Value&value,rapidjson::Document:
 
         for(auto imgIt = (*it)["images"].Begin(); imgIt != (*it)["images"].End(); ++imgIt)
         {
-            tweet.images.push_back(PanCake::TweetImage(
-                (*imgIt)["url"].GetString(),
-                (*imgIt)["OCRText"].GetString()
-            ));
+            tweet.images.push_back((*imgIt).GetString());
         }
 
         bucket.push_back(tweet);

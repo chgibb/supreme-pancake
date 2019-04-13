@@ -8,8 +8,8 @@ TEST_CASE("Time point image strings should be correct","")
     PanCake::Tweet tweet;
     tweet.id = "1234567";
     tweet.date = "2018/01/01/00/00/00";
-    tweet.images.push_back(PanCake::TweetImage("123",""));
-    tweet.images.push_back(PanCake::TweetImage("1234",""));
+    tweet.images.push_back("123");
+    tweet.images.push_back("1234");
 
     REQUIRE(PanCake::makeTweetImagePath("tests/rt/imgPaths",tweet) == "tests/rt/imgPaths/2018/01/01/00/00/00/img");
 

@@ -41,3 +41,18 @@ export function downloadImages(tweet : Tweet) : Promise<void>
         return resolve();
     });
 }
+
+export function downloadAllImages(tweets : Array<Tweet>) : Promise<void>
+{
+    return new Promise<void>(async (resolve: () => void) => 
+    {
+        for(let i = 0; i != tweets.length; ++i)
+        {
+            if(tweets[i].images.length)
+            {
+                await downloadImages(tweets[i]);
+            }
+        }
+        return resolve();
+    });
+}
