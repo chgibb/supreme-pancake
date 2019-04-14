@@ -15,7 +15,7 @@ it("should store tweets and OCR images",async () =>
 
     expect(status.added).toBe(300);
     expect(status.duplicates).toBe(0);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.savedImages).toBe(62);
     expect(status.binsWithNewTweets.length).toBe(48);

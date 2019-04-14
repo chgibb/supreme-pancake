@@ -19,7 +19,7 @@ it("should scrape and store tweets",async () =>
     
     expect(status.added).toBe(30);
     expect(status.duplicates).toBe(0);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBeGreaterThan(0);
 });

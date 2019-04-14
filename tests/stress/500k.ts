@@ -10,7 +10,7 @@ import {compileColumnIR} from "../../src/lib/compileColumnIR";
     let packs = fs.readdirSync("tests/res/10kPacs");
     let status : BulkStoreStatus = {
         added : 0,
-        success : 0,
+        success : false,
         duplicates : 0,
         metaUpdates : 0,
         savedImages : 0,
@@ -23,7 +23,7 @@ import {compileColumnIR} from "../../src/lib/compileColumnIR";
         let curStatus = await bulkStoreTweets("tests/rt/100k",tweets,"out/");
         status.added += curStatus.added;
         status.duplicates += curStatus.duplicates;
-        status.success += curStatus.success;
+        status.success = curStatus.success;
         status.metaUpdates += curStatus.metaUpdates;
     }
 

@@ -14,7 +14,7 @@ it("should generate directory and store tweets on first run",async () =>
     
     expect(status.added).toBe(10);
     expect(status.duplicates).toBe(0);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(9);
 });
@@ -27,56 +27,56 @@ it("should not add duplicates",async () =>
     let status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(10);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 
     status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(10);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 
     status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(10);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 
     status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(10);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 
     status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(10);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 
     status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(10);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 
     status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(10);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 
     status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(10);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 });
@@ -89,7 +89,7 @@ it("should write bulk test data to its own directory",async () =>
 
     expect(status.added).toBe(5040);
     expect(status.duplicates).toBe(500);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(996);
 });
@@ -102,7 +102,7 @@ it("should merge bulk test data",async () =>
 
     expect(status.added).toBe(5040);
     expect(status.duplicates).toBe(500);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(996);
 });
@@ -114,21 +114,21 @@ it("should not add duplicates",async () =>
     let status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(5540);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 
     status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(5540);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 
     status = await bulkStoreTweets("tests/rt/bulkStoreTS",tweets,"out/");
     expect(status.added).toBe(0);
     expect(status.duplicates).toBe(5540);
-    expect(status.success).toBe(1);
+    expect(status.success).toBe(true);
     expect(status.metaUpdates).toBe(0);
     expect(status.binsWithNewTweets.length).toBe(0);
 });
