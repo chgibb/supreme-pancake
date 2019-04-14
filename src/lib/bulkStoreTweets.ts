@@ -1,6 +1,6 @@
 import * as cp from "child_process";
 
-import {BulkStoreStatus} from "./bulkStoreStatus";
+import {BulkStoreStatus} from "./interfaces/bulkStoreStatus";
 
 export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath = "") : Promise<BulkStoreStatus>
 {

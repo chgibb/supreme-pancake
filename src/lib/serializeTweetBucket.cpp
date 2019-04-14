@@ -4,12 +4,12 @@
 
 #include "base64.hpp"
 #include "OCR.hpp"
-#include "OCRResult.hpp"
-#include "serializeOCRResult.hpp"
 #include "serializeTweetBucket.hpp"
 #include "makeTweetTimePointPaths.hpp"
 #include "directoryExists.hpp"
 #include "fileExists.hpp"
+#include "interfaces/OCRResult.hpp"
+#include "interfaces/serializeOCRResult.hpp"
 
 [[nodiscard]] bool PanCake::serializeTweetBucket(
     const char*dataDir,

@@ -4,7 +4,7 @@
 
 #include <rapidjson/document.h>
 
-#include "tweet.hpp"
+#include "interfaces/tweet.hpp"
 
 namespace PanCake
 {

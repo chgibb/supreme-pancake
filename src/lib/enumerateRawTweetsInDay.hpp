@@ -2,7 +2,7 @@
 #include <functional>
 
 #include "tweetDate.hpp"
-#include "tweet.hpp"
+#include "interfaces/tweet.hpp"
 
 namespace PanCake
 {

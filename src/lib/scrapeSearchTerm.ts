@@ -3,7 +3,7 @@ const scrapeTwitter = require("scrape-twitter");
 
 const {TweetStream} = scrapeTwitter;
 
-import {Tweet} from "./tweet";
+import {Tweet} from "./interfaces/tweet";
 
 export async function scrapeSearchTerm(term : string,limit : number) : Promise<Array<Tweet>>
 {

@@ -1,6 +1,6 @@
 const request = require("request");
 
-import {Tweet} from "./tweet";
+import {Tweet} from "./interfaces/tweet";
 
 export function downloadImage(tweet : Tweet,index : number) : Promise<Buffer>
 {

@@ -3,9 +3,9 @@
 #include "vendor/cxxopts/include/cxxopts.hpp"
 
 #include "lib/OCRTweetBin.hpp"
-#include "lib/bulkOCRResult.hpp"
-#include "lib/serializeBulkOCRResult.hpp"
 #include "lib/loadJSON.hpp"
+#include "lib/interfaces/bulkOCRResult.hpp"
+#include "lib/interfaces/serializeBulkOCRResult.hpp"
 
 int main(int argc,char*argv[])
 {

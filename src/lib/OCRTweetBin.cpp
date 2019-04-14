@@ -4,13 +4,13 @@
 
 #include "OCRTweetBin.hpp"
 #include "OCR.hpp"
-#include "OCRResult.hpp"
-#include "serializeOCRResult.hpp"
 #include "fileExists.hpp"
 #include "tweetBin.hpp"
 #include "loadTweetBin.hpp"
 #include "makeTweetTimePointPaths.hpp"
-#include "tweet.hpp"
+#include "interfaces/serializeOCRResult.hpp"
+#include "interfaces/OCRResult.hpp"
+#include "interfaces/tweet.hpp"
 
 PanCake::BulkOCRResult PanCake::OCRTweetBin(const char*dataDir,const std::string&path)
 {

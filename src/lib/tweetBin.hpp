@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "tweet.hpp"
+#include "interfaces/tweet.hpp"
 
 namespace PanCake
 {

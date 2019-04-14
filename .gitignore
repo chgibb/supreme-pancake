@@ -46,6 +46,7 @@ tests/*.js
 tests/stress/*.js
 src/include/*.js
 src/lib/*.js
+src/lib/interfaces/*.js
 
 tests/rt/**/
 out/*

@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-#include "bulkStoreStatus.hpp"
+#include "interfaces/bulkStoreStatus.hpp"
 #include "tweetStore.hpp"
 
 namespace PanCake

@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "bulkOCRResult.hpp"
+#include "interfaces/bulkOCRResult.hpp"
 
 namespace PanCake
 {

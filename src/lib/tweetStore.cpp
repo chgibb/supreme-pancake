@@ -12,7 +12,7 @@
 #include "loadJSON.hpp"
 #include "loadTweetBin.hpp"
 #include "saveTweetBin.hpp"
-#include "tweet.hpp"
+#include "interfaces/tweet.hpp"
 
 [[nodiscard]] std::vector<PanCake::Tweet>*PanCake::getBinBucketByHash(PanCake::TweetBin&bin,PanCake::Tweet&tweet) noexcept
 {

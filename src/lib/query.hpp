@@ -8,7 +8,7 @@
 #include <sol.hpp>
 
 #include "fileExists.hpp"
-#include "tweet.hpp"
+#include "interfaces/tweet.hpp"
 #include "tweetDate.hpp"
 
 namespace PanCake

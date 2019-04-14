@@ -1,5 +1,5 @@
 import {analyzeText} from "./analyzeText";
-import {Tweet} from "./tweet";
+import {Tweet} from "./interfaces/tweet";
 
 export function analyzeScrappedTweet(tweet : Tweet) : void
 {

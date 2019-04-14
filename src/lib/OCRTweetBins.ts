@@ -1,6 +1,6 @@
 import * as cp from "child_process";
 
-import {BulkOCRResult} from "./bulkOCRResult";
+import {BulkOCRResult} from "./interfaces/bulkOCRResult";
 
 export function OCRTweetBins(dataDir : string,binList : Array<string>,exeSearchPath = "") : Promise<BulkOCRResult>
 {

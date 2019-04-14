@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "OCRResult.hpp"
+#include "interfaces/OCRResult.hpp"
 
 namespace PanCake
 {

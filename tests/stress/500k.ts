@@ -1,7 +1,7 @@
 import * as fs from "fs";
 
 import {bulkStoreTweets} from "../../src/lib/bulkStoreTweets";
-import {BulkStoreStatus} from "../../src/lib/bulkStoreStatus";
+import {BulkStoreStatus} from "../../src/lib/interfaces/bulkStoreStatus";
 import {genColumnIR} from "../../src/lib/genColumnIR";
 import {compileColumnIR} from "../../src/lib/compileColumnIR";
 
