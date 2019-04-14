@@ -1,27 +1,13 @@
-const franc = require("franc");
-const Sentiment = require("sentiment");
-const sentiment = new Sentiment();
-
+import {analyzeText} from "./analyzeText";
 import {Tweet} from "./tweet";
 
 export function analyzeScrappedTweet(tweet : Tweet) : void
 {
-    tweet.lang = franc(tweet.text);
-    
-    if(tweet.lang == "eng")
-    {
-        let scores = sentiment.analyze(tweet.text);
-        tweet.sentimentScore = scores.score;
-        tweet.comparativeSentimentScore = scores.comparative;
-    }
-
-    else
-    {
-        tweet.sentimentScore = 0;
-        tweet.comparativeSentimentScore = 0;
-    }
+    let res = analyzeText(tweet.text);
+    tweet.lang = res.lang;
+    tweet.sentimentScore = res.sentimentScore;
+    tweet.comparativeSentimentScore = res.comparativeSentimentScore;
 }
-
 
 export function analyzeScrappedTweets(tweets : Array<Tweet>) : void
 {
