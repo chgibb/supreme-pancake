@@ -7,7 +7,7 @@ import {analyzeScrappedTweets} from "../src/lib/analyzeScrappedTweet";
 import {downloadAllImages} from "../src/lib/downloadImages";
 import {bulkStoreTweets} from "../src/lib/bulkStoreTweets";
 
-it("should scrape and store tweets",async()=>
+it("should scrape and store tweets",async () =>
 {
     let tweets = await scrapeSearchTerm("and",30);
     analyzeScrappedTweets(tweets);

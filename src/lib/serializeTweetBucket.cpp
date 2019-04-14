@@ -1,9 +1,19 @@
 #include <algorithm>
+#include <fstream>
+#include <experimental/filesystem>
 
+#include "base64.hpp"
 #include "serializeTweetBucket.hpp"
+#include "makeTweetTimePointPaths.hpp"
+#include "directoryExists.hpp"
+#include "fileExists.hpp"
 
-void PanCake::serializeTweetBucket(rapidjson::Value&value,rapidjson::Document::AllocatorType&allocator,std::vector<PanCake::Tweet>&bucket)
-{
+[[nodiscard]] bool PanCake::serializeTweetBucket(
+    const char*dataDir,
+    rapidjson::Value&value,
+    rapidjson::Document::AllocatorType&allocator,
+    std::vector<PanCake::Tweet>&bucket
+) {
     std::for_each(bucket.begin(),bucket.end(),[&](const PanCake::Tweet&tweet) -> void {
         rapidjson::Value entry;
 
@@ -115,5 +125,31 @@ void PanCake::serializeTweetBucket(rapidjson::Value&value,rapidjson::Document::A
         );
 
         value.PushBack(entry,allocator);
+
+        int i = 0;
+        std::for_each(tweet.imageContent.begin(),tweet.imageContent.end(),[&](const PanCake::TweetImageContent&image) -> void {
+            std::string dirPath = PanCake::makeTweetImagePath(dataDir,tweet);
+            
+            if(!PanCake::directoryExists(dirPath.c_str()))
+                std::experimental::filesystem::create_directories(dirPath);
+
+            std::string path = PanCake::makeTweetImageFilePath(dataDir,tweet,i);
+
+            if(!PanCake::fileExists(path.c_str()))
+            {
+                std::ofstream file(path.c_str(),std::ios::out | std::ios::binary);
+
+                std::string data = base64_decode(image.data);
+
+                std::for_each(data.begin(),data.end(),[&](const char&byte) -> void {
+                    file<<byte;
+                });
+            }
+
+            ++i;
+        });
     });
+
+    return true;
 }
+

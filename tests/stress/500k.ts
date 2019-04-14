@@ -5,13 +5,15 @@ import {BulkStoreStatus} from "../../src/lib/bulkStoreStatus";
 import {genColumnIR} from "../../src/lib/genColumnIR";
 import {compileColumnIR} from "../../src/lib/compileColumnIR";
 
-(async function(){
+(async function()
+{
     let packs = fs.readdirSync("tests/res/10kPacs");
     let status : BulkStoreStatus = {
         added : 0,
         success : 0,
         duplicates : 0,
         metaUpdates : 0,
+        savedImages : 0,
         binsWithNewTweets : []
     };
     for(let i = 0; i != packs.length; ++i)

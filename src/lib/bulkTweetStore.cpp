@@ -35,7 +35,11 @@
         }
 
         else if(storeRes.success)
+        {
             res.added++;
+            res.savedImages += storeRes.savedImages;
+        }
+
         else if(storeRes.duplicate)
             res.duplicates++;
         else if(storeRes.updatedMeta)

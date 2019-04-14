@@ -4,5 +4,6 @@ export interface BulkStoreStatus
     duplicates : number;
     success : number;
     metaUpdates : number;
+    savedImages: number;
     binsWithNewTweets : Array<string>;
 }

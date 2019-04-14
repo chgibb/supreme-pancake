@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 #include <rapidjson/document.h>
 
@@ -8,5 +9,11 @@
 
 namespace PanCake
 {
-    void serializeTweetBucket(rapidjson::Value&,rapidjson::Document::AllocatorType&,std::vector<PanCake::Tweet>&);
+    [[nodiscard]] bool serializeTweetBucket(
+        const char*dataDir,
+        rapidjson::Value&,
+        rapidjson::Document::AllocatorType&,
+        std::vector<PanCake::Tweet>&
+    );
 }
+

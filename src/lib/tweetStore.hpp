@@ -27,6 +27,7 @@ namespace PanCake
                 bool duplicate = false;
                 bool success = false;
                 bool updatedMeta = false;
+                int savedImages = 0;
             };
 
             struct AddOrUpdateStatus

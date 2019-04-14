@@ -96,6 +96,7 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
         if(addStatus.added)
         {
             res.success = true;
+            res.savedImages = tweet.imageContent.size();
             return res;
         }
         else if(!addStatus.added && !addStatus.updatedMeta)
@@ -128,6 +129,7 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
         if(addStatus.added)
         {
             res.success = true;
+            res.savedImages = tweet.imageContent.size();
             return res;
         }
         else if(!addStatus.added && !addStatus.updatedMeta)
@@ -156,6 +158,7 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
         this->binsWithNewTweets[bucketPath] = true;
 
         res.success = true;
+        res.savedImages = tweet.imageContent.size();
     }
 
     return res;
@@ -166,7 +169,7 @@ PanCake::TweetStore::TweetStore(const char*path,const char*timePointPath)
     auto end = this->bins.end();
     for(auto it = this->bins.begin(); it != end; ++it)
     {   
-        bool res = PanCake::saveTweetBin(it->second,this->timePointPath+std::string("/")+it->first+".json");
+        bool res = PanCake::saveTweetBin(this->dataDirectory,it->second,this->timePointPath+std::string("/")+it->first+".json");
         if(!res)
             return false;
     }

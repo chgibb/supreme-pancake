@@ -6,5 +6,5 @@
 
 namespace PanCake
 {
-    [[nodiscard]] bool saveTweetBin(PanCake::TweetBin&,std::string);
+    [[nodiscard]] bool saveTweetBin(const char*,PanCake::TweetBin&,std::string);
 }

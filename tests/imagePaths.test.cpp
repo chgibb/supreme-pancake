@@ -19,4 +19,9 @@ TEST_CASE("Time point image strings should be correct","")
 
     REQUIRE(filePaths[0] == "tests/rt/imgPaths/2018/01/01/00/00/00/img/1234567_0.jpg");
     REQUIRE(filePaths[1] == "tests/rt/imgPaths/2018/01/01/00/00/00/img/1234567_1.jpg");
+
+    std::vector<std::string> contentFilePaths = PanCake::makeTweetImageFilePaths("tests/rt/imgPaths",tweet);
+
+    REQUIRE(contentFilePaths[0] == "tests/rt/imgPaths/2018/01/01/00/00/00/img/1234567_0.jpg");
+    REQUIRE(contentFilePaths[1] == "tests/rt/imgPaths/2018/01/01/00/00/00/img/1234567_1.jpg");
 }
