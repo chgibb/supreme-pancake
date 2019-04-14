@@ -8,6 +8,7 @@
 #include "../src/lib/searchScrapeTweet.hpp"
 #include "../src/lib/bulkTweetStore.hpp"
 #include "../src/lib/OCR.hpp"
+#include "../src/lib/OCRTweetBin.hpp"
 
 TEST_CASE("Parses and saves inline images","")
 {
@@ -25,6 +26,8 @@ TEST_CASE("Parses and saves inline images","")
     REQUIRE(status.metaUpdates == 0);
     REQUIRE(status.savedImages == 62);
     REQUIRE(status.binsWithNewTweets.size() == 48);
+
+    REQUIRE(PanCake::OCRTweetBin("tests/rt/62ImagesInline","tests/rt/62ImagesInline/2019/04/14/16/00/56/d.json").attempted == 6);
 
     status = PanCake::bulkStoreTweets("tests/rt/62ImagesInline",tweets);
 

@@ -1,6 +1,8 @@
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <fstream>
+#include <memory>
 
 #include "OCRTweetBin.hpp"
 #include "OCR.hpp"
@@ -15,7 +17,10 @@
 PanCake::BulkOCRResult PanCake::OCRTweetBin(const char*dataDir,const std::string&path)
 {
     PanCake::BulkOCRResult bulkRes;
-    PanCake::TweetBin*bin = PanCake::loadTweetBin(path.c_str());
+    std::unique_ptr<PanCake::TweetBin> bin(PanCake::loadTweetBin(path.c_str()));
+
+    if(!bin)
+        return bulkRes;
 
     PanCake::forEachBucket(
         *bin,
@@ -33,20 +38,20 @@ PanCake::BulkOCRResult PanCake::OCRTweetBin(const char*dataDir,const std::string
 
                             if(PanCake::fileExists(resultPath.c_str()))
                                 return;
+                            
+                            bulkRes.attempted++;
 
                             std::string imagePath = PanCake::makeTweetImageFilePath(dataDir,tweet,i);
-
+    
                             PanCake::OCRResult res = PanCake::OCRImage(imagePath);
 
                             std::ofstream file(resultPath.c_str(),std::ios::out);
                             file<<PanCake::serializeOCRResult(res);
-                            bulkRes.attempted++;
 
                             i++;
                         });
                 });
         });
-    
     return bulkRes;
 }
 
