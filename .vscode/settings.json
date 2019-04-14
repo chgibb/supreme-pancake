@@ -86,5 +86,5 @@
         {"language": "typescript", "autoFix": true },
         {"language": "typescriptreact", "autoFix": true }
     ],
-    "C_Cpp.intelliSenseCacheSize": 1120
+    "C_Cpp.intelliSenseCacheSize": 512
 }
