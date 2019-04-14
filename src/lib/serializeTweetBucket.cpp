@@ -3,6 +3,9 @@
 #include <experimental/filesystem>
 
 #include "base64.hpp"
+#include "OCR.hpp"
+#include "OCRResult.hpp"
+#include "serializeOCRResult.hpp"
 #include "serializeTweetBucket.hpp"
 #include "makeTweetTimePointPaths.hpp"
 #include "directoryExists.hpp"

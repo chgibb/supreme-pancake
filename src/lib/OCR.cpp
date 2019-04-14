@@ -24,3 +24,12 @@ std::string PanCake::Internal::OCR(const std::string&path)
     return api->GetUTF8Text();
 }
 
+PanCake::OCRResult PanCake::OCRImage(const std::string&path)
+{
+    PanCake::OCRResult res;
+    
+    res.text = PanCake::Internal::OCR(path);
+
+    return res;
+}
+

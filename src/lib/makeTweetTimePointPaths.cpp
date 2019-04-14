@@ -23,6 +23,11 @@
     return PanCake::makeTweetImagePath(path,tweet)+"/"+tweet.id+"_"+std::to_string(index)+".jpg";
 }
 
+[[nodiscard]] std::string PanCake::makeTweetImageOCRResultFilePath(const char*path,const PanCake::Tweet&tweet,int index)
+{
+    return PanCake::makeTweetImagePath(path,tweet)+"/"+tweet.id+"_"+std::to_string(index)+".json";
+}
+
 [[nodiscard]] std::vector<std::string> PanCake::makeTweetImageFilePaths(const char*path,const PanCake::Tweet&tweet)
 {
     std::vector<std::string> res;

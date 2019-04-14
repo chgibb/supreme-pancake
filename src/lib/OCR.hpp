@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "OCRResult.hpp"
+
 namespace PanCake
 {
     namespace Internal
@@ -9,6 +11,6 @@ namespace PanCake
         std::string OCR(const std::string&);
     }
 
-    bool OCRImage(const std::string&);
+    PanCake::OCRResult OCRImage(const std::string&);
 }
 
