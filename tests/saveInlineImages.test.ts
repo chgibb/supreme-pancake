@@ -5,7 +5,7 @@ import * as fs from "fs";
 import {bulkStoreTweets} from "../src/lib/bulkStoreTweets";
 import {OCRTweetBins} from "../src/lib/OCRTweetBins";
 
-jest.setTimeout(15000);
+jest.setTimeout(30000);
 
 it("should store tweets and OCR images",async () => 
 {
