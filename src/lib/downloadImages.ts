@@ -2,21 +2,25 @@ const request = require("request");
 
 import {Tweet} from "./tweet";
 
-
 export function downloadImage(tweet : Tweet,index : number) : Promise<Buffer>
 {
     return new Promise<Buffer>((resolve : (value : Buffer) => void,reject : () => void) => 
     {
-        request(tweet.images[index],{},(err : any,res : any,body : any) => 
-        {
-            res;
-            if(err)
-                throw new Error(err);
-            if(body)
-                return resolve(Buffer.from(body,"utf-8"));
-            else 
-                return reject();
-        });
+        request(
+            {
+                url : tweet.images[index],
+                method : "GET",
+                encoding: null
+            },
+            (err : any,res : any) => 
+            {
+                if(err)
+                    throw new Error(err);
+                if(res.body)
+                    return resolve(Buffer.from(res.body));
+                else 
+                    return reject();
+            });
     });
 }
 
