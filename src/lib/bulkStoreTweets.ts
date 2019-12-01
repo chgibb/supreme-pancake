@@ -11,7 +11,7 @@ export function bulkStoreTweets(dataDir : string,tweetStr : string,exeSearchPath
             let stdoutBuffer : string = "";
             let stdcerrBuffer : string = "";
 
-            let bulkStoreJob = cp.spawn(`${exeSearchPath}bulkStoreTweets`,["--type=searchScrape",`--dir=${dataDir}`]);
+            let bulkStoreJob = cp.spawn(`${exeSearchPath}bulkStoreTweets.out`,["--type=searchScrape",`--dir=${dataDir}`]);
 
             bulkStoreJob.stdout.on("data",(data : string) : void => 
             {

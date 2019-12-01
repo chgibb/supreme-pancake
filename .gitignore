@@ -52,3 +52,7 @@ out/*
 
 src/vendor/lua-5.3.5
 .vscode/ipch
+
+scripts/*.js
+src/*.js
+src/*.tmp

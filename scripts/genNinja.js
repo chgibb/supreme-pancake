@@ -60,7 +60,7 @@ function makeObjectFilePath(file)
 
 function makeExecutableFilePath(file)
 {
-    return `out/${trimExtension(file)}`;
+    return `out/${trimExtension(file)}.out`;
 }
 
 function trimExtension(file)
