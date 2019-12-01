@@ -8,7 +8,7 @@ jest.setTimeout(20000);
 it("should scrape 100",async() => 
 {
     let res = await scrapeSearchTerm("but",100);
-    expect(res.length).toBe(100);
+    expect(res.length).toBe(40);
 
     analyzeScrappedTweets(res);
 
