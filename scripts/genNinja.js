@@ -20,16 +20,25 @@ if(arg.only)
     onlyCertainTargets = true;
 }
 
+let buildType = "debug";
+
+if(arg.release)
+{
+    buildType = "release";
+}
+
 let ccFlags = `-pedantic -Wall -Wextra -Wcast-align -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept -Woverloaded-virtual -Wredundant-decls -Wsign-promo -Wstrict-null-sentinel -Werror -Wno-unused -std=c++17`;
 let includeFlags = `-I src/vendor/rapidjson/include -I src/vendor/Catch2/single_include -I src/vendor/compile-time-regular-expressions/include -I src/vendor/PicoSHA2  -I src/vendor/lua-5.3.5/src -I src/vendor/sol2 -I src/vendor/ThreadPool`;
 let ldFlags = `-L src/vendor/lua-5.3.5/src -llua -lstdc++fs -lcurl -llept -ltesseract -lm -ldl -pthread`;
-let optFlags = `-g -O1`;
+let optFlags =  buildType == "debug" ? `-g -O1 `: `-O3`;
 let objFiles = "";
 let objFileBuildSteps = "";
 let testBuildSteps = "";
 let executableBuildSteps ="";
 
 let testLinkRules = ``;
+
+
 
 function onlyThisTarget(target)
 {
@@ -46,7 +55,7 @@ function onlyThisTarget(target)
 
 function makeObjectFilePath(file)
 {
-    return `obj/${file.split("/").join("-")}.o`.split(".cpp").join("");
+    return `obj/${buildType}/${file.split("/").join("-")}.o`.split(".cpp").join("");
 }
 
 function makeExecutableFilePath(file)
@@ -88,9 +97,9 @@ function trimExtension(file)
                 if(/\.test/.test(matches[i]))
                     continue;
 
-                testBuildSteps += `build ${matches[i].split('.').slice(0, -1).join('.')}.out : link${trimExtension(matches[i])} ${makeObjectFilePath(matches[i])} | ${makeObjectFilePath(matches[i])} obj/tests-${trimExtension(matches[i])+`.test`}.o ${objFiles}${"\n"}`;
+                testBuildSteps += `build ${matches[i].split('.').slice(0, -1).join('.')}.out : link${trimExtension(matches[i])} ${makeObjectFilePath(matches[i])} | ${makeObjectFilePath(matches[i])} obj/${buildType}/tests-${trimExtension(matches[i])+`.test`}.o ${objFiles}${"\n"}`;
                 testLinkRules += `rule link${trimExtension(matches[i])}${"\n"}`;
-                testLinkRules += `  command = g++ obj/tests-${trimExtension(matches[i])+`.test`}.o ${objFiles} ${ldFlags} -o $out $in${"\n"}`;
+                testLinkRules += `  command = g++ obj/${buildType}/tests-${trimExtension(matches[i])+`.test`}.o ${objFiles} ${ldFlags} -o $out $in${"\n"}`;
                 testLinkRules += `  description = Linking $out${"\n"}`;
             }
             return resolve();
