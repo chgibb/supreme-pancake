@@ -47,7 +47,7 @@
     "franc": "^4.0.0",
     "glob": "^7.1.3",
     "jest": "^23.6.0",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.6",
     "optimize-js": "^1.0.3",
     "request": "^2.88.0",
     "rollup": "^1.27.6",
